@@ -1,1 +1,12 @@
-  <router-outlet></router-outlet>
+ 
+     <button mat-icon-button class="example-header" (mouseenter)="toggleCollapsed()" (mouseleave)="toggleCollapsed()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav mode="side" [opened]="true" class="example-sidenav" [style.width]="width()">
+        <app-navbar [collapsed]="collapsed()"></app-navbar>
+      </mat-sidenav>
+      <mat-sidenav-content [style.margin-left]="width()"  class="MAIN">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>

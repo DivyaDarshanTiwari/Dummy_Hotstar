@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['./app.component.css'],
   providers:[]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Dummy_Hotstar';
+  collapsed = signal(true);
+  width = computed(() => this.collapsed() ? '80px' : '200px');
+
+  ngOnInit(): void {}
+
+  toggleCollapsed() {
+    this.collapsed.set(!this.collapsed());
+  }
 }

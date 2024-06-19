@@ -1,12 +1,33 @@
-mat-toolbar{
-    position: relative;
+.example-container {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+  }
+  
+  .example-sidenav {
+    color: aliceblue;
+    width: 100px;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,9,121,0.3103459676106771) 81%);
+    transition: width 0.5s;
+    z-index: 4;
+    border-radius: 0px;
+
+  }
+
+  
+  
+  .example-header {
     z-index: 5;
-}
+    position: relative;
+    top: 20px;
+    left: 20px;
+    right: 0;
+  }
 
-.content{
-    padding: 24px;
-}
-
-mat-sidenav-container{
-    height: 100vh;
-}
+  .MAIN{
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    border: 2px solid black;
+  }
