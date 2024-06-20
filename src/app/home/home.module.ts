@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -10,7 +9,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MatSlideToggleModule
   ]
 })
 export class HomeModule { }

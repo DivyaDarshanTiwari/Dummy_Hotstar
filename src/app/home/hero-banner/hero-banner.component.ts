@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
@@ -8,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
     standalone: true,
     templateUrl: './hero-banner.component.html',
     styleUrl: './hero-banner.component.css',
-    imports: [MatButtonModule, MatDividerModule, MatIconModule]
+    imports: [MatButtonModule, MatIconModule]
 })
 export class HeroBannerComponent {
 
