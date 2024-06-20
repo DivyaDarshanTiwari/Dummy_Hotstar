@@ -1,18 +1,18 @@
 
-    <mat-sidenav-container class="example-container">
-      <mat-sidenav mode="side" [opened]="true" class="example-sidenav" [style.width]="width()">
-        <div class="nav-content">
-          <mat-list class="list">
-            <div class="sidenav-header">
-                <a mat-list-item *ngFor="let icon of icons" >
-                    <mat-icon matListItemIcon style="color: aliceblue;" (mouseenter)="toggleCollapsed()" (mouseleave)="toggleCollapsed()">{{icon.icons}}</mat-icon>
-                    <span matListItemTitle *ngIf="!collapsed()" style="color: aliceblue;">{{icon.description}}</span>
-                </a>
-            </div>
-            </mat-list>
-          </div>
-      </mat-sidenav>
-      <mat-sidenav-content class="MAIN">
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" [opened]="true" class="example-sidenav" [style.width]="width()">
+    <div class="nav-content">
+      <mat-list class="list">
+        <div class="sidenav-header">
+            <a mat-list-item *ngFor="let icon of icons" >
+                <mat-icon matListItemIcon style="color: aliceblue;" (mouseenter)="toggleCollapsed()" (mouseleave)="toggleCollapsed()">{{icon.icons}}</mat-icon>
+                <span matListItemTitle *ngIf="!collapsed()" style="color: aliceblue;">{{icon.description}}</span>
+            </a>
+        </div>
+        </mat-list>
+      </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="MAIN">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
