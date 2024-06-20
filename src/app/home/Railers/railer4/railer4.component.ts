@@ -9,14 +9,14 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './railer4.component.css'
 })
 export class Railer4Component implements AfterViewInit {
-  currentSlideIndex = 0; // Assuming you have an initial slide index
 
+  @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
+  @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+  
   ngAfterViewInit() {}
 
   prevfun() {
     if (this.prevButtonRef) {
-      this.currentSlideIndex = Math.max(0, this.currentSlideIndex - 1);
-      console.log(`Previous button clicked, current slide index: ${this.currentSlideIndex}`);
       // Update slider UI based on new currentSlideIndex
       var elm = this.prevButtonRef.nativeElement.parentElement?.children[1];
       console.log(elm);
@@ -44,6 +44,5 @@ export class Railer4Component implements AfterViewInit {
       }
     }
   }
-  @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
-  @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+
 }
