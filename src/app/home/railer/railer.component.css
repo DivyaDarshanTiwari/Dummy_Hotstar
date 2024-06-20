@@ -1,0 +1,38 @@
+.slider-section{
+    position: relative;
+    width: 95%;
+    border: 2px solid white;
+    overflow: hidden;
+
+}
+
+.card-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgb(224, 75, 75);
+    gap: 16px;
+}
+
+.images{
+    border: 2px solid yellow;
+    margin: 0px 5px;
+}
+
+.buttons{
+
+}
+
+.prev,.next{
+    position: absolute;
+    top: 50%;
+}
+
+.prev{
+    left: 0;
+}
+
+.next{
+    right: 0%;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
+import { RailerComponent } from '../railer/railer.component';
 
 
 
@@ -8,7 +9,7 @@ import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
     standalone: true,
     templateUrl: './home-page.component.html',
     styleUrls: ['./home-page.component.css'],
-    imports: [HeroBannerComponent]
+    imports: [HeroBannerComponent,RailerComponent]
 })
 export class HomePageComponent {
 
