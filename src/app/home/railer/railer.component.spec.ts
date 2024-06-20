@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RailerComponent } from './railer.component';
+import { NextDirective } from './next&prev/next.directive';
+import { PrevDirective } from './next&prev/prev.directive';
 
 describe('RailerComponent', () => {
   let component: RailerComponent;
@@ -8,7 +10,7 @@ describe('RailerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RailerComponent]
+      imports: [RailerComponent,NextDirective,PrevDirective]
     })
     .compileComponents();
 
