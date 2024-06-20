@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
-import { NavbarComponent } from "../../navbar/navbar.component";
 
 
 
@@ -9,7 +8,7 @@ import { NavbarComponent } from "../../navbar/navbar.component";
     standalone: true,
     templateUrl: './home-page.component.html',
     styleUrls: ['./home-page.component.css'],
-    imports: [HeroBannerComponent, NavbarComponent]
+    imports: [HeroBannerComponent]
 })
 export class HomePageComponent {
 
