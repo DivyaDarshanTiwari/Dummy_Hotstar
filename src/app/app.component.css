@@ -4,17 +4,17 @@
     bottom: 0px;
     left: 0;
     right: 0;
+    background: rgb(0,0,0);
   }
   
   .example-sidenav {
     color: aliceblue;
     width: 100px;
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,9,121,0.3103459676106771) 81%);
+    background: rgb(0,0,0) ;
     transition: width 0.5s;
     z-index: 4;
     border-radius: 0px;
-
+    position: fixed;
   }
 
   
@@ -25,9 +25,20 @@
     top: 20px;
     left: 20px;
     right: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,9,121,0.3103459676106771) 81%);
   }
 
   .MAIN{
-    border: 2PX solid black;
     width: 100%;
   }
+
+  .sidenav-header
+{
+    position: fixed;
+    top: 20%;
+    left: 15px;
+}
+
+span{
+    transition: all 1s;
+}
