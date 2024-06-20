@@ -2,6 +2,8 @@
     position: absolute;
     top: 0px;
     bottom: 0px;
+    left: 0;
+    right: 0;
   }
   
   .example-sidenav {
@@ -26,8 +28,6 @@
   }
 
   .MAIN{
-    position: fixed;
+    border: 2PX solid black;
     width: 100%;
-    z-index: 3;
-    border: 2px solid black;
   }

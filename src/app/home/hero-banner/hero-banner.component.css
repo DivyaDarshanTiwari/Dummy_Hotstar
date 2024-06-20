@@ -1,15 +1,17 @@
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../../public/OnePiece.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../../public/OnePiece.jpeg");
     height: 735px;
+    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    border-radius: 2px solid green;
 
   }
   
   .hero-text {
-    position: absolute;
+    position: relative;
     top: 70%;
     left: 30%;
     transform: translate(-50%, -50%);
