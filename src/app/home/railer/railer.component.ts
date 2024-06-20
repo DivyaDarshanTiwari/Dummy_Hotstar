@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild,ElementRef ,AfterViewInit} from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -8,6 +8,14 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './railer.component.html',
   styleUrl: './railer.component.css'
 })
-export class RailerComponent {
+export class RailerComponent implements AfterViewInit{
+  ngAfterViewInit() {
+    if (this.myElementRef) {
+      console.log(this.myElementRef.nativeElement); // Access element content
+    }
+  }
+  
 
+  @ViewChild('Prev') myElementRef!: ElementRef<HTMLElement>;
 }
+
