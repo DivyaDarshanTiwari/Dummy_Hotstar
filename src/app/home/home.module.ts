@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    HomeRoutingModule,NavbarComponent
+    HomeRoutingModule,
+    MatSlideToggleModule
   ]
 })
 export class HomeModule { }

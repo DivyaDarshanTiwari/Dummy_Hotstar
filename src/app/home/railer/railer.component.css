@@ -1,38 +1,54 @@
 .slider-section{
     position: relative;
-    width: 95%;
-    border: 2px solid white;
+    width: 93%;
     overflow: hidden;
+    margin: 40px;
 
 }
 
 .card-container{
+    width: 95%;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid rgb(224, 75, 75);
-    gap: 16px;
+    padding: 20px;
+    margin-right: 40px;
+    overflow: hidden;
 }
 
 .images{
-    border: 2px solid yellow;
     margin: 0px 5px;
+    transition: all 0.5s ease-out;
 }
-
-.buttons{
-
+.images:hover{
+    transform: scale(1.25);
+    z-index: 1;
+    
 }
 
 .prev,.next{
+    color: aliceblue;
     position: absolute;
-    top: 50%;
+    top: 1px;
+    background-color: rgba(94, 134, 157, 0);
+    height: 100%;
+    border: 0px;
+    transition: all 0.5s;
+}
+
+.prev:hover,.next:hover{
+    background-color: rgba(234, 234, 234, 0.105);
 }
 
 .prev{
-    left: 0;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 10%;
+    left: 0px;
 }
 
 .next{
+    border-top-left-radius: 20%;
+    border-bottom-left-radius: 10%;
     right: 0%;
 }

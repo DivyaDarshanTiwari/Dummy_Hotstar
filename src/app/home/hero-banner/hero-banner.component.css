@@ -7,6 +7,8 @@
     background-size: cover;
     position: relative;
     border-radius: 2px solid green;
+    background-position:left;
+    background-attachment: fixed;
 
   }
   
