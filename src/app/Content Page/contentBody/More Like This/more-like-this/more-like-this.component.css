@@ -1,0 +1,13 @@
+.more-image{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+img{
+    height: 20rem;
+    border-radius: 5px;
+    margin: 5px;
+
+}
