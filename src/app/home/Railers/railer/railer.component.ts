@@ -2,7 +2,9 @@ import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter }
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { data1 } from '../../../../Entertainment'; ''
+import { data1 } from '../../../../Entertainment';import { Route } from '@angular/router';
+import { Router } from '@angular/router';
+ ''
 @Component({
   selector: 'app-railer',
   standalone: true,
@@ -11,6 +13,14 @@ import { data1 } from '../../../../Entertainment'; ''
   styleUrls: ['./railer.component.css']
 })
 export class RailerComponent implements AfterViewInit {
+
+  constructor(private router:Router){
+
+  }
+movetonext(arg0: number) {
+  this.router.navigate(['/s']);
+}
+
 
   item = data1;
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
@@ -22,6 +32,8 @@ export class RailerComponent implements AfterViewInit {
   emitImage(image: Imgdata) {
     this.railerData1.emit(image);
   }
+
+
 
   prevfun() {
     if (this.prevButtonRef) {
