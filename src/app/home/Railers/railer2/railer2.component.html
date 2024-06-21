@@ -2,7 +2,7 @@
     <h2>Latest Release</h2>
     <div class="card-container">
         <div class="images" *ngFor="let i of image">
-            <img [src]="i.img" alt="{{ i.alt }}">
+            <img [src]="i.img" alt="{{ i.alt }}" (click)="emitImage(i)">
         </div>
     </div>
 

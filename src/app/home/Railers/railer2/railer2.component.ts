@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
@@ -16,6 +16,12 @@ export class Railer2Component implements AfterViewInit {
   
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+
+  @Output() railerData1 = new EventEmitter<Imgdata>();
+  emitImage(image: Imgdata) {
+    this.railerData1.emit(image);
+  }
+  
   ngAfterViewInit() {}
   prevfun() {
     if (this.prevButtonRef) {
@@ -49,32 +55,32 @@ export class Railer2Component implements AfterViewInit {
 
   public image:Imgdata[]=[
     {
-      id:100,
+      id:500,
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmCy16nhIbV3pI1qLYHMJKwbH2458oiC9EmA&s',
       alt: 'Dog'
     },
     {
-      id:101,
+      id:501,
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxljCiU3pRUXpw-39aklTNk7BDV3G9Dn7ocw&s',
       alt: 'Dog'
     },
     {
-      id:102,
+      id:502,
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwGxx1DUJNuxRai0IV8G04TKWCpkcmRlkRhA&s',
       alt: 'Dog'
     },
     {
-      id:103,
+      id:503,
       img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
       alt: 'Dog'
     },
     {
-      id:104,
+      id:504,
       img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
       alt: 'Dog'
     },
     {
-      id:105,
+      id:505,
       img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
       alt: 'Dog'
     },
@@ -84,4 +90,5 @@ export class Railer2Component implements AfterViewInit {
       alt: 'Dog'
     }
     ];
+    
 }
