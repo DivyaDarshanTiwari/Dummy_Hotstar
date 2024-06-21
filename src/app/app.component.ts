@@ -42,4 +42,5 @@ export class AppComponent implements OnInit {
     { icons: 'sports_cricket', description: 'Sports' },
     { icons: 'category', description: 'Category' }
   ];
+
 }

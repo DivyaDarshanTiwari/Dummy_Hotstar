@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { ContentBannerComponent } from '../../Banner/content-banner/content-banner.component';
 import { ContentBodyComponent } from '../../contentBody/content-body/content-body.component';
+import { ContentBannerComponent } from '../../Banner/content-banner/content-banner.component';
+
+
 
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [ContentBannerComponent,ContentBodyComponent],
+  imports: [ ContentBodyComponent,ContentBannerComponent],
   templateUrl: './new.component.html',
-  styleUrl: './new.component.css'
+  styleUrls: ['./new.component.css']
 })
 export class NewComponent {
 

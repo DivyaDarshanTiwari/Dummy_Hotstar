@@ -1,39 +1,31 @@
 
-
-<div class="hero-image">
+<div class="hero-image" [style.background-image]="'url(' + item.img + ')'">
     <div class="logo">
       <img src="/ANIME-W (1).gif" alt="none">
     </div>
       <div class="hero-text">
         <div>
-          <img src="/One-Piece-Logo.png" alt="Hanuman">
+          <img [src]="item.headImg" [alt]="item.alt">
         </div>
         <div>
           <span>
-              <span>2024</span> 
+              <span>{{item.year_of_release}}</span> 
           </span>
           <span>
-              <span class="dot">4 Season</span>
+              <span class="dot">{{item.seasons}}</span>
           </span>
           <span>
-              <span class="dot">7Language</span>
+              <span class="dot">{{item.languages}}</span>
           </span>
           <span>
-              <span class="dot">U/A 7+</span>
+              <span class="dot">U/A{{item.U_A}}</span>
           </span>
         </div>
-        <p>NEW EPISODE EVERY THURSDAY. As the war intensifies in Ravan's majestic Lanka, Hanuman faces mightier foes for his Lord Ram with his vaanar sena.</p>
+        <p>{{item.description}}</p>
   
-        <div>
-          <span>Mythoology</span>
-          <span>
-              <span class="line">Animation</span>
-          </span>
-          <span>
-              <span class="line">Creature&Monsters</span>
-          </span>
-          <span>
-              <span class="line">Fantasy</span>
+        <div >
+          <span *ngFor="let i of item.genera">
+              <span class="line">{{i}}</span>
           </span>
         </div>
         <div class="example-button-container">

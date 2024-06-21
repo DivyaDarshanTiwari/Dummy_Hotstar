@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild }
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-
+import { data1 } from '../../../../Entertainment';
 
 @Component({
   selector: 'app-railer2',
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Railer2Component implements AfterViewInit {
 
+  item = data1;
   
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
@@ -53,42 +54,4 @@ export class Railer2Component implements AfterViewInit {
     }
   }
 
-  public image:Imgdata[]=[
-    {
-      id:500,
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmCy16nhIbV3pI1qLYHMJKwbH2458oiC9EmA&s',
-      alt: 'Dog'
-    },
-    {
-      id:501,
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxljCiU3pRUXpw-39aklTNk7BDV3G9Dn7ocw&s',
-      alt: 'Dog'
-    },
-    {
-      id:502,
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwGxx1DUJNuxRai0IV8G04TKWCpkcmRlkRhA&s',
-      alt: 'Dog'
-    },
-    {
-      id:503,
-      img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
-      alt: 'Dog'
-    },
-    {
-      id:504,
-      img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
-      alt: 'Dog'
-    },
-    {
-      id:505,
-      img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
-      alt: 'Dog'
-    },
-    {
-      id:106,
-      img: 'https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t',
-      alt: 'Dog'
-    }
-    ];
-    
 }
