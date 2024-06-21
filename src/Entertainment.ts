@@ -13,6 +13,7 @@ export const data1=[
             U_A: "R",
             genera: ["Drama", "Crime"],
             watch_hours: "2h 22min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
           {
             id: 2,
@@ -28,6 +29,7 @@ export const data1=[
             U_A: "R",
             genera: ["Crime", "Drama", "Gangster"],
             watch_hours: "2h 55min",
+            seasons_name:["Chapter 1", "Chapter 2"]
           },
           {
             id: 3,
@@ -43,6 +45,7 @@ export const data1=[
             U_A: "PG",
             genera: ["Animation", "Adventure", "Fantasy"],
             watch_hours: "2h 3min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
           {
             id: 4,
@@ -58,6 +61,7 @@ export const data1=[
             U_A: "PG-13",
             genera: ["Fantasy", "Adventure", "Drama"],
             watch_hours: "2h 58min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
           {
             id: 5,
@@ -73,7 +77,9 @@ export const data1=[
             U_A: "R",
             genera: ["Action", "Science Fiction", "Thriller"],
             watch_hours: "2h 16min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
+
           {
             id: 6,
             title: "Pulp Fiction Movie Poster",
@@ -88,6 +94,7 @@ export const data1=[
             U_A: "R",
             genera: ["Crime", "Comedy", "Thriller"],
             watch_hours: "2h 58min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
           {
             id: 7,
@@ -103,6 +110,7 @@ export const data1=[
             U_A: "R",
             genera: ["Thriller", "Black Comedy", "Drama"],
             watch_hours: "2h 12min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           }
                               
     ]

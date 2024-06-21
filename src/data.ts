@@ -11,4 +11,5 @@ export interface Data {
     U_A: string,
     genera: string[],
     watch_hours: string
+    seasons_name:string[]
 }

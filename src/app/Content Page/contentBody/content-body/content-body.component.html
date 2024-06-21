@@ -1,10 +1,12 @@
 
 <section class="wholebody">
     <mat-tab-group mat-stretch-tabs="false" dynamicHeight>
-        <mat-tab label="Episodes">
-          <div class="example-small-box mat-elevation-z4">
-            Small content
-          </div>
+        <mat-tab label="Episodes" class="mat-tab">
+            <mat-tab-group  mat-stretch-tabs="false" dynamicHeight class="season">
+                <mat-tab *ngFor="let i of item.seasons_name" [label]="i">
+                  <app-season-body></app-season-body>
+                </mat-tab>
+            </mat-tab-group>
         </mat-tab>
         <mat-tab label="More Like This">
           <div class="example-large-box mat-elevation-z4">
