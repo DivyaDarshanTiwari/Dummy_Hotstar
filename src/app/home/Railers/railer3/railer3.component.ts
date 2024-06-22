@@ -1,17 +1,36 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { Imgdata } from '../imgdata';
+import { CommonModule } from '@angular/common';
+import { data1 } from '../../../../data1';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-railer3',
   standalone: true,
-  imports: [MatIcon],
+  imports: [MatIcon,CommonModule],
   templateUrl: './railer3.component.html',
   styleUrl: './railer3.component.css'
 })
 export class Railer3Component implements AfterViewInit {
 
+  item=data1;
+
+  
+  constructor(private router:Router){
+
+  }
+movetonext(arg0: number) {
+  this.router.navigate(['/s']);
+}
+
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+
+  @Output() railerData1 = new EventEmitter<Imgdata>();
+  emitImage(image: Imgdata) {
+    this.railerData1.emit(image);
+  }
 
   ngAfterViewInit() {}
 
@@ -37,5 +56,6 @@ export class Railer3Component implements AfterViewInit {
       }
     }
   }
+
 
 }

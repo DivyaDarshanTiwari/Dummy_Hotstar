@@ -4,13 +4,14 @@
     bottom: 0px;
     left: 0;
     right: 0;
-    background: rgb(0,0,0);
+    background-color: rgba(0, 0, 0) ;
   }
   
   .example-sidenav {
     color: aliceblue;
     width: 100px;
-    background: rgb(0,0,0) ;
+    background: rgba(0, 0, 0, 0.066) ;
+    background-image: linear-gradient(to right,rgba(0, 0, 0) , rgba(0, 0, 0),rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.066));
     transition: width 0.5s;
     z-index: 4;
     border-radius: 0px;

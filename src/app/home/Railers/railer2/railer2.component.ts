@@ -1,18 +1,37 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { Imgdata } from '../imgdata';
+import { CommonModule } from '@angular/common';
+import { data1 } from '../../../../data1';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-railer2',
   standalone: true,
-  imports: [MatIcon],
+  imports: [MatIcon,CommonModule],
   templateUrl: './railer2.component.html',
   styleUrl: './railer2.component.css'
 })
 export class Railer2Component implements AfterViewInit {
 
+  item = data1;
+
+  
+  constructor(private router:Router){
+
+  }
+movetonext(arg0: number) {
+  this.router.navigate(['/s']);
+}
   
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+
+  @Output() railerData1 = new EventEmitter<Imgdata>();
+  emitImage(image: Imgdata) {
+    this.railerData1.emit(image);
+  }
+  
   ngAfterViewInit() {}
   prevfun() {
     if (this.prevButtonRef) {

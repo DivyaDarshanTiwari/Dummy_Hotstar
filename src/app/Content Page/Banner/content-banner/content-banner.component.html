@@ -1,0 +1,41 @@
+
+<div class="hero-image" [style.background-image]="'url(' + item.img + ')'">
+    <div class="logo">
+      <img src="/ANIME-W (1).gif" alt="none">
+    </div>
+      <div class="hero-text">
+        <div>
+          <img [src]="item.headImg" [alt]="item.alt">
+        </div>
+        <div>
+          <span>
+              <span>{{item.year_of_release}}</span> 
+          </span>
+          <span>
+              <span class="dot">{{item.seasons}}</span>
+          </span>
+          <span>
+              <span class="dot">{{item.languages}}</span>
+          </span>
+          <span>
+              <span class="dot">U/A{{item.U_A}}</span>
+          </span>
+        </div>
+        <p>{{item.description}}</p>
+  
+        <div >
+          <span *ngFor="let i of item.genera">
+              <span class="line">{{i}}</span>
+          </span>
+        </div>
+        <div class="example-button-container">
+          <button mat-fab extended id="sub_button">
+              <mat-icon>subscriptions</mat-icon>
+              Subscribe To Watch
+          </button>
+          <button mat-fab aria-label="Example icon button with a add icon" style="border-radius: 1rem;" title="Watch List">
+              <mat-icon>add</mat-icon>
+            </button>
+        </div>
+      </div>
+    </div>

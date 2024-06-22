@@ -1,11 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
-import { RailerComponent } from '../Railers/railer/railer.component';
-import { Railer3Component } from '../Railers/railer3/railer3.component';
-import { Railer4Component } from '../Railers/railer4/railer4.component';
-import { Railer2Component } from '../Railers/railer2/railer2.component';
-
-
+import { MainRailerComponent } from '../Railers/main-railer/main-railer.component';
+import { Imgdata } from '../Railers/imgdata';
 
 
 @Component({
@@ -13,8 +9,15 @@ import { Railer2Component } from '../Railers/railer2/railer2.component';
     standalone: true,
     templateUrl: './home-page.component.html',
     styleUrls: ['./home-page.component.css'],
-    imports: [HeroBannerComponent,RailerComponent,Railer3Component,Railer4Component,Railer2Component]
+    imports: [HeroBannerComponent,MainRailerComponent]
 })
-export class HomePageComponent {
+export class HomePageComponent  {
+
+    catchData(item:Imgdata){
+        console.log(item);
+        console.log("he")
+    }
+
+    
 
 }

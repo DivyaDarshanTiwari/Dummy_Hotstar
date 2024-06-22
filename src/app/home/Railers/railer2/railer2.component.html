@@ -1,39 +1,16 @@
-
 <section class="slider-section">
-    <h3>Movies</h3>
-    <div  class="card-container">
-
-        <div class="images">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmCy16nhIbV3pI1qLYHMJKwbH2458oiC9EmA&s" alt="not found">
-        </div>
-        <div class="images">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxljCiU3pRUXpw-39aklTNk7BDV3G9Dn7ocw&s" alt="not found">
-        </div>
-        <div class="images">         
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwGxx1DUJNuxRai0IV8G04TKWCpkcmRlkRhA&s" alt="not found">
-        </div>
-        <div class="images">
-            <img src="https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t" alt="not found">          
-        </div>
-        <div class="images">
-            <img src="https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t" alt="not found">      
-        </div>
-        <div class="images">
-            <img src="https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t" alt="not found">
-        </div>
-        <div class="images">
-            <img src="https://img10.hotstar.com/image/upload/f_auto,h_148/sources/r1/cms/prod/2965/1717524622965-t" alt="not found">
+    <h2>Latest Release</h2>
+    <div class="card-container">
+        <div class="images" *ngFor="let i of item">
+            <img [src]="i.img" alt="{{ i.alt }}" (click)="emitImage(i); movetonext(i.id)">
         </div>
     </div>
 
+    <button mat-mini-fab aria-label="Example icon button with a menu icon" class="prev" color="primary" #prevButton (click)="prevfun()">
+        <mat-icon>arrow_back_ios</mat-icon>
+    </button>
 
-        <button mat-mini-fab aria-label="Example icon button with a menu icon" class="prev" color="primary" #prevButton (click)="prevfun()">
-            <mat-icon>arrow_back_ios</mat-icon>
-          </button>
-
-          <button mat-mini-fab aria-label="Example icon button with a menu icon" class="next" color="primary" #nextButton (click)="nextfun()">
-         <mat-icon>arrow_forward_ios</mat-icon>
-          </button>
-
-          
+    <button mat-mini-fab aria-label="Example icon button with a menu icon" class="next" color="primary" #nextButton (click)="nextfun()">
+        <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
 </section>
