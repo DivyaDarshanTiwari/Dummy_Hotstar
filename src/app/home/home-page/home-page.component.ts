@@ -14,7 +14,6 @@ import { ActivatedRoute, Params, Route } from '@angular/router';
 })
 export class HomePageComponent  {
 
-    user!: string
     catchData(item:Imgdata){
         console.log(item);
         console.log("he")

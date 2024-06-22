@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter }
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { data1 } from '../../../../Entertainment';import { Route } from '@angular/router';
+import { data1 } from '../../../../data1';import { Route } from '@angular/router';
 import { Router } from '@angular/router';
  ''
 @Component({

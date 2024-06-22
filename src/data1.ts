@@ -1,22 +1,6 @@
 export const data1=[
-        {
-            id: 1,
-            title:"The Shawshank Redemption Movie Poste",
-            img: "https://filmschoolrejects.com/wp-content/uploads/2020/06/shawshank-theater.jpg",
-            alt: "The Shawshank Redemption Movie Poster",
-            description:
-              "Two imprisoned men bond over a number of years, finding solace and eventual redemption in their friendship.",
-            headImg: "https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/7018/1715414247018-t",
-            year_of_release: "1994", // Year, Month (0-indexed), Day
-            seasons: 1,
-            languages: "English",
-            U_A: "R",
-            genera: ["Drama", "Crime"],
-            watch_hours: "2h 22min",
-            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
-          },
           {
-            id: 2,
+            id: 1,
             title: "The Godfather Movie Poster",
             img: "https://chinhan100.files.wordpress.com/2019/03/doremon.jpg?w=640",
             alt: "The Godfather Movie Poster",
@@ -30,6 +14,22 @@ export const data1=[
             genera: ["Kid", "Animation", "Light hearted"],
             watch_hours: "2h 55min",
             seasons_name:["Chapter 1", "Chapter 2"]
+          },
+          {
+            id: 2,
+            title:"The Shawshank Redemption Movie Poste",
+            img: "https://filmschoolrejects.com/wp-content/uploads/2020/06/shawshank-theater.jpg",
+            alt: "The Shawshank Redemption Movie Poster",
+            description:
+              "Two imprisoned men bond over a number of years, finding solace and eventual redemption in their friendship.",
+            headImg: "https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/7018/1715414247018-t",
+            year_of_release: "1994", // Year, Month (0-indexed), Day
+            seasons: 1,
+            languages: "English",
+            U_A: "R",
+            genera: ["Drama", "Crime"],
+            watch_hours: "2h 22min",
+            seasons_name:["Season 1", "Season 2","Season 3", "Season 4"]
           },
           {
             id: 3,

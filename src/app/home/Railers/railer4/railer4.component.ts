@@ -2,7 +2,8 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild }
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { data1 } from '../../../../Entertainment';
+import { data1 } from '../../../../data1';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-railer4',
@@ -13,7 +14,16 @@ import { data1 } from '../../../../Entertainment';
 })
 export class Railer4Component implements AfterViewInit {
 
-  item=data1;
+  
+  item = data1;
+
+  
+  constructor(private router:Router){
+
+  }
+movetonext(arg0: number) {
+  this.router.navigate(['/s']);
+}
 
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
