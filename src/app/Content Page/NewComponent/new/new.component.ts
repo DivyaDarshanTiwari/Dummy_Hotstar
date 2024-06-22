@@ -16,5 +16,7 @@ import { NgFor } from '@angular/common';
 export class NewComponent {
 
   data1=data1[0];
+
+  
   
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { DataMore } from '../DataMore.1';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DataMore } from '../More Like This/DataMore.1';
 import { CommonModule, NgFor } from '@angular/common';
 import { MatCard } from '@angular/material/card';
 
@@ -10,7 +10,13 @@ import { MatCard } from '@angular/material/card';
   templateUrl: './more-like-this.component.html',
   styleUrl: './more-like-this.component.css'
 })
-export class MoreLikeThisComponent {
+export class MoreLikeThisComponent implements OnInit{
+
+  @Output() data = new EventEmitter();
+  
+  ngOnInit(): void {
+    this.data.emit(this.item);
+  }
 
   item=DataMore[0]; // index is where the id goes of the selected show or movies
 }

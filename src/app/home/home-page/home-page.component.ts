@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
 import { MainRailerComponent } from '../Railers/main-railer/main-railer.component';
 import { Imgdata } from '../Railers/imgdata';
-import { ActivatedRoute, Params, Route } from '@angular/router';
 
 
 @Component({
