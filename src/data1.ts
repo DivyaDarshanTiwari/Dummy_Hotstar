@@ -1,9 +1,9 @@
 export const data1 = [
   {
     id: 1,
-    title: 'The Godfather Movie Poster',
+    title: 'DORAEMON',
     img: 'https://chinhan100.files.wordpress.com/2019/03/doremon.jpg?w=640',
-    alt: 'The Godfather Movie Poster',
+    alt: 'TDoraemon',
     description:
       'NEW EPISODES MONDAY TO SATURDAY AT 12:30 PM. Trouble continues to follow Nobita around. Fortunately, his trusty friend Doraemon, from the 22nd century, is always by his side for his adventures.',
     headImg:
@@ -18,37 +18,37 @@ export const data1 = [
   },
   {
     id: 2,
-    title: 'The Shawshank Redemption Movie Poste',
-    img: 'https://filmschoolrejects.com/wp-content/uploads/2020/06/shawshank-theater.jpg',
+    title: 'Leagens Of Hanuman',
+    img: 'https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/2965/1717524622965-t',
     alt: 'The Shawshank Redemption Movie Poster',
     description:
-      'Two imprisoned men bond over a number of years, finding solace and eventual redemption in their friendship.',
+      'NEW EPISODE EVERY THURSDAY. As the war intensifies in Ravans majestic Lanka, Hanuman faces mightier foes for his Lord Ram with his vaanar sena.',
     headImg:
       'https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/7018/1715414247018-t',
-    year_of_release: '1994', // Year, Month (0-indexed), Day
-    seasons: 1,
+    year_of_release: '2024', // Year, Month (0-indexed), Day
+    seasons: 4,
     languages: 'English',
-    U_A: 'R',
-    genera: ['Drama', 'Crime'],
-    watch_hours: '2h 22min',
+    U_A: '7+',
+    genera: ['Mythology', 'Creatures & Monsters','Fantasy'],
+    watch_hours: '',
     seasons_name: ['Season 1', 'Season 2', 'Season 3', 'Season 4'],
   },
   {
     id: 3,
-    title: 'Spirited Away Movie Poster',
+    title: 'Vikram and Vital',
     img: 'https://www.okcmoa.com/wp-content/uploads/2023/11/SPRTD_GKIDS_3840x2160_2001_tileburnedin.jpg',
-    alt: 'Spirited Away Movie Poster',
+    alt: 'Vikram and Vital',
     description:
-      'A young girl, Chihiro Ogino, finds herself in the world of Kami (spirits) after her parents are turned into pigs by the witch Yubaba. Battling to find a way to free herself and her parents, Chihiro encounters a cast of strange and wonderful characters along the way.',
+      'Vicky Sharmas life spirals when his family moves into a new home and meets Vetaal the ghost. Watch their hilarious adventures as they become an iconic duo.',
     headImg:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Spirited_Away_poster.jpg/250px-Spirited_Away_poster.jpg',
-    year_of_release: '2001', // Year, Month (0-indexed), Day
-    seasons: 1,
-    languages: 'Japanese',
-    U_A: 'PG',
-    genera: ['Animation', 'Adventure', 'Fantasy'],
+      'https://img10.hotstar.com/image/upload/f_auto,h_156/sources/r1/cms/prod/493/1440493-t-5fb6e53bc468',
+    year_of_release: '2002', // Year, Month (0-indexed), Day
+    seasons: 2,
+    languages: 'Hindi',
+    U_A: '7+',
+    genera: ['Comedy', 'Kit', 'Fantasy'],
     watch_hours: '2h 3min',
-    seasons_name: ['Season 1', 'Season 2', 'Season 3', 'Season 4'],
+    seasons_name: ['Season 1', 'Season 2'],
   },
   {
     id: 4,

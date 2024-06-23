@@ -10,10 +10,8 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { data1 } from '../../../../data1';
 import { Router } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
-('');
 @Component({
   selector: 'app-railer',
   standalone: true,
@@ -23,7 +21,7 @@ import { Data1Interface } from '../../../data1-interface';
 })
 export class RailerComponent implements AfterViewInit {
   constructor(private router: Router) {}
-  movetonext(arg0: number) {
+  movetonext(arg0: number) { //for navigating to dfferent comonent
     this.router.navigate(['/s']);
   }
 
