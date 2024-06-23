@@ -1,9 +1,10 @@
-import { Component ,EventEmitter,Output} from '@angular/core';
+import { Component ,EventEmitter,Input,Output} from '@angular/core';
 import { Railer2Component } from '../railer2/railer2.component';
 import { Railer3Component } from '../railer3/railer3.component';
 import { Railer4Component } from '../railer4/railer4.component';
 import { RailerComponent } from '../railer/railer.component';
 import { Imgdata } from '../imgdata';
+import { Data1Interface } from '../../../data1-interface';
 
 @Component({
   selector: 'app-main-railer',
@@ -15,6 +16,8 @@ import { Imgdata } from '../imgdata';
 export class MainRailerComponent {
 
   @Output() imageData = new EventEmitter<Imgdata>();
+
+  @Input() data_from_home!:Data1Interface[];
 
   railerData(item: Imgdata) {
     this.imageData.emit(item);

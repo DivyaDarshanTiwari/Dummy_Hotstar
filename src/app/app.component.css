@@ -1,46 +1,53 @@
 .example-container {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0) ;
-  }
-  
-  .example-sidenav {
-    color: aliceblue;
-    width: 100px;
-    background: rgba(0, 0, 0, 0.066) ;
-    background-image: linear-gradient(to right,rgba(0, 0, 0) , rgba(0, 0, 0),rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.066));
-    transition: width 0.5s;
-    z-index: 4;
-    border-radius: 0px;
-    position: fixed;
-  }
-
-  
-  
-  .example-header {
-    z-index: 5;
-    position: relative;
-    top: 20px;
-    left: 20px;
-    right: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,9,121,0.3103459676106771) 81%);
-  }
-
-  .MAIN{
-    width: 100%;
-    margin: 1px;
-  }
-
-  .sidenav-header
-{
-    position: fixed;
-    top: 20%;
-    left: 15px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0);
 }
 
-span{
-    transition: all 1s;
+.example-sidenav {
+  color: aliceblue;
+  width: 100px;
+  background: rgba(0, 0, 0, 0.066);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0),
+    rgba(0, 0, 0),
+    rgba(0, 0, 0, 0.651),
+    rgba(0, 0, 0, 0.066)
+  );
+  transition: width 0.5s;
+  z-index: 4;
+  border-radius: 0px;
+  position: fixed;
+}
+
+.example-header {
+  z-index: 5;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(12, 9, 121, 0.3103459676106771) 81%
+  );
+}
+
+.MAIN {
+  width: 100%;
+  margin: 1px;
+}
+
+.sidenav-header {
+  position: fixed;
+  top: 20%;
+  left: 15px;
+}
+
+span {
+  transition: all 1s;
 }

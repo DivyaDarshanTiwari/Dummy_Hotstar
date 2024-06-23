@@ -11,28 +11,32 @@ export interface Buttons {
   description: string;
 }
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomePageComponent, CommonModule, MatIconModule, MatSidenavModule,MatListModule],
+  imports: [
+    RouterOutlet,
+    HomePageComponent,
+    CommonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[]
+  providers: [],
 })
 export class AppComponent implements OnInit {
   title = 'Dummy_Hotstar';
   collapsed = signal(true);
-  width = computed(() => this.collapsed() ? '80px' : '200px');
+  width = computed(() => (this.collapsed() ? '80px' : '200px'));
 
-  
   ngOnInit(): void {}
 
   toggleCollapsed() {
     this.collapsed.set(!this.collapsed());
   }
 
-  
   public icons: Buttons[] = [
     { icons: 'person', description: 'My Space' },
     { icons: 'search', description: 'Search' },
@@ -40,7 +44,6 @@ export class AppComponent implements OnInit {
     { icons: 'tv', description: 'TV' },
     { icons: 'movie', description: 'Movies' },
     { icons: 'sports_cricket', description: 'Sports' },
-    { icons: 'category', description: 'Category' }
+    { icons: 'category', description: 'Category' },
   ];
-
 }
