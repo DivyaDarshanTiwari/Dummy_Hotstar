@@ -23,7 +23,7 @@ export class SeasonBodyComponent implements OnInit{
 
 
 
-  data:SeasonInterface[]=seasonData;
+  data:SeasonInterface[][]=seasonData;
 
 
 }
