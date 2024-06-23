@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -11,6 +12,7 @@ import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import { data1 } from '../../../../data1';
 import { Router } from '@angular/router';
+import { Data1Interface } from '../../../data1-interface';
 
 @Component({
   selector: 'app-railer3',
@@ -20,7 +22,7 @@ import { Router } from '@angular/router';
   styleUrl: './railer3.component.css',
 })
 export class Railer3Component implements AfterViewInit {
-  item = data1;
+  @Input()item!:Data1Interface[] ;
 
   constructor(private router: Router) {}
   movetonext(arg0: number) {

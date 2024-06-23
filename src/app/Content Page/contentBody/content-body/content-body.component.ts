@@ -3,6 +3,9 @@ import {MatTabsModule,MatTabGroup,} from '@angular/material/tabs';
 import { JsonPipe, NgFor } from '@angular/common';
 import { SeasonBodyComponent } from '../season-body/season-body.component';
 import { MoreLikeThisComponent } from '../more-like-this/more-like-this.component';
+import { Data1Interface } from '../../../data1-interface';
+import { SeasonInterface } from '../Season Body/season-interface';
+import { MoreLikeThisInterface } from '../More Like This/more-like-this-interface';
 
 @Component({
     selector: 'app-content-body',
@@ -13,17 +16,17 @@ import { MoreLikeThisComponent } from '../more-like-this/more-like-this.componen
 })
 export class ContentBodyComponent {
 
-  @Input() item!: any;
+  @Input() item!: Data1Interface;
 
-  seasonData!:any;
-  moreLikeData!:any;
+  seasonData!:SeasonInterface;
+  moreLikeData!:MoreLikeThisInterface;
 
-  catch_season_data(data:any){
+  catch_season_data(data:SeasonInterface){
     console.log(data);
     this.seasonData = data
   }
 
-  catch_more_like_this_data(data:any)
+  catch_more_like_this_data(data:MoreLikeThisInterface)
   {
     console.log(data);
     this.moreLikeData=data;

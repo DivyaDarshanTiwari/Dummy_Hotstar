@@ -5,13 +5,14 @@ import {
   AfterViewInit,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import { data1 } from '../../../../data1';
-import { Route } from '@angular/router';
 import { Router } from '@angular/router';
+import { Data1Interface } from '../../../data1-interface';
 ('');
 @Component({
   selector: 'app-railer',
@@ -26,7 +27,7 @@ export class RailerComponent implements AfterViewInit {
     this.router.navigate(['/s']);
   }
 
-  item = data1;
+  @Input()item!:Data1Interface[];
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
   @Output() railerData1 = new EventEmitter<Imgdata>();

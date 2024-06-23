@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataMore } from '../More Like This/DataMore.1';
 import { CommonModule, NgFor } from '@angular/common';
 import { MatCard } from '@angular/material/card';
+import { MoreLikeThisInterface } from '../More Like This/more-like-this-interface';
 
 @Component({
   selector: 'app-more-like-this',
@@ -18,5 +19,5 @@ export class MoreLikeThisComponent implements OnInit{
     this.data.emit(this.item);
   }
 
-  item=DataMore[0]; // index is where the id goes of the selected show or movies
+  item:MoreLikeThisInterface=DataMore[0]; // index is where the id goes of the selected show or movies
 }
