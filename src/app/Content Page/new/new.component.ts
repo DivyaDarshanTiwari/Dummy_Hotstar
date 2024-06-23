@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ContentBodyComponent } from '../../contentBody/content-body/content-body.component';
-import { ContentBannerComponent } from '../../Banner/content-banner/content-banner.component';
-import { data1 } from '../../../../data1';
+import { ContentBodyComponent } from '../contentBody/content-body.component';
+import { ContentBannerComponent } from '../content-banner/content-banner.component';
+import { data1 } from '../../../data1';
 import { NgFor } from '@angular/common';
-import { Data1Interface } from '../../../data1-interface';
+import { Data1Interface } from '../../data1-interface';
 
 @Component({
   selector: 'app-new',

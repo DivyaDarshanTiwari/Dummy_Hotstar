@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { Data1Interface } from '../../../data1-interface';
+import { Data1Interface } from '../../data1-interface';
 
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { DataMore } from '../More Like This/DataMore.1';
+import { DataMore } from './DataMore.1';
 import { CommonModule, NgFor } from '@angular/common';
 import { MatCard } from '@angular/material/card';
-import { MoreLikeThisInterface } from '../More Like This/more-like-this-interface';
+import { MoreLikeThisInterface } from './more-like-this-interface';
 
 @Component({
   selector: 'app-more-like-this',

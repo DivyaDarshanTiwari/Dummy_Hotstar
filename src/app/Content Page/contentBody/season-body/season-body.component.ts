@@ -2,9 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
-import { seasonData } from '../Season Body/seasonData.1';
+import { seasonData } from './seasonData.1';
 import { CommonModule } from '@angular/common';
-import { SeasonInterface } from '../Season Body/season-interface';
+import { SeasonInterface } from './season-interface';
 
 @Component({
   selector: 'app-season-body',

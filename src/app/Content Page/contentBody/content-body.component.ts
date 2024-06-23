@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import {MatTabsModule,MatTabGroup,} from '@angular/material/tabs';
 import { JsonPipe, NgFor } from '@angular/common';
-import { SeasonBodyComponent } from '../season-body/season-body.component';
-import { MoreLikeThisComponent } from '../more-like-this/more-like-this.component';
-import { Data1Interface } from '../../../data1-interface';
-import { SeasonInterface } from '../Season Body/season-interface';
-import { MoreLikeThisInterface } from '../More Like This/more-like-this-interface';
+import { SeasonBodyComponent } from './season-body/season-body.component';
+import { MoreLikeThisComponent } from './more-like-this/more-like-this.component';
+import { Data1Interface } from '../../data1-interface';
+import { SeasonInterface } from './season-body/season-interface';
+import { MoreLikeThisInterface } from './more-like-this/more-like-this-interface';
 
 @Component({
     selector: 'app-content-body',
