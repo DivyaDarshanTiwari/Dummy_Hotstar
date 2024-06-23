@@ -4,19 +4,13 @@ import { ContentBannerComponent } from '../../Banner/content-banner/content-bann
 import { data1 } from '../../../../data1';
 import { NgFor } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [ ContentBodyComponent,ContentBannerComponent,NgFor],
+  imports: [ContentBodyComponent, ContentBannerComponent, NgFor],
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  styleUrls: ['./new.component.css'],
 })
 export class NewComponent {
-
-  data1=data1[0];
-
-  
-  
+  data1 = data1[0];
 }
