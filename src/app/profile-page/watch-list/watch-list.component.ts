@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { Data1Interface } from '../../data1-interface';
+import { type WatchListInterface } from '../../shared/WatchList/watch-list-interface';
 
 @Component({
   selector: 'app-watch-list',
@@ -11,5 +11,10 @@ import { Data1Interface } from '../../data1-interface';
   styleUrl: './watch-list.component.css'
 })
 export class WatchListComponent {
-  @Input() watchList!:Data1Interface[]
+  @Input({required:true}) watchList!:WatchListInterface[]
+  @Input() id!:number;
+
+  get watch_acc_userID(){
+    return this.watchList.filter((data)=> data.id == this.id)
+  }
 }

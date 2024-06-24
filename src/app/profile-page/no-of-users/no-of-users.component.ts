@@ -13,13 +13,13 @@ import { EventEmitter } from '@angular/core';
 })
 export class NoOfUsersComponent {
   @Output() emitter = new EventEmitter<UserPData>()
-sending_Selected_p(userData:UserPData) {
+  @Output() sendingId = new EventEmitter<number>()
+ sending_Selected_p(userData:UserPData) {
   this.emitter.emit(userData)
+  this.sendingId.emit(userData.userId)
 }
 
   @Input({required:true}) user_Personal_Data!:UserPData[];
   constructor(private userData:UserPDataService){
-
   }
-  // public user_Personal_Data:UserPData[] = this.userData.getPorfileData(); 
 }

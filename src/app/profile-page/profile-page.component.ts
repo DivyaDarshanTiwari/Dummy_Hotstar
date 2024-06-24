@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { Data1Service } from '../shared/data1.service';
 import { UserPDataService } from '../shared/Personal Service/user-p-data.service';
 import { type UserPData } from '../shared/Personal Service/user-p-data.interface';
-
+import { type WatchListInterface } from '../shared/WatchList/watch-list-interface';
+import { WatchListService } from '../shared/WatchList/watch-list.service';
 @Component({
   selector: 'app-profile-page',
   standalone: true,
@@ -25,22 +26,32 @@ import { type UserPData } from '../shared/Personal Service/user-p-data.interface
   styleUrl: './profile-page.component.css',
 })
 export class ProfilePageComponent {
-  constructor(private data: Data1Service, private userData: UserPDataService) {}
+
+  constructor(private data: Data1Service, private userData: UserPDataService,private watchData:WatchListService) {}
 
   phone = 7536352352;
   name = 'rgsrgrgsg';
   email = 'aeffs@gmail.com';
-  DOB = '16-11-2002';
+  DOB = '2002-11-16';
+  id=1;
+  img="/Doraemon.jpeg"
 
   public user_Personal_Data: UserPData[] = this.userData.getPorfileData();
 
-  public data1: Data1Interface[] = this.data.getData1();
+  public data1: WatchListInterface[] = this.watchData.getWatchList();
 
   public returned_Data(data:UserPData){
     this.phone=data.phone;
     this.name= data.name;
     this.email=data.email;
     this.DOB =data.DOB;
+    this.id = data.userId;
+    this.img = data.profile_img;
+    console.log(this.id);
   }
+
+  getingID(emittedID: number) {
+    this.id = emittedID;
+    }
 
 }

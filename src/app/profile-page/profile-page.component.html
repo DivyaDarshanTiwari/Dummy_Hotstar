@@ -7,7 +7,7 @@
     </mat-card-header>
     <img
       mat-card-image
-      src="/Doraemon.jpeg"
+      [src]="img"
       alt="Photo of a Shiba Inu"
       id="image"
     />
@@ -32,7 +32,7 @@
     </mat-card-actions>
   </mat-card>
   <div>
-  <app-no-of-users [user_Personal_Data]="user_Personal_Data" (emitter)="returned_Data($event)"/>
+  <app-no-of-users [user_Personal_Data]="user_Personal_Data" (emitter)="returned_Data($event)" (sendingId)="getingID($event)"/>
 </div>
 </div>
-<app-watch-list [watchList]="data1"/>
+<app-watch-list [watchList]="data1" [id]="id"/>
