@@ -4,10 +4,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NewComponent } from '../Content Page/new/new.component';
 import { data1 } from '../../data1';
 import { Data1Interface } from '../data1-interface';
+import { ProfilePageComponent } from '../profile-page/profile-page.component';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent},
-  { path: 's/:id', component: NewComponent }
+  { path: 's/:id', component: NewComponent },
+  {path: 'profile', component:ProfilePageComponent}
 ];
 
 @NgModule({

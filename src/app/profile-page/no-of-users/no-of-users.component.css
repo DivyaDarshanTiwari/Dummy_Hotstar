@@ -1,0 +1,35 @@
+div{
+    background-color: rgba(250, 235, 215, 0.303);
+    border-radius: 10px;
+}
+h2
+{
+    margin: 0px 15px;
+    color: rgb(0, 0, 0);
+}
+.users{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.users li{
+    margin: 15px;
+    display: inline-block;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#add_icon {
+    background-color: rgba(240, 248, 255, 0.201);
+    border-radius: 50%;
+    border : 0px;
+    padding: 30px;
+}
