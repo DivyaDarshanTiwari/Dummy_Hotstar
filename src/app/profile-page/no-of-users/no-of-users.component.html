@@ -1,22 +1,12 @@
 <div>
   <h2>Profile</h2>
   <ul class="users">
-    <li>
-      <img src="/ANIME-W (2).gif" alt="" />
-      <p>Divya</p>
+    @for (item of user_Personal_Data; track item.userId) {
+    <li >
+      <img [src]="item.profile_img" alt="" (click)="sending_Selected_p(item)" />
+      <p>{{item.name}}</p>
     </li>
-    <li>
-      <img src="/ANIME-W (2).gif" alt="" />
-      <p>sankalp</p>
-    </li>
-    <li>
-      <img src="/ANIME-W (1).gif" alt="" />
-      <p>vaibhav</p>
-    </li>
-    <li>
-      <img src="/Doraemon.jpeg" alt="" />
-      <p>ddt</p>
-    </li>
+  }
     <li>
       <button
         mat-mini-fab

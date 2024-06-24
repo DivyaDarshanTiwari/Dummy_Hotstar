@@ -32,7 +32,7 @@
     </mat-card-actions>
   </mat-card>
   <div>
-  <app-no-of-users />
+  <app-no-of-users [user_Personal_Data]="user_Personal_Data" (emitter)="returned_Data($event)"/>
 </div>
 </div>
 <app-watch-list [watchList]="data1"/>
