@@ -1,5 +1,4 @@
 export const seasonData = [
-  [
     {
       id: 1,
       title: 'The Ghost in Pandoras Box; Advance Antenna',
@@ -50,8 +49,6 @@ export const seasonData = [
         'Gian and Nobita face off as rival make-believe Super Dans looking to help people in their neighbourhood.',
       img: 'https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/1999/1716190941999-h',
     },
-  ],
-  [
     {
       id: 2,
       title: 'The Legend Begins',
@@ -82,8 +79,6 @@ export const seasonData = [
         'Sugreev accepts Rams help and journeys with Hanuman to Kishkindha to win back his kingdom and his beloved wife, Ruma. But first he must face his brother, the tyrant Vaali.',
       img: 'https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h',
     },
-  ],
-  [
     {
       id: 3,
       title: 'Destiny Brings Vicky and Vetaal Together',
@@ -104,5 +99,4 @@ export const seasonData = [
         'Vickys life revolves mostly around silly mistakes and Vetaals bravery. However, his attempts to save the day, often lead to additonal troubles for Vicky.',
       img: 'https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/1954/1071954-h-6cc3a01abece',
     },
-  ]
 ];

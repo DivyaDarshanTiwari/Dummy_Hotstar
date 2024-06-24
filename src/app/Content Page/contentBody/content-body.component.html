@@ -4,7 +4,7 @@
         <mat-tab label="Episodes" class="mat-tab">
             <mat-tab-group  mat-stretch-tabs="false" dynamicHeight class="season">
                 <mat-tab *ngFor="let i of item.seasons_name" [label]="i">
-                  <app-season-body (senddata)="catch_season_data($event)"></app-season-body>
+                  <app-season-body (senddata)="catch_season_data($event)" [itemId]="item.id"></app-season-body>
                 </mat-tab>
             </mat-tab-group>
         </mat-tab>

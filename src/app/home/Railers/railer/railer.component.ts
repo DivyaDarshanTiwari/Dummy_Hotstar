@@ -8,22 +8,19 @@ import {
   Input,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Imgdata } from '../imgdata';
+import {type Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-railer',
   standalone: true,
-  imports: [MatIcon, CommonModule],
+  imports: [MatIcon, CommonModule,RouterModule],
   templateUrl: './railer.component.html',
   styleUrls: ['./railer.component.css'],
 })
 export class RailerComponent implements AfterViewInit {
-  constructor(private router: Router) {}
-  movetonext(arg0: number) { //for navigating to dfferent comonent
-    this.router.navigate(['/s']);
-  }
+
 
   @Input()item!:Data1Interface[];
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;

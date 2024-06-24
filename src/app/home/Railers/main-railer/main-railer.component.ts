@@ -19,8 +19,7 @@ export class MainRailerComponent {
 
   @Input() data_from_home!:Data1Interface[];
 
-  railerData(item: Imgdata) {
+  railerData(item: Imgdata) {    console.log("MAIN RAILER")
     this.imageData.emit(item);
-    console.log("MAIN RAILER")
   }
 }

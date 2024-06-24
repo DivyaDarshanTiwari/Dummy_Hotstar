@@ -19,12 +19,12 @@ export const data1 = [
   {
     id: 2,
     title: 'Leagens Of Hanuman',
-    img: 'https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/2965/1717524622965-t',
+    img: 'https://assets.telegraphindia.com/telegraph/2024/Apr/1713939027_the-legends-of-hanuman.jpg',
     alt: 'The Shawshank Redemption Movie Poster',
     description:
       'NEW EPISODE EVERY THURSDAY. As the war intensifies in Ravans majestic Lanka, Hanuman faces mightier foes for his Lord Ram with his vaanar sena.',
     headImg:
-      'https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/7018/1715414247018-t',
+      'https://img10.hotstar.com/image/upload/f_auto,h_124/sources/r1/cms/prod/2965/1717524622965-t',
     year_of_release: '2024', // Year, Month (0-indexed), Day
     seasons: 4,
     languages: 'English',
@@ -36,7 +36,7 @@ export const data1 = [
   {
     id: 3,
     title: 'Vikram and Vital',
-    img: 'https://www.okcmoa.com/wp-content/uploads/2023/11/SPRTD_GKIDS_3840x2160_2001_tileburnedin.jpg',
+    img: 'https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/491/1440491-i-d6a5576361b0',
     alt: 'Vikram and Vital',
     description:
       'Vicky Sharmas life spirals when his family moves into a new home and meets Vetaal the ghost. Watch their hilarious adventures as they become an iconic duo.',

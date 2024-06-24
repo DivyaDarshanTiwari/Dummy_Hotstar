@@ -1,5 +1,5 @@
-<div *ngFor="let data of data">
-<div *ngFor="let i of data" class="card">
+
+<div *ngFor="let i of getEpisodes" class="card">
     <span>
         <img [src]="i.img" alt="Image Not Found" class="image">
     </span>
@@ -19,4 +19,3 @@
     </mat-card-footer>
   </mat-card>
   </div>
-</div>

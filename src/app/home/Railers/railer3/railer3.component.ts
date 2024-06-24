@@ -10,24 +10,19 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { data1 } from '../../../../data1';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
 
 @Component({
   selector: 'app-railer3',
   standalone: true,
-  imports: [MatIcon, CommonModule],
+  imports: [MatIcon, CommonModule,RouterLink],
   templateUrl: './railer3.component.html',
   styleUrl: './railer3.component.css',
 })
 export class Railer3Component implements AfterViewInit {
   @Input()item!:Data1Interface[] ;
 
-  constructor(private router: Router) {}
-  movetonext(arg0: number) {
-    this.router.navigate(['/s']);
-  }
 
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
