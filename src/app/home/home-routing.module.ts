@@ -7,7 +7,7 @@ import { Data1Interface } from '../data1-interface';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent},
-  { path: 's', component: NewComponent }
+  { path: 's/:id', component: NewComponent }
 ];
 
 @NgModule({

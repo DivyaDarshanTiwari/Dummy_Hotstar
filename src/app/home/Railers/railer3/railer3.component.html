@@ -2,11 +2,13 @@
   <h2>Latest Release</h2>
   <div class="card-container">
     <div class="images" *ngFor="let i of item">
+      <a [routerLink]="['/s',i.id]" >
       <img
         [src]="i.img"
         alt="{{ i.alt }}"
-        (click)="emitImage(i); movetonext(i.id)"
+        (click)="emitImage(i);"
       />
+    </a>
     </div>
   </div>
 

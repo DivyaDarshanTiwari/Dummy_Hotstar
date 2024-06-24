@@ -7,27 +7,21 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatIcon } from '@angular/material/icon'
+import { MatIcon } from '@angular/material/icon';
 import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
 
 @Component({
   selector: 'app-railer4',
   standalone: true,
-  imports: [MatIcon, CommonModule],
+  imports: [MatIcon, CommonModule, RouterLink],
   templateUrl: './railer4.component.html',
   styleUrl: './railer4.component.css',
 })
 export class Railer4Component implements AfterViewInit {
-  @Input()item!:Data1Interface[];
-
-  constructor(private router: Router) {}
-  movetonext(arg0: number) {
-    this.router.navigate(['/s']);
-  }
-
+  @Input() item!: Data1Interface[];
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
 
