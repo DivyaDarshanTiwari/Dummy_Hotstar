@@ -81,14 +81,14 @@ export class WatchListService {
       id: 3,
       seasons: 3,
       watch_hours: 15,
-      img: 'https://via.placeholder.com/300',
+      img: 'https://img.etimg.com/thumb/width-1600,height-900,imgsize-35868,resizemode-75,msid-104324431/news/international/uk/the-witcher-will-netflix-series-end-after-season-5.jpg',
       title: 'The Witcher'
     },
     {
       id: 3,
       seasons: 2,
       watch_hours: 10,
-      img: 'https://m.media-amazon.com/images/M/MV5BNGZmZDI5NzItYWUzYy00MjcwLTk3MWQtYjg2YmZkMzBhYzlhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
+      img: 'https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/10/symphony-of-the-night.jpg',
       title: 'Castlevania'
     },
     {
@@ -109,14 +109,14 @@ export class WatchListService {
       id: 4,
       seasons: 5,
       watch_hours: 25,
-      img: 'https://via.placeholder.com/300',
+      img: 'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABaY_yLL0a_nUG4szgA2aG1G0NxvaGgd_LDa3LJw3BVpoydsWEDPjz6MQTFbWjehzZcHOQNCM0-PugRCeLzZgPzu89lVYwCaYfCOD.jpg?r=0e1',
       title: 'Better Call Saul'
     },
     {
       id: 4,
       seasons: 3,
       watch_hours: 15,
-      img: 'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABaY_yLL0a_nUG4szgA2aG1G0NxvaGgd_LDa3LJw3BVpoydsWEDPjz6MQTFbWjehzZcHOQNCM0-PugRCeLzZgPzu89lVYwCaYfCOD.jpg?r=0e1',
+      img: 'https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdbNydT-iWSdVKFYoDumQjd7F6sVL3SIvrNTeoodmJao2nWA8LBpomSGl84irQ-_AHNZ2zzbNTSvG7f7-V2ae1xBoXcVfJ8cexJa.jpg?r=321',
       title: 'Narcos'
     },
     {
