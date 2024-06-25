@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
 import { NoOfUsersComponent } from './no-of-users/no-of-users.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
-import { Data1Interface } from '../data1-interface';
 import { FormsModule } from '@angular/forms';
 import { Data1Service } from '../shared/data1.service';
 import { UserPDataService } from '../shared/Personal Service/user-p-data.service';
@@ -27,7 +26,7 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
 })
 export class ProfilePageComponent implements OnInit{
 
-  constructor(private data: Data1Service, private userData: UserPDataService,private watchData:WatchListService) {}
+  constructor( private userData: UserPDataService,private watchData:WatchListService) {}
   ngOnInit(): void {
     this.phone = this.userData.get_Actived_data()!.phone;
     this.name = this.userData.get_Actived_data()!.name;

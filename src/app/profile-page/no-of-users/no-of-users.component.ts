@@ -9,17 +9,17 @@ import { EventEmitter } from '@angular/core';
   standalone: true,
   imports: [MatIcon],
   templateUrl: './no-of-users.component.html',
-  styleUrl: './no-of-users.component.css'
+  styleUrl: './no-of-users.component.css',
 })
 export class NoOfUsersComponent {
-  @Output() emitter = new EventEmitter<UserPData>() // sendind data to the profilepage
-  @Output() sendingId = new EventEmitter<number>()
- sending_Selected_p(userData:UserPData) {
-  this.emitter.emit(userData)//sending user data
-  this.sendingId.emit(userData.userId)//specifically sending user id that has been selcted on the click;
-}
-
-  @Input({required:true}) user_Personal_Data!:UserPData[];
-  constructor(private userData:UserPDataService){
+  constructor(private userData: UserPDataService) {}//dependency injection
+  @Output() emitter = new EventEmitter<UserPData>(); // sendind data to the profilepage
+  @Output() sendingId = new EventEmitter<number>();
+  sending_Selected_p(userData1: UserPData) {//userData1 is comming form the templet which is selected on click
+    this.emitter.emit(userData1); //sending user data
+    this.sendingId.emit(userData1.userId); //specifically sending user id that has been selcted on the click;
+    this.userData.set_Actived_data(userData1.userId); // the selected data is being set as active
   }
+
+  @Input({ required: true }) user_Personal_Data!: UserPData[];
 }

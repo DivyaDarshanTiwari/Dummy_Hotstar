@@ -73,6 +73,11 @@ export class UserPDataService {
     return this.userData.find((data)=> data.Active== true)
   }
 
+  public set_Actived_data(activeid:number){
+    let data_to_be_set_activated = this.userData.find((data)=> activeid == data.userId)
+    data_to_be_set_activated!.Active = true;
+  }
+
   public putProfileData(data: UserPData, id: number) {
     let particularUserData = this.userData.find((data) => data.userId == id);
     if (particularUserData) {
