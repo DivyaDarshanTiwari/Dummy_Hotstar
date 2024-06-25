@@ -7,13 +7,17 @@ h2 {
 .users {
   list-style: none;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-evenly;
+  align-items: stretch;
 }
 .users li {
   margin: 15px;
   display: inline-block;
   text-align: center;
   font-size: 20px;
+  width: 20%;
 }
 
 img {
