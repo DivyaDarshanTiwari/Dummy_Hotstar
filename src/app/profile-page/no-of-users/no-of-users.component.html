@@ -2,7 +2,7 @@
   <h2>Profile</h2>
   <ul class="users">
     @for (item of user_Personal_Data; track item.userId) {
-    <li >
+    <li [class.selected]="item.Active" >
       <img [src]="item.profile_img" alt="" (click)="sending_Selected_p(item)" />
       <p>{{item.name}}</p>
     </li>

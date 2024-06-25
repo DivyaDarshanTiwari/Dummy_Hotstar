@@ -25,16 +25,24 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
 })
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit{
 
   constructor(private data: Data1Service, private userData: UserPDataService,private watchData:WatchListService) {}
+  ngOnInit(): void {
+    this.phone = this.userData.get_Actived_data()!.phone;
+    this.name = this.userData.get_Actived_data()!.name;
+    this.email = this.userData.get_Actived_data()!.email;
+    this.DOB = this.userData.get_Actived_data()!.DOB;
+    this.id=this.userData.get_Actived_data()!.userId;
+    this.img=this.userData.get_Actived_data()!.profile_img
+  }
 
-  phone = 7536352352;
-  name = 'rgsrgrgsg';
-  email = 'aeffs@gmail.com';
-  DOB = '2002-11-16';
-  id=1;
-  img="/Doraemon.jpeg"
+  phone!:number;
+  name !:string;
+  email !:string;
+  DOB !:string;
+  id!:number;
+  img!:string
 
   public user_Personal_Data: UserPData[] = this.userData.getPorfileData();
 

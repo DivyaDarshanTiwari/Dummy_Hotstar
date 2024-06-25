@@ -6,4 +6,5 @@ export interface UserPData {
     DOB: string,
     profile_img: string,
     watchListId: number,
+    Active:boolean
 }

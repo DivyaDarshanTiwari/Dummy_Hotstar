@@ -14,6 +14,7 @@ export class UserPDataService {
       DOB: '16-11-2002',
       profile_img: '/ANIME-W (1).gif',
       watchListId: 1,
+      Active:true
     },
     {
       userId: 2,
@@ -23,6 +24,7 @@ export class UserPDataService {
       DOB: '25-07-1995',
       profile_img: '/ANIME-W (1).gif',
       watchListId: 2,
+      Active:false
     },
     {
       userId: 3,
@@ -32,6 +34,7 @@ export class UserPDataService {
       DOB: '12-03-1990',
       profile_img: '/ANIME-W (2).gif',
       watchListId: 3,
+      Active:false
     },
     {
       userId: 4,
@@ -41,6 +44,7 @@ export class UserPDataService {
       DOB: '01-01-1980',
       profile_img: '/Doraemon.jpeg',
       watchListId: 4,
+      Active:false
     },
     {
       userId: 5,
@@ -50,6 +54,7 @@ export class UserPDataService {
       DOB: '28-02-1992',
       profile_img: '/welcome.jpeg',
       watchListId: 5,
+      Active:false
     },
   ];
 
@@ -62,6 +67,10 @@ export class UserPDataService {
 
   public getPorfileData() {
     return this.userData;
+  }
+
+  public get_Actived_data(){
+    return this.userData.find((data)=> data.Active== true)
   }
 
   public putProfileData(data: UserPData, id: number) {
