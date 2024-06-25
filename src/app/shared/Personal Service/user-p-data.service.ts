@@ -65,20 +65,25 @@ export class UserPDataService {
     }
   }
 
-  public getPorfileData() {
+  public getPorfileData() {// the data is accessed using this function
     return this.userData;
   }
 
-  public get_Actived_data(){
+  public get_Actived_data(){// the data that is currently active is given by this
     return this.userData.find((data)=> data.Active== true)
   }
 
-  public set_Actived_data(activeid:number){
+  public set_Actived_data(activeid:number){// the current selected id is activated
     let data_to_be_set_activated = this.userData.find((data)=> activeid == data.userId)
     data_to_be_set_activated!.Active = true;
   }
 
-  public putProfileData(data: UserPData, id: number) {
+  public set_Deactive_data(prev_active_id:number){//the previos selected id will be deactivated
+    let data_to_be_deactivated = this.userData.find((data)=> prev_active_id == data.userId)
+    data_to_be_deactivated!.Active = false;
+  }
+
+  public putProfileData(data: UserPData, id: number) {// this willl be used for the form updation
     let particularUserData = this.userData.find((data) => data.userId == id);
     if (particularUserData) {
       particularUserData.DOB = data.DOB;
@@ -93,11 +98,11 @@ export class UserPDataService {
     this.saveData();
   }
 
-  putData(data:UserPData){
+  putData(data:UserPData){// this is to puch new user to the profile
     this.userData.push(data);
     this.saveData;
   }
-  private saveData() {
+  private saveData() {// it is used to save data in th browser still have not used
     localStorage.setItem('Profile_Data', JSON.stringify(this.userData));
   }
 }

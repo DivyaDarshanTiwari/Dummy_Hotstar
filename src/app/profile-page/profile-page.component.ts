@@ -5,7 +5,6 @@ import { MatDivider } from '@angular/material/divider';
 import { NoOfUsersComponent } from './no-of-users/no-of-users.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
 import { FormsModule } from '@angular/forms';
-import { Data1Service } from '../shared/data1.service';
 import { UserPDataService } from '../shared/Personal Service/user-p-data.service';
 import { type UserPData } from '../shared/Personal Service/user-p-data.interface';
 import { type WatchListInterface } from '../shared/WatchList/watch-list-interface';
@@ -24,34 +23,38 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
 })
-export class ProfilePageComponent implements OnInit{
-
-  constructor( private userData: UserPDataService,private watchData:WatchListService) {}
+export class ProfilePageComponent implements OnInit {
+  constructor(
+    private userData: UserPDataService,
+    private watchData: WatchListService
+  ) {}
+  phone!: number;
+  name!: string;
+  email!: string;
+  DOB!: string;
+  id!: number;
+  img!: string;
+  Previous_ActiveID!:number;
   ngOnInit(): void {
+    // initializing the data with the active userData that was previously selected when the browser was closed
     this.phone = this.userData.get_Actived_data()!.phone;
     this.name = this.userData.get_Actived_data()!.name;
     this.email = this.userData.get_Actived_data()!.email;
     this.DOB = this.userData.get_Actived_data()!.DOB;
-    this.id=this.userData.get_Actived_data()!.userId;
-    this.img=this.userData.get_Actived_data()!.profile_img
+    this.id = this.userData.get_Actived_data()!.userId;
+    this.img = this.userData.get_Actived_data()!.profile_img;
+    this.Previous_ActiveID = this.userData.get_Actived_data()!.userId
   }
-
-  phone!:number;
-  name !:string;
-  email !:string;
-  DOB !:string;
-  id!:number;
-  img!:string
 
   public user_Personal_Data: UserPData[] = this.userData.getPorfileData();
 
   public data1: WatchListInterface[] = this.watchData.getWatchList();
 
-  public returned_Data(data:UserPData){
-    this.phone=data.phone;
-    this.name= data.name;
-    this.email=data.email;
-    this.DOB =data.DOB;
+  public returned_Data(data: UserPData) {
+    this.phone = data.phone;
+    this.name = data.name;
+    this.email = data.email;
+    this.DOB = data.DOB;
     this.id = data.userId;
     this.img = data.profile_img;
     console.log(this.id);
@@ -59,6 +62,5 @@ export class ProfilePageComponent implements OnInit{
 
   getingID(emittedID: number) {
     this.id = emittedID;
-    }
-
+  }
 }
