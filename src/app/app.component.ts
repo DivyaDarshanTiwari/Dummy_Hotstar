@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
   public icons: Buttons[] = [
     { icons: 'person', description: 'My Space',path:'profile' },
-    { icons: 'search', description: 'Search' ,path:''},
+    { icons: 'search', description: 'Search' ,path:'Search'},
     { icons: 'home', description: 'Home',path:'' },
     { icons: 'tv', description: 'TV' ,path:''},
     { icons: 'movie', description: 'Movies' ,path:''},

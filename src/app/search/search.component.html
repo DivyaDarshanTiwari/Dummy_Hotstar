@@ -1,0 +1,22 @@
+<div class="container">
+    <form action="">
+      <input type="text" class="search_bar" />
+      <button mat-fab extended  >
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+    @for (item of actualData; track item.name) {
+    <mat-card appearance="outlined" class="example-card">
+        <mat-card-content>{{item.name}}</mat-card-content>
+        <mat-card-content>{{item.url}}</mat-card-content>
+      </mat-card>
+    }
+    
+    <mat-paginator [length]="100"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Select page"
+                  (page)="HandlePageEven($event)"
+                  class="page">
+    </mat-paginator>
+    </div>

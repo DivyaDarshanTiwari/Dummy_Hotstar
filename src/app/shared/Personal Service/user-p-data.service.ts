@@ -76,11 +76,13 @@ export class UserPDataService {
   public set_Actived_data(activeid:number){// the current selected id is activated
     let data_to_be_set_activated = this.userData.find((data)=> activeid == data.userId)
     data_to_be_set_activated!.Active = true;
+    this.saveData();
   }
 
   public set_Deactive_data(prev_active_id:number){//the previos selected id will be deactivated
     let data_to_be_deactivated = this.userData.find((data)=> prev_active_id == data.userId)
     data_to_be_deactivated!.Active = false;
+    this.saveData();
   }
 
   public putProfileData(data: UserPData, id: number) {// this willl be used for the form updation
