@@ -17,7 +17,6 @@ export class NoOfUsersComponent {
   @Output() sendingId = new EventEmitter<number>();
   sending_Selected_p(userData1: UserPData) {//userData1 is comming form the templet which is selected on click
     this.emitter.emit(userData1); //sending user data
-    this.sendingId.emit(userData1.userId); //specifically sending user id that has been selcted on the click;
     this.userData.set_Actived_data(userData1.userId); // the selected data is being set as active
   }
 

@@ -25,8 +25,8 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
 })
 export class ProfilePageComponent implements OnInit {
   constructor(
-    private userData: UserPDataService,
-    private watchData: WatchListService
+    private userData: UserPDataService,//instace of the personal data service
+    private watchData: WatchListService //instance of the watch list data service
   ) {}
   phone!: number;
   name!: string;
@@ -57,10 +57,9 @@ export class ProfilePageComponent implements OnInit {
     this.DOB = data.DOB;
     this.id = data.userId;
     this.img = data.profile_img;
-    console.log(this.id);
+    this.userData.set_Deactive_data(this.Previous_ActiveID);// the previous key is deactivated here
+    this.Previous_ActiveID = data.userId;// the new user profile that is being selected is the set as previous data for the next change of the profile
   }
 
-  getingID(emittedID: number) {
-    this.id = emittedID;
-  }
+
 }
