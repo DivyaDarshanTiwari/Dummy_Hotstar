@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';

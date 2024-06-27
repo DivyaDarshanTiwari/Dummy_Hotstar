@@ -51,13 +51,15 @@
   @defer{
   <div class="container">
     @for (item of MainData; track item.mal_id){
-    <mat-card class="example-card" appearance="outlined">
+
+    <mat-card class="example-card" appearance="outlined" (click)="Searched_item_Clicked(item)" >
+      <a routerLink='/s' >
       <img
         mat-card-image
         [src]="item.images.jpg.large_image_url"
         alt="Photo of a Shiba Inu"
         class="poster"
-      />
+      />  </a>
       <mat-card-content>
         <p style="margin-bottom: 0px">{{ item.title }}</p>
         <span class="episodes"

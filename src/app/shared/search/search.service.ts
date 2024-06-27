@@ -23,4 +23,16 @@ export class MoviesService {
       })
     );
   }
+
+
+  public selected_item:any;
+  public set_selected_Item(item:any){//getting the details of the item / card when clicked 
+    this.selected_item =item;
+    console.log(this.selected_item);
+  }
+
+  // public get_selected_item_data(){
+  //   return this.selected_item;
+  //   console.log(this.selected_item);
+  // }
 }

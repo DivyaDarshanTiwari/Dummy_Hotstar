@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ROUTES, Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from '../shared/search/search.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 interface interface1 {
   value: string;
@@ -34,12 +35,15 @@ interface interface1 {
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  router: any;
+
   constructor(private api: MoviesService) {}
 
   public data!: any; //data is store here
@@ -107,6 +111,12 @@ export class SearchComponent implements OnInit {
     this.api.rating = this.selected_U_A;
     // this.api.status = this.selected_Status;
     this.getData();
+
+  }
+
+  Searched_item_Clicked(Selected_item: any) {
+    console.log(Selected_item);
+    this.api.set_selected_Item(Selected_item);
 
   }
 }
