@@ -3,7 +3,7 @@ import { Railer2Component } from '../railer2/railer2.component';
 import { Railer3Component } from '../railer3/railer3.component';
 import { Railer4Component } from '../railer4/railer4.component';
 import { RailerComponent } from '../railer/railer.component';
-import { Imgdata } from '../imgdata';
+import { type Imgdata } from '../imgdata';
 import { Data1Interface } from '../../../data1-interface';
 
 @Component({
@@ -15,11 +15,11 @@ import { Data1Interface } from '../../../data1-interface';
 })
 export class MainRailerComponent {
 
-  @Output() imageData = new EventEmitter<Imgdata>();
+  @Output() imageData = new EventEmitter<Data1Interface>();
 
   @Input() data_from_home!:Data1Interface[];
 
-  railerData(item: Imgdata) {    console.log("MAIN RAILER")
+  railerData(item: Data1Interface) {    console.log("MAIN RAILER")
     this.imageData.emit(item);
   }
 }

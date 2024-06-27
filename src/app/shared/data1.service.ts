@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Data1Interface } from '../data1-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Data1Service {
-
   data1 = [
     {
       id: 1,
@@ -133,15 +133,32 @@ export class Data1Service {
       {
         this.data1 = JSON.parse(data);
       }
+      const localitem = localStorage.getItem('selectedItem');
+      if(localitem){
+        this.item = JSON.parse(localitem);
+      }
    }
+
+   public item!:Data1Interface;
+   getId(dataId:Data1Interface){
+     this.item= dataId;
+     this.saveItem();
+
+   }
+ 
 
    getData1()
    {
     return this.data1;
+    this.saveData();
    }
 
    private saveData()
    {
     localStorage.setItem('data1',JSON.stringify(this.data1));
+   }
+
+   private saveItem(){
+    localStorage.setItem('selectedItem',JSON.stringify(this.item));
    }
 }

@@ -25,11 +25,11 @@ export class RailerComponent implements AfterViewInit {
   @Input()item!:Data1Interface[];
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
-  @Output() railerData1 = new EventEmitter<Imgdata>();
+  @Output() railerData1 = new EventEmitter<Data1Interface>();
 
   ngAfterViewInit() {}
 
-  emitImage(image: Imgdata) {
+  emitImage(image: Data1Interface) {
     this.railerData1.emit(image);
   }
 

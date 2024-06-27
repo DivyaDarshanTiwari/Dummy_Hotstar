@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ContentBodyComponent } from '../contentBody/content-body.component';
 import { ContentBannerComponent } from '../content-banner/content-banner.component';
-import { data1 } from '../../../data1';
+import { Data1Service } from '../../shared/data1.service';
 import { NgFor } from '@angular/common';
 import { Data1Interface } from '../../data1-interface';
 import { ActivatedRoute } from '@angular/router';
@@ -15,15 +15,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewComponent implements OnInit {
   route:ActivatedRoute = inject(ActivatedRoute)
-  id!:number;
-  data1:Data1Interface= data1[this.id];
-  constructor(){
+  data1:Data1Interface= this.data.item;
+  constructor(private data:Data1Service){
 
   }
   ngOnInit(): void {
-    this.id= Number(this.route.snapshot.params['id'])-1;
-    console.log(this.id);
-    this.data1= data1[this.id];
+    this.data1 = this.data.item;
   }
 
 }

@@ -1,30 +1,30 @@
 
-<div class="hero-image" [style.background-image]="'url(' + item.img + ')'">
+<div class="hero-image" [style.background-image]="'url(' + item?.img + ')'">
     <div class="logo">
       <img src="/ANIME-W (1).gif" alt="none">
     </div>
       <div class="hero-text">
         <div>
-          <img [src]="item.headImg" [alt]="item.alt">
+          <img [src]="item?item.headImg:'none'" [alt]="item?.alt">
         </div>
         <div>
           <span>
-              <span>{{item.year_of_release}}</span> 
+              <span>{{item?.year_of_release}}</span> 
           </span>
           <span>
-              <span class="dot">{{item.seasons}}</span>
+              <span class="dot">{{item?.seasons}}</span>
           </span>
           <span>
-              <span class="dot">{{item.languages}}</span>
+              <span class="dot">{{item?.languages}}</span>
           </span>
           <span>
-              <span class="dot">U/A{{item.U_A}}</span>
+              <span class="dot">U/A{{item?.U_A}}</span>
           </span>
         </div>
-        <p>{{item.description}}</p>
+        <p>{{item?.description}}</p>
   
         <div >
-          <span *ngFor="let i of item.genera">
+          <span *ngFor="let i of item?.genera">
               <span class="line">{{i}}</span>
           </span>
         </div>

@@ -14,16 +14,16 @@ import { Data1Interface } from '../../data1-interface';
 })
 export class ContentBannerComponent implements OnInit  {
 
-  @Input() item!:Data1Interface;
+  @Input() item?:Data1Interface;
 
   constructor() {
     console.log("this is content banner");
   }
 
   ngOnInit(): void {
-    console.log(this.item);
-    console.log(this.item.id); // should work now
+    console.log(this.item); // should work now
   }
   // item = data1[1];
+  
 
 }
