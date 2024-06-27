@@ -5,7 +5,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import { seasonData } from './seasonData.1';
 import { CommonModule } from '@angular/common';
 import { SeasonInterface } from './season-interface';
-import { Data1Interface } from '../../../data1-interface';
 
 @Component({
   selector: 'app-season-body',

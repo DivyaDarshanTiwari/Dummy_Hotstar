@@ -14,6 +14,7 @@
               style="color: aliceblue"
               (mouseenter)="toggleCollapsed()"
               (mouseleave)="toggleCollapsed()"
+              [routerLink]="icon.path"
               >{{ icon.icons }}</mat-icon
             >
             <span

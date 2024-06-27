@@ -10,7 +10,7 @@
         </mat-tab>
         <mat-tab label="More Like This">
           <div class="example-large-box mat-elevation-z4">
-            <app-more-like-this (data)="catch_more_like_this_data($event)"></app-more-like-this>
+            <app-more-like-this (data)="catch_more_like_this_data($event)" [dataId]="item.id"></app-more-like-this>
           </div>
         </mat-tab>
       </mat-tab-group>

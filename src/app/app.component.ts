@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 export interface Buttons {
   icons: string;
   description: string;
+  path: string
 }
 
 @Component({
@@ -21,6 +22,7 @@ export interface Buttons {
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
@@ -38,12 +40,12 @@ export class AppComponent implements OnInit {
   }
 
   public icons: Buttons[] = [
-    { icons: 'person', description: 'My Space' },
-    { icons: 'search', description: 'Search' },
-    { icons: 'home', description: 'Home' },
-    { icons: 'tv', description: 'TV' },
-    { icons: 'movie', description: 'Movies' },
-    { icons: 'sports_cricket', description: 'Sports' },
-    { icons: 'category', description: 'Category' },
+    { icons: 'person', description: 'My Space',path:'profile' },
+    { icons: 'search', description: 'Search' ,path:'Search'},
+    { icons: 'home', description: 'Home',path:'' },
+    { icons: 'tv', description: 'TV' ,path:''},
+    { icons: 'movie', description: 'Movies' ,path:''},
+    { icons: 'sports_cricket', description: 'Sports' ,path:''},
+    { icons: 'category', description: 'Category' ,path:''},
   ];
 }
