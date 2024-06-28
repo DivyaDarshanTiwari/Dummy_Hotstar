@@ -25,7 +25,7 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
 })
 export class ProfilePageComponent implements OnInit {
   constructor(
-    private userData: UserPDataService,//instace of the personal data service
+    private userData: UserPDataService,//instace of the personal data servise
     private watchData: WatchListService //instance of the watch list data service
   ) {}
   phone!: number;

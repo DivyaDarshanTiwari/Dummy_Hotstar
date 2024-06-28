@@ -8,7 +8,6 @@ import {
   Input,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import {type Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import { Data1Interface } from '../../../data1-interface';
 import { RouterModule } from '@angular/router';

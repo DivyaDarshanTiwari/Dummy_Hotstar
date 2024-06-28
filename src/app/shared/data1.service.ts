@@ -128,22 +128,23 @@ export class Data1Service {
   ];
 
   constructor() {
-    const data = localStorage.getItem('data1')
-    if(data)
-      {
-        this.data1 = JSON.parse(data);
-      }
-      const localitem = localStorage.getItem('selectedItem');
+      const localitem = sessionStorage.getItem('selectedItem');
       if(localitem){
-        this.item = JSON.parse(localitem);
+        if(this.instanceOf(localitem)){
+          this.item = JSON.parse(localitem);
+        }
+
       }
+   }
+
+   instanceOf(item:any): item is Data1Service{
+    return true;
    }
 
    public item!:Data1Interface;
    getId(dataId:Data1Interface){
      this.item= dataId;
      this.saveItem();
-
    }
  
 
@@ -152,12 +153,7 @@ export class Data1Service {
     return this.data1;
    }
 
-   private saveData()
-   {
-    localStorage.setItem('data1',JSON.stringify(this.data1));
-   }
-
    private saveItem(){
-    localStorage.setItem('selectedItem',JSON.stringify(this.item));
+    sessionStorage.setItem('selectedItem',JSON.stringify(this.item));
    }
 }
