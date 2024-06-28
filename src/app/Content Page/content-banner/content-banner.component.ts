@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from '../../shared/search/search.service';
 import { Data1Interface } from '../../data1-interface';
+import { SelectedhCardInterface } from '../../shared/search/selectedh-card-interface';
 
 @Component({
   selector: 'app-content-banner',
@@ -14,7 +15,7 @@ import { Data1Interface } from '../../data1-interface';
 })
 export class ContentBannerComponent implements OnInit {
   @Input() item?: Data1Interface;
-  @Input() selected_card_data:any;
+  @Input() selected_card_data?:SelectedhCardInterface;
 
   constructor(private _movieService?: MoviesService) {
     // console.log('this is content banner');
@@ -25,6 +26,6 @@ export class ContentBannerComponent implements OnInit {
     console.log("this is the slectsd card",this.selected_card_data)
   }
   // item = data1[1];
-
+  ngAfterViewOnInit(){}
 
 }

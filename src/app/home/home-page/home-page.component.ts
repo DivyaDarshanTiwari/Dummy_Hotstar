@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
 import { MainRailerComponent } from '../Railers/main-railer/main-railer.component';
-import { Imgdata } from '../Railers/imgdata';
 import { Data1Service } from '../../shared/data1.service';
 import { Data1Interface } from '../../data1-interface';
 

@@ -150,7 +150,6 @@ export class Data1Service {
    getData1()
    {
     return this.data1;
-    this.saveData();
    }
 
    private saveData()

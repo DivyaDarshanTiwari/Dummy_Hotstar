@@ -1,4 +1,4 @@
-@if(item){
+<!-- @if(item){
 <div class="hero-image" [style.background-image]="'url(' + item.img + ')'">
   <div class="logo">
     <img src="/ANIME-W (1).gif" alt="none" />
@@ -44,35 +44,34 @@
     </div>
   </div>
 </div>
-}
-@else {
-  <div class="hero-image" [style.background-image]="'url(' + selected_card_data?.trailer.images.maximum_image_url + ')'">
+} -->
+  <div class="hero-image" [style.background-image]="'url(' + selected_card_data?.trailer?.images?.maximum_image_url + ')'">
     <div class="logo">
       <img src="/ANIME-W (1).gif" alt="none" />
     </div>
     <div class="hero-text">
       <div>
-        <img [src]="item ? selected_card_data.images.jpg.image_url : 'none'" [alt]="selected_card_data?.title" />
+        <img [src]="selected_card_data?.images?.jpg?.image_url" [alt]="selected_card_data?.title" class="header_image"/>
       </div>
       <div>
         <span>
           <span>{{ selected_card_data?.year }}</span>
         </span>
         <span>
-          <span class="dot">{{ selected_card_data.season }}</span>
+          <span class="dot">{{ selected_card_data?.season }}</span>
         </span>
         <span>
           <span class="dot">{{ selected_card_data?.type }}</span>
         </span>
         <span>
-          <span class="dot">U/A{{ selected_card_data.rating }}</span>
+          <span class="dot">U/A{{ selected_card_data?.rating }}</span>
         </span>
       </div>
-      <p>{{ selected_card_data?.synopsis }}</p>
+      <p class="truncate">{{ selected_card_data?.synopsis }}</p>
   
       <div>
-        <span *ngFor="let i of selected_card_data?.titles.title">
-          <span class="line">{{ i }}</span>
+        <span *ngFor="let i of selected_card_data?.titles">
+          <span class="line">{{ i.title }}</span>
         </span>
       </div>
       <div class="example-button-container">
@@ -91,5 +90,3 @@
       </div>
     </div>
   </div>
-
-}

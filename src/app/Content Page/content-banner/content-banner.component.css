@@ -37,8 +37,8 @@
     }
   
     .hero-text>div>img{
-      width: 100%;
-      height: 100%;
+      width: 150px;
+      height: 200px;
     }
   
     .dot::before {
@@ -87,3 +87,10 @@
     }
   
   
+    .truncate{
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* Number of lines to show */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }

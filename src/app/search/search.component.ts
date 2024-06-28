@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTES, Router, RouterOutlet } from '@angular/router';
+import {  Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from '../shared/search/search.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SelectedhCardInterface } from '../shared/search/selectedh-card-interface';
 
 interface interface1 {
   value: string;
@@ -44,10 +45,10 @@ interface interface1 {
 export class SearchComponent implements OnInit {
   router: any;
 
-  constructor(private api: MoviesService) {}
+  constructor(private api: MoviesService,private route:Router) {}
 
   public data!: any; //data is store here
-  public MainData!: any; //data of the main arry of the data
+  public MainData!: SelectedhCardInterface[]; //data of the main arry of the data
   public type: interface1[] = [//for type
     {value: '', viewValue: 'all'},
     {value: 'tv', viewValue: 'tv'},
@@ -93,7 +94,7 @@ export class SearchComponent implements OnInit {
       this.data = data;
       this.MainData = this.data.data;
       // console.log(data);
-      console.log(this.MainData);
+      // console.log(this.MainData);
     });
   }
 
@@ -114,9 +115,9 @@ export class SearchComponent implements OnInit {
 
   }
 
-  Searched_item_Clicked(Selected_item: any) {
-    console.log(Selected_item);
+  Searched_item_Clicked(Selected_item: SelectedhCardInterface) {
+    console.log("1", Selected_item);
     this.api.set_selected_Item(Selected_item);
-
+     this.route.navigateByUrl('/s');
   }
 }

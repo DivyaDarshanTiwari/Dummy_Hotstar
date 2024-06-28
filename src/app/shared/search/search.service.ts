@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
+import { SelectedhCardInterface } from './selectedh-card-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -25,14 +26,14 @@ export class MoviesService {
   }
 
 
-  public selected_item:any;
-  public set_selected_Item(item:any){//getting the details of the item / card when clicked 
+  public selected_item?:SelectedhCardInterface;
+  public set_selected_Item(item:SelectedhCardInterface){//getting the details of the item / card when clicked 
     this.selected_item =item;
-    console.log(this.selected_item);
+    console.log("2", this.selected_item)
   }
 
-  // public get_selected_item_data(){
-  //   return this.selected_item;
-  //   console.log(this.selected_item);
-  // }
+  public get_selected_item_data(){
+    console.log("4",this.selected_item);
+    return this.selected_item;
+  }
 }
