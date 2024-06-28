@@ -5,7 +5,7 @@ import { Data1Interface } from '../data1-interface';
   providedIn: 'root'
 })
 export class Data1Service {
-  data1 = [
+  private data1 = [
     {
       id: 1,
       title: 'DORAEMON',
@@ -130,21 +130,17 @@ export class Data1Service {
   constructor() {
       const localitem = sessionStorage.getItem('selectedItem');
       if(localitem){
-        if(this.instanceOf(localitem)){
           this.item = JSON.parse(localitem);
-        }
-
       }
    }
 
-   instanceOf(item:any): item is Data1Service{
-    return true;
-   }
-
-   public item!:Data1Interface;
-   getId(dataId:Data1Interface){
+   private item!:Data1Interface; // salected item on the rail the datas is stored here
+   getId(dataId:Data1Interface){ // selected data is getting store in in item with help of this function
      this.item= dataId;
      this.saveItem();
+   }
+   get_item(){
+    return this.item;
    }
  
 

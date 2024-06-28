@@ -8,20 +8,14 @@ import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { SearchComponent } from '../search/search.component';
 
 const routes: Routes = [
-  {path:'', component: HomePageComponent},
+  { path: '', component: HomePageComponent },
   { path: 's', component: NewComponent },
-  {path: 'profile', component:ProfilePageComponent},
-  {path: 'Search', component:SearchComponent}
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'Search', component: SearchComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { 
-
-  constructor(private data1:Data1Service){
-
-  }
-  data:Data1Interface[] = this.data1.data1;
-}
+export class HomeRoutingModule {}

@@ -38,14 +38,14 @@ export class MoviesService {
   }
 
 
-  public selected_item?:SelectedhCardInterface;
+  private selected_item?:SelectedhCardInterface;
   public set_selected_Item(item:SelectedhCardInterface){//getting the details of the item / card when clicked 
     this.selected_item =item;
     this.save_On_session();
     console.log("2", this.selected_item)
   }
 
-  public get_selected_item_data(){
+  public get_selected_item_data(){//selceted item data can be accessed from this finction
     console.log("4",this.selected_item);
     return this.selected_item;
   }

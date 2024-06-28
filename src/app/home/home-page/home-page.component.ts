@@ -15,7 +15,7 @@ export class HomePageComponent {
 
   constructor(private data:Data1Service){
   }
-  data1:Data1Interface[] = this.data.data1;
+  data1:Data1Interface[] = this.data.getData1();
   catchData(item: Data1Interface) {
     console.log(item);
     console.log('he');
