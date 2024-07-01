@@ -81,18 +81,20 @@ export class SearchComponent implements OnInit {
 
   public data!: any; //data is store here
   public MainData!: SelectedhCardInterface[]; //data of the main arry of the data
-  selectedTypeValue: string = '';
-  selected_U_A: string = '';
-  selected_Status: string = '';
+  selectedTypeValue?: string ;
+  selected_U_A?: string ;
+  q?:string;
+  page?:number;
+  limit?:number;
 
   ngOnInit(): void {
     // loded first time
     this.getData();
   }
 
-  getData(page = 1, limit = 12, q = '', type = '', rating = '') {
+  getData() {
     //getting the data by subscribing
-    this.api.getApiData(page,limit,q,type,rating).subscribe((data) => {
+    this.api.getApiData(this.page,this.limit,this.q,this.selectedTypeValue,this.selected_U_A).subscribe((data: any) => {
       //suscribing to the data
       this.data = data;
       this.MainData = this.data.data;
@@ -101,12 +103,15 @@ export class SearchComponent implements OnInit {
 
   changePage($event: PageEvent) {
     //getting the paginator details
+    this.page=$event.pageIndex + 1;
+    this.limit=$event.pageSize;
     console.log('page', $event);
-    this.getData($event.pageIndex + 1, $event.pageSize);
+    this.getData();
   }
 
   searchData(arg0: string) {
-    this.getData(1,12,arg0,this.selectedTypeValue, this.selected_U_A);
+    this.q=arg0;
+    this.getData();
   }
 
   Searched_item_Clicked(Selected_item: SelectedhCardInterface) {

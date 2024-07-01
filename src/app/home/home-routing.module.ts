@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NewComponent } from '../Content Page/new/new.component';
 import { Data1Service } from '../shared/data1.service';
-import { Data1Interface } from '../data1-interface';
 import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { SearchComponent } from '../search/search.component';
 
