@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Data1Interface } from '../data1-interface';
+import { MoviesService } from './search/search.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Data1Service {
   private data1 = [
@@ -36,7 +37,7 @@ export class Data1Service {
       seasons: 4,
       languages: 'English',
       U_A: '7+',
-      genera: ['Mythology', 'Creatures & Monsters','Fantasy'],
+      genera: ['Mythology', 'Creatures & Monsters', 'Fantasy'],
       watch_hours: '',
       seasons_name: ['Season 1', 'Season 2', 'Season 3', 'Season 4'],
     },
@@ -90,7 +91,7 @@ export class Data1Service {
       watch_hours: '2h 16min',
       seasons_name: ['Season 1', 'Season 2', 'Season 3', 'Season 4'],
     },
-  
+
     {
       id: 6,
       title: 'Pulp Fiction Movie Poster',
@@ -127,29 +128,18 @@ export class Data1Service {
     },
   ];
 
-  constructor() {
-      const localitem = sessionStorage.getItem('selectedItem');
-      if(localitem){
-          this.item = JSON.parse(localitem);
-      }
-   }
+  constructor(private movieService: MoviesService) {}
 
-   private item!:Data1Interface; // salected item on the rail the datas is stored here
-   getId(dataId:Data1Interface){ // selected data is getting store in in item with help of this function
-     this.item= dataId;
-     this.saveItem();
-   }
-   get_item(){
+  private item!: Data1Interface; // salected item on the rail the datas is stored here
+  getId(dataId: Data1Interface) {
+    // selected data is getting store in in item with help of this function
+    this.item = dataId;
+  }
+  get_item() {
     return this.item;
-   }
- 
+  }
 
-   getData1()
-   {
+  getData1() {
     return this.data1;
-   }
-
-   private saveItem(){
-    sessionStorage.setItem('selectedItem',JSON.stringify(this.item));
-   }
+  }
 }

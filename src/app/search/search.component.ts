@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from '../shared/search/search.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SelectedhCardInterface } from '../shared/search/selectedh-card-interface';
 
@@ -37,87 +37,81 @@ interface interface1 {
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  title = 'apitest';
   router: any;
 
-  constructor(private api: MoviesService,private route:Router) {}
+  constructor(private api: MoviesService, private route: Router) {}
+
+  public type: interface1[] = [
+    //for type
+    { value: '', viewValue: 'all' },
+    { value: 'tv', viewValue: 'tv' },
+    { value: 'movie', viewValue: 'movie' },
+    { value: 'ova', viewValue: 'ova' },
+    { value: 'special', viewValue: 'special' },
+    { value: 'ona', viewValue: 'ona' },
+    { value: 'music', viewValue: 'music' },
+    { value: 'pv', viewValue: 'pv' },
+    { value: 'tv_special', viewValue: 'tv_speacil' },
+  ];
+  public rating: interface1[] = [
+    //for adult rating
+    { value: '', viewValue: 'all' },
+    { value: 'g', viewValue: 'G - All Ages' },
+    { value: 'pg', viewValue: 'PG - Childrene' },
+    { value: 'pg13', viewValue: 'PG-13 - Teens 13 or older' },
+    { value: 'r17', viewValue: 'R - 17+ (violence & profanity)' },
+  ];
+
+  genre = new FormControl('');
+  genreList: string[] = [
+    'Action',
+    'Romance',
+    'Fantacy',
+    'Shoujo',
+    'Adventure',
+    'Slice 0f Life',
+  ];
 
   public data!: any; //data is store here
   public MainData!: SelectedhCardInterface[]; //data of the main arry of the data
-  public type: interface1[] = [//for type
-    {value: '', viewValue: 'all'},
-    {value: 'tv', viewValue: 'tv'},
-    {value: 'movie', viewValue: 'movie'},
-    {value: 'ova', viewValue: 'ova'},
-    {value: 'special', viewValue: 'special'},
-    {value: 'ona', viewValue: 'ona'},
-    {value: 'music', viewValue: 'music'},
-    {value: 'pv', viewValue: 'pv'},
-    {value: 'tv_special', viewValue: 'tv_speacil'},
-  ];
-  public rating:interface1[]=[ //for adult rating
-    {value: '', viewValue: 'all'},
-    {value: 'g', viewValue: 'G - All Ages'},
-    {value: 'pg', viewValue: 'PG - Childrene'},
-    {value: 'pg13', viewValue: 'PG-13 - Teens 13 or older'},
-    {value: 'r17', viewValue: 'R - 17+ (violence & profanity)'},
-  ]
+  selectedTypeValue: string = '';
+  selected_U_A: string = '';
+  selected_Status: string = '';
 
-  // public status:interface1[]=[
-  //   {value: '', viewValue: 'all'},
-  //   {value: 'upcoming', viewValue: 'upcoming'},
-  //   {value: 'airing', viewValue: 'airing'},
-  //   {value: 'complete', viewValue: 'complete'},
-  // ]
-
-  genre = new FormControl('');
-  genreList: string[] = ['Action', 'Romance', 'Fantacy', 'Shoujo', 'Adventure', 'Slice 0f Life'];
-  
-  selectedTypeValue: string='';
-  selected_U_A:string='';
-  selected_Status:string='';
   ngOnInit(): void {
     // loded first time
     this.getData();
   }
-  title = 'apitest';
 
-  getData() {
+  getData(page = 1, limit = 12, q = '', type = '', rating = '') {
     //getting the data by subscribing
-    this.api.getApiData().subscribe((data) => {
+    this.api.getApiData(page,limit,q,type,rating).subscribe((data) => {
       //suscribing to the data
       this.data = data;
       this.MainData = this.data.data;
-      // console.log(data);
-      // console.log(this.MainData);
     });
   }
 
   changePage($event: PageEvent) {
     //getting the paginator details
     console.log('page', $event);
-    this.api.page = $event.pageIndex + 1;
-    this.api.limit = $event.pageSize;
-    this.getData();
+    this.getData($event.pageIndex + 1, $event.pageSize);
   }
 
   searchData(arg0: string) {
-    this.api.q = arg0;
-    this.api.type = this.selectedTypeValue;
-    this.api.rating = this.selected_U_A;
-    // this.api.status = this.selected_Status;
-    this.getData();
-
+    this.getData(1,12,arg0,this.selectedTypeValue, this.selected_U_A);
   }
 
   Searched_item_Clicked(Selected_item: SelectedhCardInterface) {
-    console.log("1", Selected_item);
+    console.log('1', Selected_item);
     this.api.set_selected_Item(Selected_item);
-     this.route.navigateByUrl('/s');
+    this.route.navigateByUrl('/s');
   }
 }
