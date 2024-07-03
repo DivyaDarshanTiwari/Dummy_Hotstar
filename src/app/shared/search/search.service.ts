@@ -26,15 +26,22 @@ export class MoviesService {
     return this.selected_item;
   }
 
-  getApiData(page = 1, limit = 12, q = '', type = '', rating = '') {
-    const custom_url = new HttpParams()
+  getApiData(page:number, limit:number, q?:string, type?:string, rating?:string) {
+    let custom_url = new HttpParams()
       .set('page', page.toString())
       .set('limit', limit.toString())
-      .set('q', q)
-      .set('type', type)
-      .set('rating', rating);
 
-    if (page === 1 && !q && !type && !rating) {//cache
+      if(q){
+        custom_url=custom_url.set('q', q);
+      }
+      if(type){
+        custom_url= custom_url.set('type', type);
+      }
+      if(rating){
+        custom_url =custom_url.set('rating', rating);
+      }
+
+    if (page && !q && !type && !rating) {//cache
       if (this.visited_url_data.length == 1) {
         return of(this.visited_url_data);
       } else {

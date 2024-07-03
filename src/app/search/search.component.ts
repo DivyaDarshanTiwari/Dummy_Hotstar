@@ -84,8 +84,8 @@ export class SearchComponent implements OnInit {
   selectedTypeValue?: string ;
   selected_U_A?: string ;
   q?:string;
-  page?:number;
-  limit?:number;
+  page:number=1;
+  limit:number=12;
 
   ngOnInit(): void {
     // loded first time
