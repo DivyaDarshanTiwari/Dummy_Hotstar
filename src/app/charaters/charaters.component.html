@@ -1,0 +1,14 @@
+<div class="container">
+  <div  *ngFor="let item of character_Data" class=" card">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-subtitle class="films">Films: {{ item.films }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="item.imageUrl" alt="Photo of a Shiba Inu"  class="image"/>
+    </mat-card>
+    <mat-card-content>
+      <p><a [href]="item.sourceUrl" target="_blank">Learn More</a></p>
+    </mat-card-content>
+  </div>
+</div>

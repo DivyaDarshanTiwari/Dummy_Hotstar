@@ -9,7 +9,7 @@ import { MatListModule } from '@angular/material/list';
 export interface Buttons {
   icons: string;
   description: string;
-  path: string
+  path: string;
 }
 
 @Component({
@@ -22,7 +22,7 @@ export interface Buttons {
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
@@ -40,12 +40,17 @@ export class AppComponent implements OnInit {
   }
 
   public icons: Buttons[] = [
-    { icons: 'person', description: 'My Space',path:'profile' },
-    { icons: 'search', description: 'Search' ,path:'Search'},
-    { icons: 'home', description: 'Home',path:'' },
-    { icons: 'tv', description: 'TV' ,path:''},
-    { icons: 'movie', description: 'Movies' ,path:''},
-    { icons: 'sports_cricket', description: 'Sports' ,path:''},
-    { icons: 'category', description: 'Category' ,path:''},
+    { icons: 'person', description: 'My Space', path: 'profile' },
+    { icons: 'search', description: 'Search', path: 'Search' },
+    { icons: 'home', description: 'Home', path: '' },
+    { icons: 'tv', description: 'TV', path: '' },
+    { icons: 'movie', description: 'Movies', path: '' },
+    { icons: 'sports_cricket', description: 'Sports', path: '' },
+    { icons: 'category', description: 'Category', path: '' },
+    {
+      icons: 'accessibility_new',
+      description: 'Characters',
+      path: 'characters',
+    },
   ];
 }
