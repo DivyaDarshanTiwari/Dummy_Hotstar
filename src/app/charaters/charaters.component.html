@@ -1,19 +1,36 @@
 <div class="container">
-  <div  *ngFor="let item of character_Data" class=" card" matTooltipPosition="right">
+  <div *ngFor="let item of character_Data" class="card">
     <mat-card class="example-card" appearance="outlined">
       <mat-card-header>
-        <mat-card-title class="films" [matTooltip]="item.name" >{{ item.name }}</mat-card-title>
+        <mat-card-title class="films" [matTooltip]="item.name">{{
+          item.name
+        }}</mat-card-title>
         @if(item.films[0] == null){
-          <mat-card-subtitle class="films" matTooltip="none"  >Films:None</mat-card-subtitle>
-        }
-        @else{
-          <mat-card-subtitle class="films" [matTooltip]="getToolTip(item.films)"  >Films: {{ item.films }}</mat-card-subtitle>
+        <mat-card-subtitle class="films" matTooltip="none"
+          >Films:None</mat-card-subtitle
+        >
+        } @else{
+        <mat-card-subtitle class="films" [matTooltip]="getToolTip(item.films)"
+          >Films: {{ item.films }}</mat-card-subtitle
+        >
         }
       </mat-card-header>
-      <img mat-card-image [src]="item.imageUrl" [alt]="item.name" (error)="Image_Not_load($event)" class="image"/>
+      <img
+        mat-card-image
+        [src]="item.imageUrl"
+        [alt]="item.name"
+        (error)="Image_Not_load($event)"
+        class="image"
+      />
     </mat-card>
     <mat-card-content>
-      <p><a [href]="item.sourceUrl" target="_blank">Learn More</a></p>
+      <p>
+        <a
+          [routerLink]="['/s']"
+          (click)="selectedCharater(item)"
+          >Learn More</a
+        >
+      </p>
     </mat-card-content>
   </div>
 </div>

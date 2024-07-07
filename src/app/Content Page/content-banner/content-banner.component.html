@@ -44,51 +44,88 @@
     </div>
   </div>
 </div>
-}
-@else{
-  <div class="hero-image" [style.background-image]="'url(' + selected_card_data?.trailer?.images?.maximum_image_url + ')'">
-    <div class="logo">
-      <img src="/ANIME-W (1).gif" alt="none" />
+} @if(selected_card_data ){
+<div
+  class="hero-image"
+  [style.background-image]="
+    'url(' + selected_card_data.trailer.images.maximum_image_url + ')'
+  "
+>
+  <div class="logo">
+    <img src="/ANIME-W (1).gif" alt="none" />
+  </div>
+  <div class="hero-text">
+    <div>
+      <img
+        [src]="selected_card_data.images.jpg.image_url"
+        [alt]="selected_card_data.title"
+        class="header_image"
+      />
     </div>
-    <div class="hero-text">
-      <div>
-        <img [src]="selected_card_data?.images?.jpg?.image_url" [alt]="selected_card_data?.title" class="header_image"/>
-      </div>
-      <div>
-        <span>
-          <span>{{ selected_card_data?.year }}</span>
-        </span>
-        <span>
-          <span class="dot">{{ selected_card_data?.season }}</span>
-        </span>
-        <span>
-          <span class="dot">{{ selected_card_data?.type }}</span>
-        </span>
-        <span>
-          <span class="dot">U/A{{ selected_card_data?.rating }}</span>
-        </span>
-      </div>
-      <p class="truncate">{{ selected_card_data?.synopsis }}</p>
-  
-      <div>
-        <span *ngFor="let i of selected_card_data?.titles">
-          <span class="line">{{ i.title }}</span>
-        </span>
-      </div>
-      <div class="example-button-container">
-        <button mat-fab extended id="sub_button">
-          <mat-icon>subscriptions</mat-icon>
-          Subscribe To Watch
-        </button>
-        <button
-          mat-fab
-          aria-label="Example icon button with a add icon"
-          style="border-radius: 1rem"
-          title="Watch List"
-        >
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
+    <div>
+      <span>
+        <span>{{ selected_card_data.year }}</span>
+      </span>
+      <span>
+        <span class="dot">{{ selected_card_data.season }}</span>
+      </span>
+      <span>
+        <span class="dot">{{ selected_card_data.type }}</span>
+      </span>
+      <span>
+        <span class="dot">U/A{{ selected_card_data.rating }}</span>
+      </span>
+    </div>
+    <p class="truncate">{{ selected_card_data.synopsis }}</p>
+
+    <div>
+      <span *ngFor="let i of selected_card_data.titles">
+        <span class="line">{{ i.title }}</span>
+      </span>
+    </div>
+    <div class="example-button-container">
+      <button mat-fab extended id="sub_button">
+        <mat-icon>subscriptions</mat-icon>
+        Subscribe To Watch
+      </button>
+      <button
+        mat-fab
+        aria-label="Example icon button with a add icon"
+        style="border-radius: 1rem"
+        title="Watch List"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
   </div>
+</div>
+} @if(selected_character){
+<div
+  class="hero-image"
+  [style.background-image]="'url(' + selected_character.imageUrl + ')'"
+>
+  <div class="logo">
+    <img src="/ANIME-W (1).gif" alt="none" />
+  </div>
+  <div class="hero-text">
+    <div>
+      <img
+        [src]="selected_character.imageUrl"
+        [alt]="selected_character.name"
+        class="header_image"
+      />
+    </div>
+    <div>
+      <span>
+        <span>{{ selected_character.films }}</span>
+      </span>
+      <span>
+        <span class="dot">{{ selected_character.videoGames }}</span>
+      </span>
+      <span>
+        <span class="dot">{{ selected_character.tvShows }}</span>
+      </span>
+    </div>
+  </div>
+</div>
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
+import { type CharaterInterface } from './charater-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharactersService {
   private url = 'https://api.disneyapi.dev/character';
-
+  private selected_Character?: CharaterInterface | null
   constructor(private http: HttpClient) {}
 
   public getData(): Observable<any> {
@@ -22,4 +23,13 @@ export class CharactersService {
       return of('Cannot find the url');
     }
   }
+
+  public get_selected(selected_Card:CharaterInterface | null){
+    this.selected_Character =  selected_Card;
+  }
+  public get_selected_item(){
+    console.log(this.selected_Character)
+    return this.selected_Character;
+  }
+
 }

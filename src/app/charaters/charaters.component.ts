@@ -5,11 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { Data1Service } from '../shared/data1.service';
+import { MoviesService } from '../shared/search/search.service';
 
 @Component({
   selector: 'app-charaters',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule],
+  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule,RouterLink],
   templateUrl: './charaters.component.html',
   styleUrl: './charaters.component.css',
 })
@@ -17,7 +20,7 @@ export class CharatersComponent implements OnInit {
   protected character_Data?: CharaterInterface[];
   protected placeholderImage: string =
     'https://www.shutterstock.com/shutterstock/photos/2059817444/display_1500/stock-vector-no-image-available-photo-coming-soon-illustration-vector-2059817444.jpg';
-  constructor(private charater_Service: CharactersService) {}
+  constructor(private charater_Service: CharactersService , private data1service: Data1Service , private movieService:MoviesService) {}
   ngOnInit(): void {
     this.getting_data();
   }
@@ -45,4 +48,10 @@ export class CharatersComponent implements OnInit {
     }
     return x;
   }
+
+  selectedCharater(selected_Charater: CharaterInterface) {
+    this.data1service.getId(null);
+    this.movieService.set_selected_Item(null)
+    this.charater_Service.get_selected(selected_Charater)
+    }
 }

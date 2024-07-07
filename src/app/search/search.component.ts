@@ -15,6 +15,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SelectedhCardInterface } from '../shared/search/selectedh-card-interface';
 import { Data1Service } from '../shared/data1.service';
+import { CharactersService } from '../shared/Characters/characters.service';
 
 interface interface1 {
   value: string;
@@ -43,11 +44,16 @@ interface interface1 {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit , OnDestroy{
+export class SearchComponent implements OnInit, OnDestroy {
   title = 'apitest';
   router: any;
 
-  constructor(private api: MoviesService, private route: Router , private data1Service: Data1Service) {}
+  constructor(
+    private api: MoviesService,
+    private route: Router,
+    private data1Service: Data1Service,
+    private CharaterService:CharactersService
+  ) {}
 
   public type: interface1[] = [
     //for type
@@ -82,12 +88,12 @@ export class SearchComponent implements OnInit , OnDestroy{
 
   protected data!: any; //data is store here
   protected MainData!: SelectedhCardInterface[]; //data of the main arry of the data
-  protected selectedTypeValue?: string ;
-  protected selected_U_A?: string ;
-  protected q?:string;
-  protected page:number=1;
-  protected limit:number=12;
-  protected destory?:any;
+  protected selectedTypeValue?: string;
+  protected selected_U_A?: string;
+  protected q?: string;
+  protected page: number = 1;
+  protected limit: number = 12;
+  protected destroy?: any;
 
   ngOnInit(): void {
     // loded first time
@@ -96,34 +102,45 @@ export class SearchComponent implements OnInit , OnDestroy{
 
   getData() {
     //getting the data by subscribing
-    this.destory =  this.api.getApiData(this.page,this.limit,this.q,this.selectedTypeValue,this.selected_U_A).subscribe((data: any) => {
-      //suscribing to the data
-      this.data = data;
-      this.MainData = this.data.data;
-    });
+    this.destroy = this.api
+      .getApiData(
+        this.page,
+        this.limit,
+        this.q,
+        this.selectedTypeValue,
+        this.selected_U_A
+      )
+      .subscribe((data: any) => {
+        //suscribing to the data
+        this.data = data;
+        this.MainData = this.data.data;
+      });
   }
 
   changePage($event: PageEvent) {
     //getting the paginator details
-    this.page=$event.pageIndex + 1;
-    this.limit=$event.pageSize;
+    this.page = $event.pageIndex + 1;
+    this.limit = $event.pageSize;
     console.log('page', $event);
     this.getData();
   }
 
   searchData(arg0: string) {
-    this.q=arg0;
+    this.q = arg0;
     this.getData();
   }
 
   Searched_item_Clicked(Selected_item: SelectedhCardInterface) {
     console.log('1', Selected_item);
-    this.data1Service.getId(null)
+    this.data1Service.getId(null);
+    this.CharaterService.get_selected(null);
     this.api.set_selected_Item(Selected_item);
     this.route.navigateByUrl('/s');
   }
 
   ngOnDestroy(): void {
-    this.destory.unsubscribe();
+    if (this.destroy) {
+      this.destroy.unsubscribe();
+    }
   }
 }

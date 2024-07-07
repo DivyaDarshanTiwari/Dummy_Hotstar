@@ -9,11 +9,11 @@ import { type SelectedhCardInterface } from './selectedh-card-interface';
 export class MoviesService {
   private url = 'https://api.jikan.moe/v4/anime';
   private visited_url_data: any[] = []; // data is storewd here with the the url
-  private selected_item?: SelectedhCardInterface;
+  private selected_item?: SelectedhCardInterface | null;
 
   constructor(private http: HttpClient) {}
-
-  public set_selected_Item(item: SelectedhCardInterface) {
+ 
+  public set_selected_Item(item: SelectedhCardInterface | null) {
     //getting the details of the item / card when clicked
     this.selected_item = item;
     // this.save_On_session();
