@@ -41,7 +41,7 @@
   <div class="container">
     @for (item of MainData; track item.mal_id){
 
-    <mat-card class="example-card" appearance="outlined" (click)="Searched_item_Clicked(item)" >
+    <mat-card class="example-card" appearance="outlined" (click)="Searched_item_Clicked(item)" [matTooltip]="item.duration" matTooltipPosition="left" >
       <img
         mat-card-image
         [src]="item.images.jpg.large_image_url"

@@ -16,6 +16,7 @@ import { RouterLink } from '@angular/router';
 import { SelectedhCardInterface } from '../shared/search/selectedh-card-interface';
 import { Data1Service } from '../shared/data1.service';
 import { CharactersService } from '../shared/Characters/characters.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 interface interface1 {
   value: string;
@@ -40,6 +41,7 @@ interface interface1 {
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
+    MatTooltip
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
@@ -52,7 +54,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     private api: MoviesService,
     private route: Router,
     private data1Service: Data1Service,
-    private CharaterService:CharactersService
+    private CharaterService: CharactersService
   ) {}
 
   public type: interface1[] = [
