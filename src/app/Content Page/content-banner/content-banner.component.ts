@@ -14,7 +14,7 @@ import { SelectedhCardInterface } from '../../shared/search/selectedh-card-inter
   styleUrls: ['./content-banner.component.css'],
 })
 export class ContentBannerComponent implements OnInit {
-  @Input() item?: Data1Interface;
+  @Input() item?: Data1Interface | null;
   @Input() selected_card_data?:SelectedhCardInterface;
 
   constructor(private _movieService?: MoviesService) {

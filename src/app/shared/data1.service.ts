@@ -130,13 +130,13 @@ export class Data1Service {
 
   constructor(private movieService: MoviesService) {}
 
-  private item!: Data1Interface; // salected item on the rail the datas is stored here
-  getId(dataId: Data1Interface) {
+  private data!: Data1Interface | null; // salected item on the rail the datas is stored here
+  getId(dataId: Data1Interface | null) {
     // selected data is getting store in in item with help of this function
-    this.item = dataId;
+    this.data = dataId;
   }
   get_item() {
-    return this.item;
+    return this.data;
   }
 
   getData1() {

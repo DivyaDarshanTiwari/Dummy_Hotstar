@@ -16,7 +16,7 @@ import { MoreLikeThisInterface } from './more-like-this/more-like-this-interface
 })
 export class ContentBodyComponent {
 
-  @Input() item!: Data1Interface;
+  @Input() item!: Data1Interface | null;
 
   seasonData!:SeasonInterface;
   moreLikeData!:MoreLikeThisInterface;

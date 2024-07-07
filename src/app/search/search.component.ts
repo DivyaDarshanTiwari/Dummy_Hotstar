@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from '../shared/search/search.service';
@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SelectedhCardInterface } from '../shared/search/selectedh-card-interface';
+import { Data1Service } from '../shared/data1.service';
 
 interface interface1 {
   value: string;
@@ -42,11 +43,11 @@ interface interface1 {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit , OnDestroy{
   title = 'apitest';
   router: any;
 
-  constructor(private api: MoviesService, private route: Router) {}
+  constructor(private api: MoviesService, private route: Router , private data1Service: Data1Service) {}
 
   public type: interface1[] = [
     //for type
@@ -79,13 +80,14 @@ export class SearchComponent implements OnInit {
     'Slice 0f Life',
   ];
 
-  public data!: any; //data is store here
-  public MainData!: SelectedhCardInterface[]; //data of the main arry of the data
-  selectedTypeValue?: string ;
-  selected_U_A?: string ;
-  q?:string;
-  page:number=1;
-  limit:number=12;
+  protected data!: any; //data is store here
+  protected MainData!: SelectedhCardInterface[]; //data of the main arry of the data
+  protected selectedTypeValue?: string ;
+  protected selected_U_A?: string ;
+  protected q?:string;
+  protected page:number=1;
+  protected limit:number=12;
+  protected destory?:any;
 
   ngOnInit(): void {
     // loded first time
@@ -94,7 +96,7 @@ export class SearchComponent implements OnInit {
 
   getData() {
     //getting the data by subscribing
-    this.api.getApiData(this.page,this.limit,this.q,this.selectedTypeValue,this.selected_U_A).subscribe((data: any) => {
+    this.destory =  this.api.getApiData(this.page,this.limit,this.q,this.selectedTypeValue,this.selected_U_A).subscribe((data: any) => {
       //suscribing to the data
       this.data = data;
       this.MainData = this.data.data;
@@ -116,7 +118,12 @@ export class SearchComponent implements OnInit {
 
   Searched_item_Clicked(Selected_item: SelectedhCardInterface) {
     console.log('1', Selected_item);
+    this.data1Service.getId(null)
     this.api.set_selected_Item(Selected_item);
     this.route.navigateByUrl('/s');
+  }
+
+  ngOnDestroy(): void {
+    this.destory.unsubscribe();
   }
 }

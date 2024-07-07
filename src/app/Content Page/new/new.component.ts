@@ -19,7 +19,7 @@ export class NewComponent implements OnInit {
     private data1Service: Data1Service,//instance of the data1 service
     private _movieService: MoviesService//instance of the search.ervice.ts which contiain the MovieService
   ) {}
-  data1: Data1Interface = this.data1Service.get_item();
+  data1: Data1Interface |null = this.data1Service.get_item();
   selected_card_data?: SelectedhCardInterface;
   ngOnInit(): void {
     this.data1 = this.data1Service.get_item(); //getting  that data from the selected Item on the rails with help of function in service
