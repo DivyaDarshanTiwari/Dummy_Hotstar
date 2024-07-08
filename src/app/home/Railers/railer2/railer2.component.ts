@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -8,7 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import {  RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
@@ -20,7 +18,7 @@ import { Data1Interface } from '../../../data1-interface';
   templateUrl: './railer2.component.html',
   styleUrl: './railer2.component.css',
 })
-export class Railer2Component implements AfterViewInit {
+export class Railer2Component {
   @Input()item!:Data1Interface[];
 
 
@@ -32,7 +30,6 @@ export class Railer2Component implements AfterViewInit {
     this.railerData1.emit(image);
   }
 
-  ngAfterViewInit() {}
   prevfun() {
     if (this.prevButtonRef) {
       // Update slider UI based on new currentSlideIndex

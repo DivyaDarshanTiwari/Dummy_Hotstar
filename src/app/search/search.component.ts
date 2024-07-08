@@ -17,6 +17,7 @@ import { SelectedhCardInterface } from '../shared/search/selectedh-card-interfac
 import { Data1Service } from '../shared/data1.service';
 import { CharactersService } from '../shared/Characters/characters.service';
 import { MatTooltip } from '@angular/material/tooltip';
+import { ConvertTitleLengthPipe } from '../PIPES/convert-title-length.pipe';
 
 interface interface1 {
   value: string;
@@ -27,6 +28,7 @@ interface interface1 {
   selector: 'app-root',
   standalone: true,
   imports: [
+    ConvertTitleLengthPipe,
     RouterOutlet,
     HttpClientModule,
     MatButtonModule,

@@ -41,7 +41,7 @@
   <div class="container">
     @for (item of MainData; track item.mal_id){
 
-    <mat-card class="example-card" appearance="outlined" (click)="Searched_item_Clicked(item)" [matTooltip]="item.duration" matTooltipPosition="left" >
+    <mat-card class="example-card" appearance="outlined" (click)="Searched_item_Clicked(item)" [matTooltip]="item.title" matTooltipPosition="left" >
       <img
         mat-card-image
         [src]="item.images.jpg.large_image_url"
@@ -49,7 +49,7 @@
         class="poster"
       />  
       <mat-card-content>
-        <p style="margin-bottom: 0px">{{ item.title }}</p>
+        <p style="margin-bottom: 0px">{{ item.title  | convertTitleLength}}</p>
         <span class="episodes"
           ><mat-icon fontIcon="star" class="icon"></mat-icon
           >{{ item.score }}</span

@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -19,7 +18,7 @@ import { Data1Interface } from '../../../data1-interface';
   templateUrl: './railer4.component.html',
   styleUrl: './railer4.component.css',
 })
-export class Railer4Component implements AfterViewInit {
+export class Railer4Component {
   @Input() item!: Data1Interface[];
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
@@ -27,10 +26,7 @@ export class Railer4Component implements AfterViewInit {
   @Output() railerData1 = new EventEmitter<Data1Interface>();
   emitImage(image: Data1Interface) {
     this.railerData1.emit(image);
-
   }
-
-  ngAfterViewInit() {}
 
   prevfun() {
     if (this.prevButtonRef) {

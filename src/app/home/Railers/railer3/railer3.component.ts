@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -8,7 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Imgdata } from '../imgdata';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
@@ -16,13 +14,12 @@ import { Data1Interface } from '../../../data1-interface';
 @Component({
   selector: 'app-railer3',
   standalone: true,
-  imports: [MatIcon, CommonModule,RouterLink],
+  imports: [MatIcon, CommonModule, RouterLink],
   templateUrl: './railer3.component.html',
   styleUrl: './railer3.component.css',
 })
-export class Railer3Component implements AfterViewInit {
-  @Input()item!:Data1Interface[] ;
-
+export class Railer3Component {
+  @Input() item!: Data1Interface[];
 
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
@@ -31,8 +28,6 @@ export class Railer3Component implements AfterViewInit {
   emitImage(image: Data1Interface) {
     this.railerData1.emit(image);
   }
-
-  ngAfterViewInit() {}
 
   prevfun() {
     if (this.prevButtonRef) {
