@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CharactersService } from '../shared/Characters/characters.service';
 import { type CharaterInterface } from '../shared/Characters/charater-interface';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,8 +16,9 @@ import { MoviesService } from '../shared/search/search.service';
   templateUrl: './charaters.component.html',
   styleUrl: './charaters.component.css',
 })
-export class CharatersComponent implements OnInit {
+export class CharatersComponent implements OnInit , OnDestroy{
   protected character_Data?: CharaterInterface[];
+  private unsubscribe_item?:any;
   protected placeholderImage: string =
     'https://www.shutterstock.com/shutterstock/photos/2059817444/display_1500/stock-vector-no-image-available-photo-coming-soon-illustration-vector-2059817444.jpg';
   constructor(private charater_Service: CharactersService , private data1service: Data1Service , private movieService:MoviesService) {}
@@ -26,7 +27,7 @@ export class CharatersComponent implements OnInit {
   }
 
   protected getting_data(): void {
-    this.charater_Service.getData().subscribe({
+    this.unsubscribe_item=this.charater_Service.getData().subscribe({
       next: (value) => {
         this.character_Data = value.data;
       },
@@ -53,5 +54,9 @@ export class CharatersComponent implements OnInit {
     this.data1service.getId(null);
     this.movieService.set_selected_Item(null)
     this.charater_Service.get_selected(selected_Charater)
+    }
+
+    ngOnDestroy(): void {
+     this.unsubscribe_item.unsubscribe();
     }
 }
