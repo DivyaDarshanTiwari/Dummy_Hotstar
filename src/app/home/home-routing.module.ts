@@ -8,8 +8,8 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 's', component: NewComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'Search', loadChildren:()=> import("../search/search-route/search-route.module").then(m => m.SearchRouteModule)},
-  { path: 'characters', loadChildren:()=> import("../charaters/charaters-route/charaters-route.module").then(m=> m.CharatersRouteModule)},
+  { path: 'Search', loadComponent: ()=> import("../search/search.component").then(m=> m.SearchComponent)},
+  { path: 'characters', loadComponent:()=> import("../charaters/charaters.component").then(m=> m.CharatersComponent)},
 ];
 
 @NgModule({
