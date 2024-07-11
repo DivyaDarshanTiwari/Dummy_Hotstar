@@ -8,11 +8,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { Data1Service } from '../shared/data1.service';
 import { MoviesService } from '../shared/search/search.service';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-charaters',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule,RouterLink],
+  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule,RouterLink,LazyLoadImageModule],
   templateUrl: './charaters.component.html',
   styleUrl: './charaters.component.css',
 })

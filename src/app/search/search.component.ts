@@ -18,6 +18,8 @@ import { Data1Service } from '../shared/data1.service';
 import { CharactersService } from '../shared/Characters/characters.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ConvertTitleLengthPipe } from '../PIPES/convert-title-length.pipe';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 
 interface interface1 {
   value: string;
@@ -43,7 +45,8 @@ interface interface1 {
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    MatTooltip
+    MatTooltip,
+    LazyLoadImageModule
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],

@@ -17,7 +17,7 @@
       </mat-card-header>
       <img
         mat-card-image
-        [src]="item.imageUrl"
+        [lazyLoad]="item.imageUrl"
         [alt]="item.name"
         (error)="Image_Not_load($event)"
         class="image"
