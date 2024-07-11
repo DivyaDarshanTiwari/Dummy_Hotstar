@@ -1,0 +1,13 @@
+<form >
+    <label for="color">Enter the value front the given array to fin its postion</label>
+    <input type="text" name="color" id="color"  [(ngModel)]="element">
+</form>
+
+@for( i of array; track i){
+    <p>{{ i }} </p>
+}
+
+<div>
+    Position:
+    {{ array | position: element}}
+</div>
