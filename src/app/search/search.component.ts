@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { MoviesService } from '../shared/search/search.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -35,7 +34,6 @@ interface interface1 {
   imports: [
     ConvertTitleLengthPipe,
     RouterOutlet,
-    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     CommonModule,
@@ -103,8 +101,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   protected selected_U_A?: string;
   protected q?: string;
   protected page: number = 1;
-  protected limit: number = 12;
+  protected limit: number = 10;
   protected destroy?: any;
+  protected lenght?:number;
 
   ngOnInit(): void {
     // loded first time
@@ -124,6 +123,9 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => {
         //suscribing to the data
         this.data = data;
+        console.log(data);
+        this.lenght = Math.floor(this.data.pagination.items.total/this.limit);
+        console.log(this.lenght);
         this.MainData = this.data.data;
       });
   }
@@ -148,6 +150,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.api.set_selected_Item(Selected_item);
     this.route.navigateByUrl('/s');
   }
+
+  /**
+   * @description change the no of pages
+   */
+
 
   ngOnDestroy(): void {
     if (this.destroy) {
