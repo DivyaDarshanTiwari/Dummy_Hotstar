@@ -9,11 +9,12 @@ import { RouterLink } from '@angular/router';
 import { Data1Service } from '../shared/data1.service';
 import { MoviesService } from '../shared/search/search.service';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { LazyLoadImageDirective } from '../Directives/lazy-load-image.directive';
 
 @Component({
   selector: 'app-charaters',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule,RouterLink,LazyLoadImageModule],
+  imports: [MatButtonModule, MatCardModule, CommonModule, MatTooltipModule,RouterLink,LazyLoadImageModule,LazyLoadImageDirective],
   templateUrl: './charaters.component.html',
   styleUrl: './charaters.component.css',
 })
