@@ -17,8 +17,11 @@ import { SelectedhCardInterface } from '../shared/search/selectedh-card-interfac
 import { Data1Service } from '../shared/data1.service';
 import { CharactersService } from '../shared/Characters/characters.service';
 import { MatTooltip } from '@angular/material/tooltip';
-import { ConvertTitleLengthPipe } from '../PIPES/convert-title-length.pipe';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+
+import { ConvertTitleLengthPipe } from '../PIPES/Covert Title Lenght/convert-title-length.pipe';
+import { FinisedAirirngPipe } from '../PIPES/Finished Airing/finised-airirng.pipe';
+
 
 
 interface interface1 {
@@ -46,7 +49,8 @@ interface interface1 {
     ReactiveFormsModule,
     RouterLink,
     MatTooltip,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    FinisedAirirngPipe
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
