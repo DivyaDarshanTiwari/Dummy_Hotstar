@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     { icons: 'person', description: 'My Space', path: 'profile' },
     { icons: 'search', description: 'Search', path: 'Search' },
     { icons: 'home', description: 'Home', path: '' },
-    { icons: 'tv', description: 'TV', path: '' },
+    { icons: 'tv', description: 'TV', path: 'tv' },
     { icons: 'movie', description: 'Movies', path: '' },
     { icons: 'sports_cricket', description: 'Sports', path: '' },
     { icons: 'category', description: 'Category', path: '' },

@@ -30,6 +30,13 @@ export const routes: Routes = [
   },
   {
     path: 'array',
-    component: ArrayFindComponent
-  }
+    component: ArrayFindComponent,
+  },
+  {
+    path: 'tv',
+    loadComponent: () =>
+      import('./tv/tv.component').then(
+        (m) => m.TVComponent
+      ),
+  },
 ];
