@@ -2,11 +2,13 @@ import { Component, Input} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { type WatchListInterface } from '../../shared/WatchList/watch-list-interface';
+import { ConvertTitleLengthPipe } from '../../PIPES/Covert Title Lenght/convert-title-length.pipe';
+import { convertToParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-watch-list',
   standalone: true,
-  imports: [MatButtonModule,MatCardModule],
+  imports: [MatButtonModule,MatCardModule,ConvertTitleLengthPipe],
   templateUrl: './watch-list.component.html',
   styleUrl: './watch-list.component.css'
 })
