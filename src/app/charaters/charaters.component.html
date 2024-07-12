@@ -15,21 +15,19 @@
         >
         }
       </mat-card-header>
+      <!-- (error)="Image_Not_load($event)" -->
+
       <img
         mat-card-image
         [lazyLoad]="item.imageUrl"
         [alt]="item.name"
-        (error)="Image_Not_load($event)"
+        [defaultImage]="placeholderImage"
         class="image"
       />
     </mat-card>
     <mat-card-content>
       <p>
-        <a
-          [routerLink]="['/s']"
-          (click)="selectedCharater(item)"
-          >Learn More</a
-        >
+        <a [routerLink]="['/s']" (click)="selectedCharater(item)">Learn More</a>
       </p>
     </mat-card-content>
   </div>
