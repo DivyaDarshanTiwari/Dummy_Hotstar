@@ -48,12 +48,13 @@ interface interface1 {
     RouterLink,
     MatTooltip,
     LazyLoadImageModule,
-    FinisedAirirngPipe
+    FinisedAirirngPipe,
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+
   title = 'apitest';
   router: any;
 
@@ -104,6 +105,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   protected limit: number = 10;
   protected destroy?: any;
   protected lenght?:number;
+  protected placeholderImage: string =
+  'https://www.shutterstock.com/shutterstock/photos/2059817444/display_1500/stock-vector-no-image-available-photo-coming-soon-illustration-vector-2059817444.jpg';
 
   ngOnInit(): void {
     // loded first time
@@ -152,9 +155,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description change the no of pages
+   * @description the image toshow when an error occur
    */
 
+  ImgageLoadError(event: ErrorEvent) {
+    if(event){
+      (event.target as HTMLImageElement).src = this.placeholderImage;
+    }
+    }
 
   ngOnDestroy(): void {
     if (this.destroy) {

@@ -45,6 +45,8 @@
       <img
         mat-card-image
         [lazyLoad]="item.images.jpg.large_image_url"
+        [defaultImage]="placeholderImage"
+        (error)="ImgageLoadError($event)"
         alt="Photo of a Shiba Inu"
         class="poster"
       />  
