@@ -11,10 +11,11 @@ import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Data1Interface } from '../../../data1-interface';
 import { RouterModule } from '@angular/router';
+import { MatTooltip } from '@angular/material/tooltip';
 @Component({
   selector: 'app-railer',
   standalone: true,
-  imports: [MatIcon, CommonModule, RouterModule],
+  imports: [MatIcon, CommonModule, RouterModule,MatTooltip],
   templateUrl: './railer.component.html',
   styleUrls: ['./railer.component.css'],
 })

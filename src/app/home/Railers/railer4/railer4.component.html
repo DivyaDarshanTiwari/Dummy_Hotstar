@@ -3,7 +3,7 @@
   <div class="card-container">
     <div class="images" *ngFor="let i of item">
       <a routerLink='s'>
-        <img [src]="i.img" alt="{{ i.alt }}" (click)="emitImage(i)" />
+        <img [src]="i.img" alt="{{ i.alt }}" (click)="emitImage(i)" [matTooltip]="i.title"/>
       </a>
     </div>
   </div>
