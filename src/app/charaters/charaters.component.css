@@ -35,3 +35,26 @@
   transform: scale(1.25);
   cursor: pointer;
 }
+
+.form input:first-child{
+  border: 0px;
+  margin: 4px;
+  padding: 20px;
+}
+
+.form{
+  display: grid;
+  align-items: center;
+}
+
+.button{
+  background-color: rgb(47, 115, 193);
+  border: 0px;
+  margin: 4px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.button:active{
+  background-color: rgb(37, 81, 131);
+}

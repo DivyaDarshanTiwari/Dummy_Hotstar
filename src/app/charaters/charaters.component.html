@@ -1,3 +1,7 @@
+<form class="form">
+  <input type="text" placeholder="enter the name" name="character" [(ngModel)]="searched_name" (change)="search()">
+  <input type="button" class="button" value="Submit" (click)="search()">
+</form>
 <div class="container">
   <div *ngFor="let item of character_Data" class="card">
     <mat-card class="example-card" appearance="outlined">
