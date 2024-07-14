@@ -46,9 +46,8 @@ export class LoginFormsComponent implements OnInit {
         this.login_service.isLoggedIn = true;
         this.login_service.save_local();
         this.route.navigateByUrl('profile');
-      }
-      else{
-        this.wrong_user=true
+      } else {
+        this.wrong_user = true;
       }
     } else {
       this.wrong_pass = true;
