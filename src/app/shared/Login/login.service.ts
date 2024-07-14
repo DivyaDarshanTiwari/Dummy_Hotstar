@@ -14,6 +14,7 @@ export class LoginService {
     let local = localStorage.getItem('Previous_Logged')
     if(local){
       this.isLoggedIn = JSON.parse(local);
+      console.log(this.isLoggedIn);
     }
   }
 
