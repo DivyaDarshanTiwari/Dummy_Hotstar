@@ -11,7 +11,7 @@ export class LoginService {
   isLoggedIn = false;
 
   constructor(private http: HttpClient, private route: Router) {
-    let local = localStorage.getItem('Previous_Logged')
+    let local = sessionStorage.getItem('Previous_Logged')
     if(local){
       this.isLoggedIn = JSON.parse(local);
       console.log(this.isLoggedIn);
@@ -32,6 +32,6 @@ export class LoginService {
   }
 
   public save_local(){
-    localStorage.setItem('Previous_Logged', JSON.stringify(this.isLoggedIn));
+    sessionStorage.setItem('Previous_Logged', JSON.stringify(this.isLoggedIn));
   }
 }
