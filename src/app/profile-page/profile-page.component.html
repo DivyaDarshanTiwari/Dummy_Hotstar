@@ -13,17 +13,17 @@
     />
     <mat-card-content class="user_details">
       <form action="">
-        <label for="Phone_number">Phone No</label>
-        <input type="number" name="Phone_number" id="number" [(ngModel)]="phone"/>
+        <label for="number">Phone No</label>
+        <input type="number" name="Phone_number" id="number" [(ngModel)]="phone" autocomplete="on" />
         <br>
-        <label for="User_Name">User Name</label>
-        <input type="text" name="User_Name" id="name" [(ngModel)]="name"/>
+        <label for="name">User Name</label>
+        <input type="text" name="User_Name" id="name" [(ngModel)]="name" autocomplete="on"/>
         <br>
-        <label for="User_email">Email Address</label>
-        <input type="email" name="User_email" id="email" [(ngModel)]="email"/>
+        <label for="email">Email Address</label>
+        <input type="email" name="User_email" id="email" [(ngModel)]="email" autocomplete="on"/>
         <br>
         <label for="DOB">Date of Birth</label>
-        <input type="date" name="DOB" id="DOB"[(ngModel)]="DOB" />
+        <input type="date" name="DOB" id="DOB"[(ngModel)]="DOB" autocomplete="on"/>
       </form>
     </mat-card-content>
     <mat-card-actions id="button">
