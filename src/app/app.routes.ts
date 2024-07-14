@@ -3,6 +3,7 @@ import { HomePageComponent } from './home/home-page/home-page.component';
 import { ArrayFindComponent } from './array-find/array-find.component';
 import { loginGuard } from './Authrntication/Login/login.guard';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -36,14 +37,15 @@ export const routes: Routes = [
   },
   {
     path: 'tv',
-    loadComponent: () =>
-      import('./tv/tv.component').then(
-        (m) => m.TVComponent
-      ),
+    loadComponent: () => import('./tv/tv.component').then((m) => m.TVComponent),
   },
   {
-    path:'profile',
-    component:ProfilePageComponent,
-    canActivate: [loginGuard]
-  }
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
 ];
