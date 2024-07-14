@@ -15,6 +15,7 @@ export class LoginFormsComponent implements OnInit {
   private password!: string;
   ngOnInit(): void {
     this.getdata();
+    this.route.navigateByUrl('profile');
   }
   applyform = new FormGroup({
     user_name: new FormControl(''),
