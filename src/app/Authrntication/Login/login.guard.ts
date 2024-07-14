@@ -6,7 +6,8 @@ import { ActivatedRouteSnapshot,RouterStateSnapshot,Router } from '@angular/rout
 
 export const loginGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:RouterStateSnapshot) => {
   let isLogged = inject(LoginService)
+  console.log(isLogged.isLoggedIn);
   let router = inject(Router);
   const protected_url : string[] = ["/profile"]
-  return protected_url.includes(state.url) && isLogged.isLoggedIn ? true : router.navigateByUrl('');
+  return protected_url.includes(state.url) && isLogged.isLoggedIn ? true : router.navigateByUrl('login');
 };
