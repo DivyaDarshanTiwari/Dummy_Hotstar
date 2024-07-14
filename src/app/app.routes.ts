@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { ArrayFindComponent } from './array-find/array-find.component';
+import { loginGuard } from './Authrntication/Login/login.guard';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -10,10 +12,10 @@ export const routes: Routes = [
       import('./Content Page/new/new.component').then((m) => m.NewComponent),
   },
   {
-    path: 'profile',
+    path: 'login',
     loadComponent: () =>
-      import('./profile-page/profile-page.component').then(
-        (m) => m.ProfilePageComponent
+      import('./login-forms/login-forms.component').then(
+        (m) => m.LoginFormsComponent
       ),
   },
   {
@@ -39,4 +41,9 @@ export const routes: Routes = [
         (m) => m.TVComponent
       ),
   },
+  {
+    path:'profile',
+    component:ProfilePageComponent,
+    canActivate: [loginGuard]
+  }
 ];
