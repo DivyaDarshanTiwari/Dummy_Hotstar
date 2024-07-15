@@ -47,10 +47,10 @@ export class LoginFormsComponent implements OnInit {
         this.login_service.save_local(this.user_name,this.password);
         this.route.navigateByUrl('profile');
       } else {
-        this.wrong_user = true;
+        this.wrong_pass = true;
       }
     } else {
-      this.wrong_pass = true;
+      this.wrong_user = true;
     }
   }
 }

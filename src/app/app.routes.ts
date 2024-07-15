@@ -41,7 +41,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfilePageComponent,
+    loadComponent : ()=> import('./profile-page/profile-page.component').then((m)=> m.ProfilePageComponent),
     canActivate: [loginGuard],
   },
   {
