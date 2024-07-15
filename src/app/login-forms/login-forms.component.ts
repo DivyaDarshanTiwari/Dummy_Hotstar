@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../shared/Login/login.service';
 import { Router } from '@angular/router';
+import { flush } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login-forms',
@@ -37,12 +38,14 @@ export class LoginFormsComponent implements OnInit {
     this.login_service.getData();
     this.password = this.applyform.value.password ?? '';
     this.user_name = this.applyform.value.user_name ?? '';
-    let filter = this.data.filter(
+    let filter = this.data.find(
       (value: any) => value.user === this.user_name
     );
     if (filter) {
-      let find = filter.find((value: any) => value.password === this.password);
-      if (find) {
+      this.wrong_user = false
+      console.log(this.wrong_pass);
+      if (filter.password === this.password) {
+        this.wrong_user= false
         this.login_service.isLoggedIn = true;
         this.login_service.save_local(this.user_name,this.password);
         this.route.navigateByUrl('profile');
