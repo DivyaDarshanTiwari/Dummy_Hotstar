@@ -44,7 +44,7 @@ export class LoginFormsComponent implements OnInit {
       let find = filter.find((value: any) => value.password === this.password);
       if (find) {
         this.login_service.isLoggedIn = true;
-        this.login_service.save_local();
+        this.login_service.save_local(this.user_name,this.password);
         this.route.navigateByUrl('profile');
       } else {
         this.wrong_user = true;
