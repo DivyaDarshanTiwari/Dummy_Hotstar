@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { Data1Interface } from '../../data1-interface';
 import { SelectedhCardInterface } from '../../shared/search/selectedh-card-interface';
 import { CharaterInterface } from '../../shared/Characters/charater-interface';
-import { WatchListService } from '../../shared/WatchList/watch-list.service';
 
 @Component({
   selector: 'app-content-banner',
@@ -16,9 +15,6 @@ import { WatchListService } from '../../shared/WatchList/watch-list.service';
 })
 export class ContentBannerComponent implements OnInit {
 
-  constructor(private watchListService:WatchListService){
-  }
-
   // data comming from the new component
   @Input({required: true}) item?: Data1Interface | null;
   @Input({required: true}) selected_card_data?:SelectedhCardInterface | null;
@@ -28,22 +24,15 @@ export class ContentBannerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let contains = this.watchListService.getSecond_WatchList().find((value)=> value.item === this.item || value.item === this.selected_card_data);
-    if(contains){
-      this.add_to_watchList = true;
-    }
   }
+  // item = data1[1];
 
-  watchList(loaction:string, item:SelectedhCardInterface | Data1Interface) {
+  watchList() {
     if(this.add_to_watchList === true){
       this.add_to_watchList = false
-      console.log(this.add_to_watchList)
-      this.watchListService.watch_list(loaction,item,this.add_to_watchList)
     }
     else{
       this.add_to_watchList = true
-      console.log(this.add_to_watchList)
-      this.watchListService.watch_list(loaction,item,this.add_to_watchList)
     }
     }
 
