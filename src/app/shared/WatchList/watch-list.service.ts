@@ -88,19 +88,26 @@ export class WatchListService {
   }
 
   public set_watch_list(loaction: string, item: any, include: boolean) {
+    let x = 
+    {
+      loaction: loaction,
+      item: item,
+      user_id: this.selected_user_id,
+      selected: include,
+    };
     if (include) 
     {
-      let x = 
-      {
-        loaction: loaction,
-        item: item,
-        user_id: this.selected_user_id,
-        selected: include,
-      };
-      console.log(this.selected_user_watched_list.includes(x));
-      if (!this.selected_user_watched_list.includes(x)) 
+      console.log('x',x)
+      let t_f:boolean=false;
+      for(let i=0; i<this.selected_user_watched_list.length;i++){
+        if(this.selected_user_watched_list[i].item.mal_id == x.item.mal_id && this.selected_user_watched_list[i].user_id == x.user_id ){
+          t_f = true;
+        }
+      }
+      if (!t_f) 
       {
         this.selected_user_watched_list.push(x);
+        console.log(this.selected_user_watched_list);
         this.save();
       }
     }
@@ -110,14 +117,20 @@ export class WatchListService {
       if (loaction === 'api') 
       {
         let count=0;
-        let x:any[]=[]
+        let new_arr:any[]=[]
         for(let i=0;i<this.selected_user_watched_list.length; i++){
-          if(item.mal_id != this.selected_user_watched_list[i].item.mal_id){
-            x[count] = this.selected_user_watched_list[i];
-            count++;
+          if(this.selected_user_watched_list[i].user_id != this.selected_user_id && item.mal_id == this.selected_user_watched_list[i].item.mal_id){
+              new_arr[count] = this.selected_user_watched_list[i];
+              count++;
+          }
+          else{
+            if(item.mal_id != this.selected_user_watched_list[i].item.mal_id){
+              new_arr[count] = this.selected_user_watched_list[i];
+              count++;
+            }
           }
         }
-        this.selected_user_watched_list = x;
+        this.selected_user_watched_list = new_arr;
         console.log('api',this.selected_user_watched_list);
         this.save();
       } 
