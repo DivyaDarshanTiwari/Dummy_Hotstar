@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Data1Interface } from '../../data1-interface';
 import { SelectedhCardInterface } from '../../shared/search/selectedh-card-interface';
 import { CharaterInterface } from '../../shared/Characters/charater-interface';
+import { WatchListService } from '../../shared/WatchList/watch-list.service';
 
 @Component({
   selector: 'app-content-banner',
@@ -14,6 +15,8 @@ import { CharaterInterface } from '../../shared/Characters/charater-interface';
   styleUrls: ['./content-banner.component.css'],
 })
 export class ContentBannerComponent implements OnInit {
+
+  constructor(private watchListService:WatchListService){}
 
   // data comming from the new component
   @Input({required: true}) item?: Data1Interface | null;
@@ -27,11 +30,11 @@ export class ContentBannerComponent implements OnInit {
     console.log(this.item); // should work now
     console.log("this is the slectsd card",this.selected_card_data)
   }
-  // item = data1[1];
 
-  watchList(loaction:string) {
+  watchList(loaction:string, item:SelectedhCardInterface | Data1Interface) {
     if(this.add_to_watchList === true){
       this.add_to_watchList = false
+      this.watchListService.watch_list(loaction,item,this.add_to_watchList)
     }
     else{
       this.add_to_watchList = true
