@@ -36,14 +36,12 @@ export class CharatersComponent implements OnInit , OnDestroy{
         this.character_Data = value.data;
       },
       error: (error) => {
-        console.log('An error has occured');
         console.error(error);
       },
     });
   }
 
   search() {
-    console.log("hello");
     this.getting_data();
     }
 
