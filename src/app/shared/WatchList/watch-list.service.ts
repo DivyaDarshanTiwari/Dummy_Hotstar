@@ -7,7 +7,6 @@ import { Data1Interface } from '../../data1-interface';
   providedIn: 'root',
 })
 export class WatchListService {
-  protected selected_user_id?: number;
   watchList = [
     {
       user_id: 1,
@@ -45,18 +44,31 @@ export class WatchListService {
       img: 'https://i1.wp.com/media.globalnews.ca/videostatic/289/103/actualnarcos.jpg?w=1040&quality=70&strip=all',
       title: 'Narcos: Mexico',
     },
-
   ];
 
-  protected selected_watched_list: any[] = [];
+  protected selected_user_id!: number;
+
+  protected selected_user_watched_list: any[] = [];
   constructor() {
     const watch_Data = localStorage.getItem('Watch_Data');
     const second_watch_list = localStorage.getItem('Sec_watch_list');
+    const users = localStorage.getItem('Profile_Data');
     if (watch_Data) {
       this.watchList = JSON.parse(watch_Data);
     }
     if (second_watch_list) {
-      this.selected_watched_list = JSON.parse(second_watch_list);
+      this.selected_user_watched_list = JSON.parse(second_watch_list);
+    }
+    if (users) {
+      let activeUser = JSON.parse(users);
+      activeUser = activeUser.find((value: any) => value.Active == true);
+      if (activeUser) {
+        console.log('Active User:', activeUser);
+        this.selected_user_id = activeUser.userId;
+        console.log(this.selected_user_id);
+      } else {
+        console.log('No active user found');
+      }
     }
   }
 
@@ -65,43 +77,66 @@ export class WatchListService {
   }
 
   public getSecond_WatchList() {
-    return this.selected_watched_list;
+    return this.selected_user_watched_list;
   }
 
-  public set_Selected_id(user_id: number) {
-    this.selected_user_id = user_id;
+  public set_Selected_id(id: number) {
+    this.selected_user_id = id;
   }
-  public watch_list(loaction: string, item: any, include_remove: boolean) {
-    if (include_remove) {
-      let x = {
+  public get_Selected_id():number{
+    return this.selected_user_id ;
+  }
+
+  public set_watch_list(loaction: string, item: any, include: boolean) {
+    if (include) 
+    {
+      let x = 
+      {
         loaction: loaction,
         item: item,
         user_id: this.selected_user_id,
-        selected: include_remove
+        selected: include,
       };
-      if(!this.selected_watched_list.includes(x)){
-        this.selected_watched_list.push(x);
+      console.log(this.selected_user_watched_list.includes(x));
+      if (!this.selected_user_watched_list.includes(x)) 
+      {
+        this.selected_user_watched_list.push(x);
         this.save();
       }
-    } else {
-      if (loaction === 'api') {
-        this.selected_watched_list = this.selected_watched_list.filter(
-          (value) => value.id != item.mal_id
-        );
-        console.log(this.selected_watched_list);
+    }
+    else 
+    {
+      console.log('delete');
+      if (loaction === 'api') 
+      {
+        let count=0;
+        let x:any[]=[]
+        for(let i=0;i<this.selected_user_watched_list.length; i++){
+          if(item.mal_id != this.selected_user_watched_list[i].item.mal_id){
+            x[count] = this.selected_user_watched_list[i];
+            count++;
+          }
+        }
+        this.selected_user_watched_list = x;
+        console.log('api',this.selected_user_watched_list);
         this.save();
-      } else {
-        this.selected_watched_list = this.selected_watched_list.filter(
-          (value) => value.id != item.id
-        );
-        console.log(this.selected_watched_list);
+      } 
+      else
+      {
+        this.selected_user_watched_list =
+          this.selected_user_watched_list.filter(
+            (value) => value.id != item.id
+          );
         this.save();
       }
     }
   }
 
-  private save(){
-    localStorage.setItem('Watch_Data',JSON.stringify(this.watchList))
-    localStorage.setItem('Sec_watch_list', JSON.stringify(this.selected_watched_list))
+  private save() {
+    localStorage.setItem('Watch_Data', JSON.stringify(this.watchList));
+    localStorage.setItem(
+      'Sec_watch_list',
+      JSON.stringify(this.selected_user_watched_list)
+    );
   }
 }
