@@ -29,7 +29,7 @@ export class ContentBannerComponent implements OnInit {
   }
   // item = data1[1];
 
-  watchList() {
+  watchList(loaction:string) {
     if(this.add_to_watchList === true){
       this.add_to_watchList = false
     }
