@@ -1,5 +1,5 @@
 export interface SelectedhCardInterface {
-      mal_id: 0;
+      mal_id: number;
       url: 'string';
       images: {
         jpg: {
@@ -38,7 +38,7 @@ export interface SelectedhCardInterface {
       title_synonyms: ['string'];
       type: 'TV';
       source: 'string';
-      episodes: 0;
+      episodes: number;
       status: 'Finished Airing';
       airing: true;
       aired: {
@@ -46,30 +46,30 @@ export interface SelectedhCardInterface {
         to: 'string';
         prop: {
           from: {
-            day: 0;
-            month: 0;
-            year: 0;
+            day: number;
+            month: number;
+            year: number;
           };
           to: {
-            day: 0;
-            month: 0;
-            year: 0;
+            day: number;
+            month: number;
+            year: number;
           };
           string: 'string';
         };
       };
       duration: 'string';
       rating: 'G - All Ages';
-      score: 0;
-      scored_by: 0;
-      rank: 0;
-      popularity: 0;
-      members: 0;
-      favorites: 0;
+      score: number;
+      scored_by: number;
+      rank: number;
+      popularity: number;
+      members: number;
+      favorites: number;
       synopsis: 'string';
       background: 'string';
       season: 'summer';
-      year: 0;
+      year: number;
       broadcast: {
         day: 'string';
         time: 'string';
@@ -78,7 +78,7 @@ export interface SelectedhCardInterface {
       };
       producers: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -86,7 +86,7 @@ export interface SelectedhCardInterface {
       ];
       licensors: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -94,7 +94,7 @@ export interface SelectedhCardInterface {
       ];
       studios: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -102,7 +102,7 @@ export interface SelectedhCardInterface {
       ];
       genres: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -110,7 +110,7 @@ export interface SelectedhCardInterface {
       ];
       explicit_genres: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -118,7 +118,7 @@ export interface SelectedhCardInterface {
       ];
       themes: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
@@ -126,7 +126,7 @@ export interface SelectedhCardInterface {
       ];
       demographics: [
         {
-          mal_id: 0;
+          mal_id: number;
           type: 'string';
           name: 'string';
           url: 'string';
