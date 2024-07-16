@@ -3,7 +3,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { type WatchListInterface } from '../../shared/WatchList/watch-list-interface';
 import { ConvertTitleLengthPipe } from '../../PIPES/Covert Title Lenght/convert-title-length.pipe';
-import { convertToParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-watch-list',
@@ -17,6 +17,6 @@ export class WatchListComponent {
   @Input() id!:number;
 
   get watch_acc_userID(){
-    return this.watchList.filter((data)=> data.id == this.id)
+    return this.watchList.filter((data)=> data.user_id == this.id)
   }
 }
