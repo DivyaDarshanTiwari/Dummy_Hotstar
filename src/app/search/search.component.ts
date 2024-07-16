@@ -126,9 +126,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => {
         //suscribing to the data
         this.data = data;
-        console.log(data);
         this.lenght = Math.floor(this.data.pagination.items.total/this.limit);
-        console.log(this.lenght);
         this.MainData = this.data.data;
       });
   }
@@ -137,7 +135,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     //getting the paginator details
     this.page = $event.pageIndex + 1;
     this.limit = $event.pageSize;
-    console.log('page', $event);
     this.getData();
   }
 
@@ -147,7 +144,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   Searched_item_Clicked(Selected_item: SelectedhCardInterface) {
-    console.log('1', Selected_item);
     this.data1Service.getId(null);
     this.CharaterService.get_selected(null);
     this.api.set_selected_Item(Selected_item);

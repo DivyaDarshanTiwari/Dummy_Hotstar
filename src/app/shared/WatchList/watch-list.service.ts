@@ -7,7 +7,7 @@ import { Data1Interface } from '../../data1-interface';
   providedIn: 'root',
 })
 export class WatchListService {
-  protected selected_user_id?:number;
+  protected selected_user_id?: number;
   watchList = [
     {
       user_id: 1,
@@ -140,8 +140,12 @@ export class WatchListService {
   protected selected_watched_list: any[] = [];
   constructor() {
     const watch_Data = localStorage.getItem('Watch_Data');
+    const second_watch_list = localStorage.getItem('Sec_watch_list');
     if (watch_Data) {
       this.watchList = JSON.parse(watch_Data);
+    }
+    if (second_watch_list) {
+      this.selected_watched_list = JSON.parse(second_watch_list);
     }
   }
 
@@ -149,11 +153,11 @@ export class WatchListService {
     return this.watchList;
   }
 
-  getSecond_WatchList(){
+  getSecond_WatchList() {
     return this.selected_watched_list;
   }
 
-  set_Selected_id(user_id:number){
+  set_Selected_id(user_id: number) {
     this.selected_user_id = user_id;
   }
   watch_list(loaction: string, item: any, include_remove: boolean) {
@@ -161,19 +165,29 @@ export class WatchListService {
       let x = {
         loaction: loaction,
         item: item,
-        user_id: this.selected_user_id
+        user_id: this.selected_user_id,
+        selected: include_remove
       };
-      this.selected_watched_list.push(x);
+      if(!this.selected_watched_list.includes(x)){
+        this.selected_watched_list.push(x);
+      }
     } else {
       if (loaction === 'api') {
         this.selected_watched_list = this.selected_watched_list.filter(
           (value) => value.id != item.mal_id
         );
+        this.save();
       } else {
         this.selected_watched_list = this.selected_watched_list.filter(
           (value) => value.id != item.id
         );
+        this.save();
       }
     }
+  }
+
+  private save(){
+    localStorage.setItem('Watch_Data',JSON.stringify(this.watchList))
+    localStorage.setItem('Sec_watch_list', JSON.stringify(this.selected_watched_list))
   }
 }

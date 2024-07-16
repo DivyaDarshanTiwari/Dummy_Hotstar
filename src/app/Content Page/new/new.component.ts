@@ -27,13 +27,11 @@ export class NewComponent implements OnInit {
   selected_character?: CharaterInterface | null;
   ngOnInit(): void {
     this.data1 = this.data1Service.get_item(); //getting  that data from the selected Item on the rails with help of function in service
-    console.log('3 inside the ngOninit of the new componot');
     this._Seleted_card();
     this._selected_character_fun();
   }
   _Seleted_card() {
     this.selected_card_data = this._movieService.get_selected_item_data();
-    console.log(' 5 value assigned in new component', this.selected_card_data);
   }
 
   _selected_character_fun(){

@@ -25,7 +25,6 @@ export class LoginService {
     let details = localStorage.getItem('Details');
     if(local){
       this.isLoggedIn = JSON.parse(local);
-      console.log(this.isLoggedIn);
     }
     if(details){
       this.user_detail = JSON.parse(details);

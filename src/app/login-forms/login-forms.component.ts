@@ -30,7 +30,6 @@ export class LoginFormsComponent implements OnInit {
   getdata() {
     this.login_service.getData()?.subscribe((next) => {
       this.data = next;
-      console.log(this.data);
     });
   }
 
@@ -43,7 +42,6 @@ export class LoginFormsComponent implements OnInit {
     );
     if (filter) {
       this.wrong_user = false
-      console.log(this.wrong_pass);
       if (filter.password === this.password) {
         this.wrong_user= false
         this.login_service.isLoggedIn = true;

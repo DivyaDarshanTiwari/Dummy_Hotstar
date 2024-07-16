@@ -16,7 +16,12 @@ import { WatchListService } from '../../shared/WatchList/watch-list.service';
 })
 export class ContentBannerComponent implements OnInit {
 
-  constructor(private watchListService:WatchListService){}
+  constructor(private watchListService:WatchListService){
+    let contains = watchListService.getSecond_WatchList().find((value)=> value.item === this.item || value.item === this.selected_card_data);
+    if(contains){
+      this.add_to_watchList = true;
+    }
+  }
 
   // data comming from the new component
   @Input({required: true}) item?: Data1Interface | null;
@@ -27,8 +32,6 @@ export class ContentBannerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.item); // should work now
-    console.log("this is the slectsd card",this.selected_card_data)
   }
 
   watchList(loaction:string, item:SelectedhCardInterface | Data1Interface) {

@@ -17,8 +17,6 @@ export class HomePageComponent {
   }
   data1:Data1Interface[] = this.data.getData1();
   catchData(item: Data1Interface) {
-    console.log(item);
-    console.log('he');
     this.data.getId(item)
   }
 }
