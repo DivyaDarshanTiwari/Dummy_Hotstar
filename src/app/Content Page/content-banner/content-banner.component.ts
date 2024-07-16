@@ -37,10 +37,13 @@ export class ContentBannerComponent implements OnInit {
   watchList(loaction:string, item:SelectedhCardInterface | Data1Interface) {
     if(this.add_to_watchList === true){
       this.add_to_watchList = false
+      console.log(this.add_to_watchList)
       this.watchListService.watch_list(loaction,item,this.add_to_watchList)
     }
     else{
       this.add_to_watchList = true
+      console.log(this.add_to_watchList)
+      this.watchListService.watch_list(loaction,item,this.add_to_watchList)
     }
     }
 
