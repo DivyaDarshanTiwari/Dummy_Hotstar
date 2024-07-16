@@ -149,18 +149,18 @@ export class WatchListService {
     }
   }
 
-  getWatchList() {
+  public getWatchList() {
     return this.watchList;
   }
 
-  getSecond_WatchList() {
+  public getSecond_WatchList() {
     return this.selected_watched_list;
   }
 
-  set_Selected_id(user_id: number) {
+  public set_Selected_id(user_id: number) {
     this.selected_user_id = user_id;
   }
-  watch_list(loaction: string, item: any, include_remove: boolean) {
+  public watch_list(loaction: string, item: any, include_remove: boolean) {
     if (include_remove) {
       let x = {
         loaction: loaction,
@@ -170,17 +170,20 @@ export class WatchListService {
       };
       if(!this.selected_watched_list.includes(x)){
         this.selected_watched_list.push(x);
+        console.log(this.selected_watched_list);
       }
     } else {
       if (loaction === 'api') {
         this.selected_watched_list = this.selected_watched_list.filter(
           (value) => value.id != item.mal_id
         );
+        console.log(this.selected_watched_list);
         this.save();
       } else {
         this.selected_watched_list = this.selected_watched_list.filter(
           (value) => value.id != item.id
         );
+        console.log(this.selected_watched_list);
         this.save();
       }
     }
