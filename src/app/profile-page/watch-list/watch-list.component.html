@@ -21,23 +21,46 @@
   </div>
 }
 @if(watchList_accord){
-  <div>
-    <div id="mat_card">
-      @for (item of second_watchList.item; track item) {
-      <mat-card class="example-card" appearance="outlined">
-        <mat-card-header>
-          <mat-card-title>Season{{ item.seasons }}</mat-card-title>
-          <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="item.img" alt="Photo of a Shiba Inu" class="img"/>
-        <mat-card-content>
-          <p>{{item.title | convertTitleLength}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Watch</button>
-        </mat-card-actions>
-      </mat-card>
-      }
+  @if(watchList_accord.location == 'api'){
+    <div>
+      <div id="mat_card">
+        @for (item of second_watchList.item; track item) {
+        <mat-card class="example-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Season{{ item.episode }}</mat-card-title>
+            <mat-card-subtitle>{{ item.duration }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="item.images.jpg.image_url" alt="Photo of a Shiba Inu" class="img"/>
+          <mat-card-content>
+            <p>{{item.title | convertTitleLength}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Watch</button>
+          </mat-card-actions>
+        </mat-card>
+        }
+      </div>
     </div>
-  </div>
+  }
+  @else {
+    <div>
+      <div id="mat_card">
+        @for (item of second_watchList.item; track item) {
+        <mat-card class="example-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Season{{ item.seasons }}</mat-card-title>
+            <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="item.img" alt="Photo of a Shiba Inu" class="img"/>
+          <mat-card-content>
+            <p>{{item.title | convertTitleLength}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Watch</button>
+          </mat-card-actions>
+        </mat-card>
+        }
+      </div>
+    </div>
+  }
 }
