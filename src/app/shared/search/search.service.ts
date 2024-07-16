@@ -11,12 +11,20 @@ export class MoviesService {
   private visited_url_data: any[] = []; // data is storewd here with the the url
   private selected_item?: SelectedhCardInterface | null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const selected = sessionStorage.getItem('content-banner')
+    if(selected){
+      this.selected_item = JSON.parse(selected);
+    }
+  }
  
   public set_selected_Item(item: SelectedhCardInterface | null) {
     //getting the details of the item / card when clicked
     this.selected_item = item;
-    // this.save_On_session();
+    this.save_On_session();
+  }
+  save_On_session() {
+   sessionStorage.setItem('content-banner',JSON.stringify(this.selected_item));
   }
 
   public get_selected_item_data() {
