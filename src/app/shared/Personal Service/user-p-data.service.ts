@@ -100,27 +100,27 @@ export class UserPDataService {
     this.saveData();
   }
 
-  public putProfileData(data: UserPData, id: number) {
-    // this willl be used for the form updation
-    let particularUserData = this.userData.find((data) => data.userId == id);
-    if (particularUserData) {
-      particularUserData.DOB = data.DOB;
-      particularUserData.email = data.email;
-      particularUserData.name = data.name;
-      particularUserData.phone = data.phone;
-      particularUserData.userId = data.userId;
-      particularUserData.watchListId = data.watchListId;
-    } else {
-      this.userData.push(data);
-    }
-    this.saveData();
-  }
+  // public putProfileData(data: UserPData, id: number) {
+  //   // this willl be used for the form updation
+  //   let particularUserData = this.userData.find((data) => data.userId == id);
+  //   if (particularUserData) {
+  //     particularUserData.DOB = data.DOB;
+  //     particularUserData.email = data.email;
+  //     particularUserData.name = data.name;
+  //     particularUserData.phone = data.phone;
+  //     particularUserData.userId = data.userId;
+  //     particularUserData.watchListId = data.watchListId;
+  //   } else {
+  //     this.userData.push(data);
+  //   }
+  //   this.saveData();
+  // }
 
-  putData(data: UserPData) {
-    // this is to puch new user to the profile
-    this.userData.push(data);
-    this.saveData;
-  }
+  // putData(data: UserPData) {
+  //   // this is to puch new user to the profile
+  //   this.userData.push(data);
+  //   this.saveData;
+  // }
   private saveData() {
     // it is used to save data in th browser still have not used
     localStorage.setItem('Profile_Data', JSON.stringify(this.userData));
