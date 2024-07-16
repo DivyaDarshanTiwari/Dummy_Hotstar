@@ -9,5 +9,14 @@ export const loginGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:Ro
   console.log(isLogged.isLoggedIn);
   let router = inject(Router);
   const protected_url : string[] = ["/profile"]
-  return protected_url.includes(state.url) && isLogged.isLoggedIn ? true : router.navigateByUrl('login');
+  if(!(protected_url.includes(state.url))){
+    return true;
+  }
+  else if(protected_url.includes(state.url) && isLogged.isLoggedIn){
+    return true
+  }
+  else{
+    router.navigateByUrl('login');
+    return false
+  }
 };
