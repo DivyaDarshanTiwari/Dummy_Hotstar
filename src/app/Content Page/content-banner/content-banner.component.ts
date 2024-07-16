@@ -14,10 +14,13 @@ import { CharaterInterface } from '../../shared/Characters/charater-interface';
   styleUrls: ['./content-banner.component.css'],
 })
 export class ContentBannerComponent implements OnInit {
+
   // data comming from the new component
-  @Input() item?: Data1Interface | null;
-  @Input() selected_card_data?:SelectedhCardInterface | null;
-  @Input() selected_character?: CharaterInterface | null;
+  @Input({required: true}) item?: Data1Interface | null;
+  @Input({required: true}) selected_card_data?:SelectedhCardInterface | null;
+  @Input({required: true}) selected_character?: CharaterInterface | null;
+
+  protected add_to_watchList: boolean = false;
 
 
   ngOnInit(): void {
@@ -25,5 +28,14 @@ export class ContentBannerComponent implements OnInit {
     console.log("this is the slectsd card",this.selected_card_data)
   }
   // item = data1[1];
+
+  watchList() {
+    if(this.add_to_watchList === true){
+      this.add_to_watchList = false
+    }
+    else{
+      this.add_to_watchList = true
+    }
+    }
 
 }
