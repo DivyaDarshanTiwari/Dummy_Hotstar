@@ -50,6 +50,8 @@ export class ProfilePageComponent implements OnInit {
 
   protected data1: WatchListInterface[] = this.watchData.getWatchList();
 
+  protected second_watchList: any[] = this.watchData.getSecond_WatchList()
+
   protected returned_Data(data: UserPData) {
     this.phone = data.phone;
     this.name = data.name;

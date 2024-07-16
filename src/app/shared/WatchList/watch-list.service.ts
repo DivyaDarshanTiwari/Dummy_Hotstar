@@ -149,6 +149,10 @@ export class WatchListService {
     return this.watchList;
   }
 
+  getSecond_WatchList(){
+    return this.selected_watched_list;
+  }
+
   set_Selected_id(user_id:number){
     this.selected_user_id = user_id;
   }
