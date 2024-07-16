@@ -15,8 +15,12 @@ import { ConvertTitleLengthPipe } from '../../PIPES/Covert Title Lenght/convert-
 export class WatchListComponent {
   @Input({required:true}) watchList!:WatchListInterface[]
   @Input() id!:number;
+  @Input() second_watchList: any;
 
   get watch_acc_userID(){
     return this.watchList.filter((data)=> data.user_id == this.id)
+  }
+  get watchList_accord(){
+    return this.second_watchList.filter((data:any)=> data.user_id == this.id)
   }
 }
