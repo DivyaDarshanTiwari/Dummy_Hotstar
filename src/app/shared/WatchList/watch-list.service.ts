@@ -170,7 +170,7 @@ export class WatchListService {
       };
       if(!this.selected_watched_list.includes(x)){
         this.selected_watched_list.push(x);
-        console.log(this.selected_watched_list);
+        this.save();
       }
     } else {
       if (loaction === 'api') {
