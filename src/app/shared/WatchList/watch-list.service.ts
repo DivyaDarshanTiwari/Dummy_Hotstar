@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 type second_watch_list = {
-  loaction: string,
-  item_id: number,
-  user_id: number,
-  selected: boolean
-}
+  loaction: string;
+  item_id: number;
+  user_id: number;
+  selected: boolean;
+};
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,8 @@ export class WatchListService {
     const users = localStorage.getItem('Profile_Data');
     if (second_watch_list) {
       this.selected_user_watched_list = JSON.parse(second_watch_list);
-    }
-    else{
-      console.log("watch list not present")
+    } else {
+      console.log('watch list not present');
     }
     if (users) {
       let activeUser = JSON.parse(users);
@@ -54,78 +53,39 @@ export class WatchListService {
     };
     if (include) {
       let t_f: boolean = false;
-      if (loaction == 'api') {
-        console.log('api push');
-        for (let i = 0; i < this.selected_user_watched_list.length; i++) {
-          if (
-            this.selected_user_watched_list[i].item_id == x.item_id &&
-            this.selected_user_watched_list[i].user_id == x.user_id
-          ) {
-            t_f = true;
-          }
-        }
-      } else {
-        console.log('local push');
-        for (let i = 0; i < this.selected_user_watched_list.length; i++) {
-          if (
-            this.selected_user_watched_list[i].item_id == x.item_id &&
-            this.selected_user_watched_list[i].user_id == x.user_id
-          ) {
-            t_f = true;
-          }
-        }
-      }
+        // for (let i = 0; i < this.selected_user_watched_list.length; i++) {
+        //   /**
+        //    * @description to check repeated element
+        //    */
+        //   if (
+        //     this.selected_user_watched_list[i].item_id == x.item_id &&
+        //     this.selected_user_watched_list[i].user_id == x.user_id &&
+        //     this.selected_user_watched_list[i].loaction == loaction
+        //   ) {
+        //     t_f = true;
+        //   }
+        // }
+        t_f = this.selected_user_watched_list.some((value)=>{
+            return value.item_id == x.item_id && value.user_id == x.user_id && value.loaction == loaction
+        })
+        console.log(t_f);
       if (!t_f) {
         this.selected_user_watched_list.push(x);
         console.log(this.selected_user_watched_list);
         this.save();
       }
     } else {
-      if (loaction === 'api') {
+      /**
+       * @description if the unwishlisted element is not same int value added to the next
+       */
         console.log('api delete');
         let count = 0;
         let new_arr: any[] = [];
-        for (let i = 0; i < this.selected_user_watched_list.length; i++) {
-          if (
-            this.selected_user_watched_list[i].user_id !=
-              this.selected_user_id &&
-            item_id == this.selected_user_watched_list[i].item_id
-          ) {
-            new_arr[count] = this.selected_user_watched_list[i];
-            count++;
-          } else {
-            if (item_id != this.selected_user_watched_list[i].item_id) {
-              new_arr[count] = this.selected_user_watched_list[i];
-              count++;
-            }
-          }
-        }
-        this.selected_user_watched_list = new_arr;
-        console.log('api', this.selected_user_watched_list);
-        this.save();
-      } else {
-        console.log('local delete');
-        let count = 0;
-        let new_arr: any[] = [];
-        for (let i = 0; i < this.selected_user_watched_list.length; i++) {
-          if (
-            this.selected_user_watched_list[i].user_id !=
-              this.selected_user_id &&
-            item_id == this.selected_user_watched_list[i].item_id
-          ) {
-            new_arr[count] = this.selected_user_watched_list[i];
-            count++;
-          } else {
-            if (item_id != this.selected_user_watched_list[i].item_id) {
-              new_arr[count] = this.selected_user_watched_list[i];
-              count++;
-            }
-          }
-        }
-        this.selected_user_watched_list = new_arr;
-        console.log('api', this.selected_user_watched_list);
-        this.save();
-      }
+        this.selected_user_watched_list = this.selected_user_watched_list.filter((value)=>{
+          return value.loaction !== loaction || value.item_id !== x.item_id || value.user_id !== x.user_id
+        })
+      console.log('api', this.selected_user_watched_list);
+      this.save();
     }
   }
 
