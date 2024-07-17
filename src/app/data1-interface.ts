@@ -1,4 +1,5 @@
 export interface Data1Interface {
+  loaction: string;
   id: number;
   title: string;
   img: string;
