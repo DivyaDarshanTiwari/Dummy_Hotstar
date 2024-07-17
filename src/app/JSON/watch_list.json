@@ -159,6 +159,7 @@
   ],
   "local_watch_data":[
     {
+      "loaction": "local",
       "id": 1,
       "title": "DORAEMON",
       "img": "https://chinhan100.files.wordpress.com/2019/03/doremon.jpg?w=640",
@@ -174,6 +175,7 @@
       "seasons_name": ["Chapter 1", "Chapter 2"]
     },
     {
+      "loaction": "local",
       "id": 2,
       "title": "Leagens Of Hanuman",
       "img": "https://assets.telegraphindia.com/telegraph/2024/Apr/1713939027_the-legends-of-hanuman.jpg",
@@ -189,6 +191,7 @@
       "seasons_name": ["Season 1", "Season 2", "Season 3", "Season 4"]
     },
     {
+      "loaction": "local",
       "id": 3,
       "title": "Vikram and Vital",
       "img": "https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/491/1440491-i-d6a5576361b0",
@@ -204,6 +207,7 @@
       "seasons_name": ["Season 1", "Season 2"]
     },
     {
+      "loaction": "local",
       "id": 4,
       "title": "The Lord of the Rings: The Fellowship of the Ring Movie Poster",
       "img": "https://www.slashfilm.com/img/gallery/cool-stuff-new-lord-of-the-rings-poster-brings-the-weary-journey-of-fellowship-of-the-ring-to-life/l-intro-1652367808.jpg",
@@ -219,6 +223,7 @@
       "seasons_name": ["Season 1", "Season 2", "Season 3", "Season 4"]
     },
     {
+      "loaction": "local",
       "id": 5,
       "title": "The Matrix Movie Poster",
       "img": "https://m.media-amazon.com/images/I/51kWJzs0AzS._AC_UF1000,1000_QL80_.jpg",
@@ -234,6 +239,7 @@
       "seasons_name": ["Season 1", "Season 2", "Season 3", "Season 4"]
     },
     {
+      "loaction": "local",
       "id": 6,
       "title": "Pulp Fiction Movie Poster",
       "img": "https://c4.wallpaperflare.com/wallpaper/207/333/124/movie-pulp-fiction-wallpaper-preview.jpg",
@@ -249,6 +255,7 @@
       "seasons_name": ["Season 1", "Season 2", "Season 3", "Season 4"]
     },
     {
+      "loaction": "local",
       "id": 7,
       "title": "Parasite Movie Poster",
       "img": "https://assets.mubicdn.net/images/notebook/post_images/29840/images-w1400.jpg?1579571206",
