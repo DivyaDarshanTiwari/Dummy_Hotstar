@@ -97,11 +97,21 @@ export class WatchListService {
     };
     if (include) 
     {
-      console.log('x',x)
       let t_f:boolean=false;
-      for(let i=0; i<this.selected_user_watched_list.length;i++){
-        if(this.selected_user_watched_list[i].item.mal_id == x.item.mal_id && this.selected_user_watched_list[i].user_id == x.user_id ){
-          t_f = true;
+      if(loaction == 'api'){
+        console.log('api push')
+        for(let i=0; i<this.selected_user_watched_list.length;i++){
+          if(this.selected_user_watched_list[i].item.mal_id == x.item.mal_id && this.selected_user_watched_list[i].user_id == x.user_id ){
+            t_f = true;
+          }
+        }
+      }
+      else{
+        console.log('local push')
+        for(let i=0; i<this.selected_user_watched_list.length;i++){
+          if(this.selected_user_watched_list[i].item.id == x.item.id && this.selected_user_watched_list[i].user_id == x.user_id ){
+            t_f = true;
+          }
         }
       }
       if (!t_f) 
@@ -113,9 +123,9 @@ export class WatchListService {
     }
     else 
     {
-      console.log('delete');
       if (loaction === 'api') 
       {
+        console.log('api delete');
         let count=0;
         let new_arr:any[]=[]
         for(let i=0;i<this.selected_user_watched_list.length; i++){
@@ -136,10 +146,23 @@ export class WatchListService {
       } 
       else
       {
-        this.selected_user_watched_list =
-          this.selected_user_watched_list.filter(
-            (value) => value.id != item.id
-          );
+        console.log('local delete')
+        let count=0;
+        let new_arr:any[]=[]
+        for(let i=0;i<this.selected_user_watched_list.length; i++){
+          if(this.selected_user_watched_list[i].user_id != this.selected_user_id && item.id == this.selected_user_watched_list[i].item.id){
+              new_arr[count] = this.selected_user_watched_list[i];
+              count++;
+          }
+          else{
+            if(item.id != this.selected_user_watched_list[i].item.id){
+              new_arr[count] = this.selected_user_watched_list[i];
+              count++;
+            }
+          }
+        }
+        this.selected_user_watched_list = new_arr;
+        console.log('api',this.selected_user_watched_list);
         this.save();
       }
     }
