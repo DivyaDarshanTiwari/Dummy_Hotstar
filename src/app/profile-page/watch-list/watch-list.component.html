@@ -43,24 +43,24 @@
       <button mat-button>Watch</button>
     </mat-card-actions>
   </mat-card>
-  } @else { @for (item of second_watchList.item; track item) {
+  } @else {
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
-      <mat-card-title>Season{{ item.seasons }}</mat-card-title>
-      <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
+      <mat-card-title>Season{{ item.item.seasons }}</mat-card-title>
+      <mat-card-subtitle>{{ item.item.watch_hours }}</mat-card-subtitle>
     </mat-card-header>
     <img
       mat-card-image
-      [src]="item.img"
+      [src]="item.item.img"
       alt="Photo of a Shiba Inu"
       class="img"
     />
     <mat-card-content>
-      <p>{{ item.title | convertTitleLength }}</p>
+      <p>{{ item.item.title | convertTitleLength }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>Watch</button>
     </mat-card-actions>
   </mat-card>
-  } } } }
+  } } }
 </div>
