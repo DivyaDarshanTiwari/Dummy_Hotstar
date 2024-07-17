@@ -40,6 +40,7 @@
 
   "API_Watch_Data":[
     {
+        "loaction": "api",
         "mal_id": 1,
         "images": {
             "jpg": {
@@ -52,6 +53,7 @@
         "duration": "24 min per ep"
     },
     {
+        "loaction": "api",
         "mal_id": 5,
         "images": {
             "jpg": {
@@ -64,6 +66,7 @@
         "duration": "1 hr 55 min"
     },
     {
+        "loaction": "api",
         "mal_id": 6,
         "images": {
             "jpg": {
@@ -76,6 +79,7 @@
         "duration": "24 min per ep"
     },
     {
+        "loaction": "api",
         "mal_id": 7,
         "images": {
             "jpg": {
@@ -88,6 +92,20 @@
         "duration": "25 min per ep"
     },
     {
+        "loaction": "api",
+        "mal_id": 8,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/7/21569.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/7/21569t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/7/21569l.jpg"
+            }
+        },
+        "title": "Bouken Ou Beet",
+        "duration": "23 min per ep"
+    },
+    {
+        "loaction": "api",
         "mal_id": 15,
         "images": {
             "jpg": {
@@ -100,6 +118,7 @@
         "duration": "23 min per ep"
     },
     {
+        "loaction": "api",
         "mal_id": 16,
         "images": {
             "jpg": {
@@ -112,6 +131,7 @@
         "duration": "23 min per ep"
     },
     {
+        "loaction": "api",
         "mal_id": 17,
         "images": {
             "jpg": {
@@ -124,6 +144,7 @@
         "duration": "23 min per ep"
     },
     {
+        "loaction": "api",
         "mal_id": 19,
         "images": {
             "jpg": {
