@@ -27,30 +27,32 @@ export class ContentBannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.selected_user_id = this.watchList_Service.get_Selected_id();
-    let x = [];
+    let x = this.watchList_Service.getSecond_WatchList();
     let z = this.watchList_Service.getSecond_WatchList();
-    for (let i = 0; i < z.length; i++) {
-      if (z[i].loaction == 'api') {
-        if (z[i].item_id == this.selected_card_data?.mal_id) {
-          x.push(z[i]);
-        }
-      } else {
-        if (z[i].item_id == this.item?.id) {
-          x.push(z[i]);
-        }
-      }
+    /**
+     * @description seeing the initial loading if dat is in wishlist
+     */
+    z = z.filter((value)=>{
+      return value.loaction == 'api' && value.item_id == this.selected_card_data?.mal_id && this.selected_user_id == value.user_id
+    })
+    if(!(z.length)){
+      let x = this.watchList_Service.getSecond_WatchList();
+      x = x.filter((value)=>{
+        return value.loaction == 'local' && value.item_id == this.item?.id && this.selected_user_id == value.user_id
+      })
     }
-    x = x.filter((value) => this.selected_user_id == value.user_id);
-    if (x.length) {
+    if (z.length || x.length) {
       this.add_to_watchList = true;
       console.log(this.add_to_watchList);
     }
   }
-  // item = data1[1];
 
   watchList(location: string, item: any) {
     if (this.add_to_watchList === true) {
       this.add_to_watchList = false;
+      /**
+       * @description condition used to identify the way item id will be accessed sent 
+       */
       if (location == 'api') {
         this.watchList_Service.set_watch_list(
           location,
