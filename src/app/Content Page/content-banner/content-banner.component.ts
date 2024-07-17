@@ -52,7 +52,12 @@ export class ContentBannerComponent implements OnInit {
     }
     else{
       this.add_to_watchList = true
-      this.watchList_Service.set_watch_list(location,item,this.add_to_watchList)
+      if(location == 'api'){
+        this.watchList_Service.set_watch_list(location,item.mal_id,this.add_to_watchList)
+      }
+      else{
+        this.watchList_Service.set_watch_list(location,item.id,this.add_to_watchList)
+      }
     }
     }
 
