@@ -1,0 +1,140 @@
+{
+  "watch_list":[
+    {
+        "user_id": 1,
+        "seasons": 5,
+        "watch_hours": 20,
+        "img": "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABS6v2gvwesuRN6c28ZykPq_fpmnQCJwELBU-kAmEcuC9HhWX-DfuDbtA-bfo-IrfgNtxl0qwJJlhI6DENsGFXknKkjhxPGTV-qhp.jpg?r=608",
+        "title": "Stranger Things"
+      },
+  
+      {
+        "user_id": 2,
+        "seasons": 8,
+        "watch_hours": 40,
+        "img": "https://static.hbo.com/game-of-thrones-1-1920x1080.jpg",
+        "title": "Game of Thrones"
+      },
+      {
+        "user_id": 3,
+        "seasons": 4,
+        "watch_hours": 20,
+        "img": "https://resizing.flixster.com/oltCfG8To-RyW19ACF-qxqSeVwQ=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p13867649_v_h9_ax.jpg",
+        "title": "Vikings"
+      },
+      {
+        "user_id": 4,
+        "seasons": 3,
+        "watch_hours": 15,
+        "img": "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdbNydT-iWSdVKFYoDumQjd7F6sVL3SIvrNTeoodmJao2nWA8LBpomSGl84irQ-_AHNZ2zzbNTSvG7f7-V2ae1xBoXcVfJ8cexJa.jpg?r=321",
+        "title": "Narcos"
+      },
+      {
+        "user_id": 5,
+        "seasons": 4,
+        "watch_hours": 25,
+        "img": "https://i1.wp.com/media.globalnews.ca/videostatic/289/103/actualnarcos.jpg?w=1040&quality=70&strip=all",
+        "title": "Narcos: Mexico"
+      }
+  ],
+
+  "API_Watch_Data":[
+    {
+        "mal_id": 1,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/4/19644.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/4/19644t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg"
+            }
+        },
+        "title": "Cowboy Bebop",
+        "duration": "24 min per ep"
+    },
+    {
+        "mal_id": 5,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/1439/93480.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/1439/93480t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/1439/93480l.jpg"
+            }
+        },
+        "title": "Cowboy Bebop: Tengoku no Tobira",
+        "duration": "1 hr 55 min"
+    },
+    {
+        "mal_id": 6,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/1130/120002.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/1130/120002t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/1130/120002l.jpg"
+            }
+        },
+        "title": "Trigun",
+        "duration": "24 min per ep"
+    },
+    {
+        "mal_id": 7,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/10/19969.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/10/19969t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/10/19969l.jpg"
+            }
+        },
+        "title": "Witch Hunter Robin",
+        "duration": "25 min per ep"
+    },
+    {
+        "mal_id": 15,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/1079/133529.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/1079/133529t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/1079/133529l.jpg"
+            }
+        },
+        "title": "Eyeshield 21",
+        "duration": "23 min per ep"
+    },
+    {
+        "mal_id": 16,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/1301/133577.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/1301/133577t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/1301/133577l.jpg"
+            }
+        },
+        "title": "Hachimitsu to Clover",
+        "duration": "23 min per ep"
+    },
+    {
+        "mal_id": 17,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/12/49655.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/12/49655t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/12/49655l.jpg"
+            }
+        },
+        "title": "Hungry Heart: Wild Striker",
+        "duration": "23 min per ep"
+    },
+    {
+        "mal_id": 19,
+        "images": {
+            "jpg": {
+              "image_url": "https://cdn.myanimelist.net/images/anime/10/18793.jpg",
+              "small_image_url": "https://cdn.myanimelist.net/images/anime/10/18793t.jpg",
+              "large_image_url": "https://cdn.myanimelist.net/images/anime/10/18793l.jpg"
+            }
+        },
+        "title": "Monster",
+        "duration": "24 min per ep"
+    }
+
+  ]
+}
