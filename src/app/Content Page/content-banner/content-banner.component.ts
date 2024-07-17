@@ -31,7 +31,7 @@ export class ContentBannerComponent implements OnInit {
   ngOnInit(): void {
     this.selected_user_id = this.watchList_Service.get_Selected_id();
     let x=[]
-    x = this.watchList_Service.getSecond_WatchList().filter((value)=> value.item.mal_id == this.selected_card_data?.mal_id)
+    x = this.watchList_Service.getSecond_WatchList().filter((value)=> value.item_id == this.selected_card_data?.mal_id)
     x = x.filter((value)=> this.selected_user_id == value.user_id)
     if(x.length){
     this.add_to_watchList = true;
@@ -43,7 +43,12 @@ export class ContentBannerComponent implements OnInit {
   watchList(location: string, item: any) {
     if(this.add_to_watchList === true){
       this.add_to_watchList = false
-      this.watchList_Service.set_watch_list(location,item,this.add_to_watchList)
+      if(location == 'api'){
+        this.watchList_Service.set_watch_list(location,item.mal_id,this.add_to_watchList)
+      }
+      else{
+        this.watchList_Service.set_watch_list(location,item.id,this.add_to_watchList)
+      }
     }
     else{
       this.add_to_watchList = true

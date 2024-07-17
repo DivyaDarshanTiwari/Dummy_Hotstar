@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 
+type second_watch_list = {
+  loaction: string,
+  item_id: number,
+  user_id: number,
+  selected: boolean
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class WatchListService {
   protected selected_user_id!: number;
 
-  protected selected_user_watched_list: any[] = [];
+  protected selected_user_watched_list: second_watch_list[] = [];
   constructor() {
     const second_watch_list = localStorage.getItem('Sec_watch_list');
     const users = localStorage.getItem('Profile_Data');
@@ -26,7 +33,7 @@ export class WatchListService {
     }
   }
 
-  public getSecond_WatchList() {
+  public getSecond_WatchList(): second_watch_list[] {
     return this.selected_user_watched_list;
   }
 
@@ -37,10 +44,10 @@ export class WatchListService {
     return this.selected_user_id;
   }
 
-  public set_watch_list(loaction: string, item: any, include: boolean) {
+  public set_watch_list(loaction: string, item_id: number, include: boolean) {
     let x = {
       loaction: loaction,
-      item: item,
+      item_id: item_id,
       user_id: this.selected_user_id,
       selected: include,
     };
@@ -50,7 +57,7 @@ export class WatchListService {
         console.log('api push');
         for (let i = 0; i < this.selected_user_watched_list.length; i++) {
           if (
-            this.selected_user_watched_list[i].item.mal_id == x.item.mal_id &&
+            this.selected_user_watched_list[i].item_id == x.item_id &&
             this.selected_user_watched_list[i].user_id == x.user_id
           ) {
             t_f = true;
@@ -60,7 +67,7 @@ export class WatchListService {
         console.log('local push');
         for (let i = 0; i < this.selected_user_watched_list.length; i++) {
           if (
-            this.selected_user_watched_list[i].item.id == x.item.id &&
+            this.selected_user_watched_list[i].item_id == x.item_id &&
             this.selected_user_watched_list[i].user_id == x.user_id
           ) {
             t_f = true;
@@ -81,12 +88,12 @@ export class WatchListService {
           if (
             this.selected_user_watched_list[i].user_id !=
               this.selected_user_id &&
-            item.mal_id == this.selected_user_watched_list[i].item.mal_id
+            item_id == this.selected_user_watched_list[i].item_id
           ) {
             new_arr[count] = this.selected_user_watched_list[i];
             count++;
           } else {
-            if (item.mal_id != this.selected_user_watched_list[i].item.mal_id) {
+            if (item_id != this.selected_user_watched_list[i].item_id) {
               new_arr[count] = this.selected_user_watched_list[i];
               count++;
             }
@@ -103,12 +110,12 @@ export class WatchListService {
           if (
             this.selected_user_watched_list[i].user_id !=
               this.selected_user_id &&
-            item.id == this.selected_user_watched_list[i].item.id
+            item_id == this.selected_user_watched_list[i].item_id
           ) {
             new_arr[count] = this.selected_user_watched_list[i];
             count++;
           } else {
-            if (item.id != this.selected_user_watched_list[i].item.id) {
+            if (item_id != this.selected_user_watched_list[i].item_id) {
               new_arr[count] = this.selected_user_watched_list[i];
               count++;
             }

@@ -8,6 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { UserPDataService } from '../shared/Personal Service/user-p-data.service';
 import { type UserPData } from '../shared/Personal Service/user-p-data.interface';
 import { WatchListService } from '../shared/WatchList/watch-list.service';
+
+type second_watch_list = {
+  loaction: string,
+  item_id: number,
+  user_id: number,
+  selected: boolean
+}
 @Component({
   selector: 'app-profile-page',
   standalone: true,
@@ -49,7 +56,7 @@ export class ProfilePageComponent implements OnInit {
   protected user_Personal_Data: UserPData[] = this.userData.getPorfileData();
 
 
-  protected second_watchList: any[] = this.watchData.getSecond_WatchList();
+  protected second_watchList: second_watch_list[] = this.watchData.getSecond_WatchList();
 
   protected returned_Data(data: UserPData) {
     this.phone = data.phone;
