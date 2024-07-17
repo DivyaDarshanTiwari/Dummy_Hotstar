@@ -27,17 +27,17 @@
   @if(item.loaction == 'api'){
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
-      <mat-card-title>Episodes{{ item.item.episode }}</mat-card-title>
-      <mat-card-subtitle>{{ item.item.duration }}</mat-card-subtitle>
+      <mat-card-title>Episodes{{ item.episode }}</mat-card-title>
+      <mat-card-subtitle>{{ item.duration }}</mat-card-subtitle>
     </mat-card-header>
     <img
       mat-card-image
-      [src]="item.item.images.jpg.image_url"
+      [src]="item.images.jpg.image_url"
       alt="Photo of a Shiba Inu"
       class="img"
     />
     <mat-card-content>
-      <p>{{ item.item.title | convertTitleLength }}</p>
+      <p>{{ item.title | convertTitleLength }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>Watch</button>
