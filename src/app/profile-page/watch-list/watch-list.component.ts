@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { type WatchListInterface } from '../../shared/WatchList/watch-list-interface';
@@ -12,7 +12,10 @@ import { ConvertTitleLengthPipe } from '../../PIPES/Covert Title Lenght/convert-
   templateUrl: './watch-list.component.html',
   styleUrl: './watch-list.component.css'
 })
-export class WatchListComponent {
+export class WatchListComponent implements OnInit {
+  ngOnInit(): void {
+    console.warn('watch',this.watchList_accord)
+  }
   @Input({required:true}) watchList!:WatchListInterface[]
   @Input({required:true}) id?:number;
   @Input({required:true}) second_watchList: any;

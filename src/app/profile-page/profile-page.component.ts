@@ -44,6 +44,7 @@ export class ProfilePageComponent implements OnInit {
     this.id = this.userData.get_Actived_data()!.userId;
     this.img = this.userData.get_Actived_data()!.profile_img;
     this.Previous_ActiveID = this.userData.get_Actived_data()!.userId;
+    console.log(this.second_watchList);
   }
 
   protected user_Personal_Data: UserPData[] = this.userData.getPorfileData();

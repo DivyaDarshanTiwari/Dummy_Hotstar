@@ -1,66 +1,72 @@
-@if(watch_acc_userID){
+<h3>Watch List</h3>
+<div id="mat_card">
+  @if(watch_acc_userID){
   <div>
-    <h3>Watch List</h3>
-    <div id="mat_card">
-      @for (item of watch_acc_userID; track item) {
-      <mat-card class="example-card" appearance="outlined">
-        <mat-card-header>
-          <mat-card-title>Season{{ item.seasons }}</mat-card-title>
-          <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="item.img" alt="Photo of a Shiba Inu" class="img"/>
-        <mat-card-content>
-          <p>{{item.title | convertTitleLength}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Watch</button>
-        </mat-card-actions>
-      </mat-card>
-      }
-    </div>
+    @for (item of watch_acc_userID; track item) {
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Seasons:{{ item.seasons }}</mat-card-title>
+        <mat-card-subtitle>{{ item.watch_hours }}hrs</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="item.img"
+        alt="Photo of a Shiba Inu"
+        class="img"
+      />
+      <mat-card-content>
+        <p>{{ item.title | convertTitleLength }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Watch</button>
+      </mat-card-actions>
+    </mat-card>
+    }
   </div>
-}
-@if(watchList_accord){
-  @if(watchList_accord.location == 'api'){
-    <div>
-      <div id="mat_card">
-        @for (item of second_watchList.item; track item) {
-        <mat-card class="example-card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>Episodes{{ item.episode }}</mat-card-title>
-            <mat-card-subtitle>{{ item.duration }}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="item.images.jpg.image_url" alt="Photo of a Shiba Inu" class="img"/>
-          <mat-card-content>
-            <p>{{item.title | convertTitleLength}}</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Watch</button>
-          </mat-card-actions>
-        </mat-card>
-        }
-      </div>
-    </div>
+  } @if(watchList_accord){ @for(item of watchList_accord; track item){
+  @if(item.loaction == 'api'){
+  <!-- <div id="mat_card"> -->
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Episodes{{ item.item.episode }}</mat-card-title>
+      <mat-card-subtitle>{{ item.item.duration }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="item.item.images.jpg.image_url"
+      alt="Photo of a Shiba Inu"
+      class="img"
+    />
+    <mat-card-content>
+      <p>{{ item.item.title | convertTitleLength }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Watch</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- </div> -->
+  } @else {
+  <!-- <div id="mat_card"> -->
+  @for (item of second_watchList.item; track item) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Season{{ item.seasons }}</mat-card-title>
+      <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="item.img"
+      alt="Photo of a Shiba Inu"
+      class="img"
+    />
+    <mat-card-content>
+      <p>{{ item.title | convertTitleLength }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Watch</button>
+    </mat-card-actions>
+  </mat-card>
   }
-  @else {
-    <div>
-      <div id="mat_card">
-        @for (item of second_watchList.item; track item) {
-        <mat-card class="example-card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>Season{{ item.seasons }}</mat-card-title>
-            <mat-card-subtitle>{{ item.watch_hours }}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="item.img" alt="Photo of a Shiba Inu" class="img"/>
-          <mat-card-content>
-            <p>{{item.title | convertTitleLength}}</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Watch</button>
-          </mat-card-actions>
-        </mat-card>
-        }
-      </div>
-    </div>
-  }
-}
+  <!-- </div> -->
+  } } }
+</div>
