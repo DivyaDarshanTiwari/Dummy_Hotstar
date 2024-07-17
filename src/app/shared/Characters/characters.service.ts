@@ -33,7 +33,6 @@ export class CharactersService {
     this.selected_Character =  selected_Card;
   }
   public get_selected_item(){
-    console.log(this.selected_Character)
     return this.selected_Character;
   }
 

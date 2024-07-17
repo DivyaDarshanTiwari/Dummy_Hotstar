@@ -7,8 +7,14 @@ import { WatchListComponent } from './watch-list/watch-list.component';
 import { FormsModule } from '@angular/forms';
 import { UserPDataService } from '../shared/Personal Service/user-p-data.service';
 import { type UserPData } from '../shared/Personal Service/user-p-data.interface';
-import { type WatchListInterface } from '../shared/WatchList/watch-list-interface';
 import { WatchListService } from '../shared/WatchList/watch-list.service';
+
+type second_watch_list = {
+  loaction: string,
+  item_id: number,
+  user_id: number,
+  selected: boolean
+}
 @Component({
   selector: 'app-profile-page',
   standalone: true,
@@ -25,16 +31,16 @@ import { WatchListService } from '../shared/WatchList/watch-list.service';
 })
 export class ProfilePageComponent implements OnInit {
   constructor(
-    private userData: UserPDataService,//instace of the personal data servise
+    private userData: UserPDataService, //instace of the personal data servise
     private watchData: WatchListService //instance of the watch list data service
   ) {}
-  phone!: number;
-  name!: string;
-  email!: string;
-  DOB!: string;
-  id!: number;
-  img!: string;
-  Previous_ActiveID!:number;
+  protected phone!: number;
+  protected name!: string;
+  protected email!: string;
+  protected DOB!: string;
+  protected id!: number;
+  protected img!: string;
+  protected Previous_ActiveID!: number;
   ngOnInit(): void {
     // initializing the data with the active userData that was previously selected when the browser was closed
     this.phone = this.userData.get_Actived_data()!.phone;
@@ -43,23 +49,24 @@ export class ProfilePageComponent implements OnInit {
     this.DOB = this.userData.get_Actived_data()!.DOB;
     this.id = this.userData.get_Actived_data()!.userId;
     this.img = this.userData.get_Actived_data()!.profile_img;
-    this.Previous_ActiveID = this.userData.get_Actived_data()!.userId
+    this.Previous_ActiveID = this.userData.get_Actived_data()!.userId;
+    console.log(this.second_watchList);
   }
 
-  public user_Personal_Data: UserPData[] = this.userData.getPorfileData();
+  protected user_Personal_Data: UserPData[] = this.userData.getPorfileData();
 
-  public data1: WatchListInterface[] = this.watchData.getWatchList();
 
-  public returned_Data(data: UserPData) {
+  protected second_watchList: second_watch_list[] = this.watchData.getSecond_WatchList();
+
+  protected returned_Data(data: UserPData) {
     this.phone = data.phone;
     this.name = data.name;
     this.email = data.email;
     this.DOB = data.DOB;
     this.id = data.userId;
     this.img = data.profile_img;
-    this.userData.set_Deactive_data(this.Previous_ActiveID);// the previous key is deactivated here
-    this.Previous_ActiveID = data.userId;// the new user profile that is being selected is the set as previous data for the next change of the profile
+    this.userData.set_Deactive_data(this.Previous_ActiveID); // the previous key is deactivated here
+    this.Previous_ActiveID = data.userId; // the new user profile that is being selected is the set as previous data for the next change of the profile
+    this.watchData.set_Selected_id(this.id); // sending id of the selected data to the watchlist service
   }
-
-
 }

@@ -22,13 +22,11 @@ export class ContentBodyComponent {
   moreLikeData!:MoreLikeThisInterface;
 
   catch_season_data(data:SeasonInterface){
-    console.log(data);
     this.seasonData = data
   }
 
   catch_more_like_this_data(data:MoreLikeThisInterface)
   {
-    console.log(data);
     this.moreLikeData=data;
   }
 }

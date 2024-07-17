@@ -38,8 +38,14 @@
         aria-label="Example icon button with a add icon"
         style="border-radius: 1rem"
         title="Watch List"
+        (click)="watchList('local',item)"
       >
-        <mat-icon>add</mat-icon>
+
+        @if(!add_to_watchList){
+          <mat-icon>add</mat-icon>
+        } @else {
+          <mat-icon>check</mat-icon>
+        }
       </button>
     </div>
   </div>
@@ -93,8 +99,13 @@
         aria-label="Example icon button with a add icon"
         style="border-radius: 1rem"
         title="Watch List"
+        (click)="watchList('api', selected_card_data)"
       >
+      @if(!add_to_watchList){
         <mat-icon>add</mat-icon>
+      } @else {
+        <mat-icon>check</mat-icon>
+      }
       </button>
     </div>
   </div>

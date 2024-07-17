@@ -24,7 +24,6 @@ export class MainRailerComponent {
   @Input() data_from_home!: Data1Interface[];
 
   railerData(item: Data1Interface) {
-    console.log('MAIN RAILER');
     this.imageData.emit(item);
   }
 }
