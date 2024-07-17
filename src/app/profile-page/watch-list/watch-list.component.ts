@@ -49,7 +49,6 @@ export class WatchListComponent implements OnInit {
               watch_list.local_watch_data[j].id
             ) {
               filter_Arr.push(watch_list.local_watch_data[j]);
-              console.log(filter_Arr);
             }
           }
         }
