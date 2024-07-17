@@ -53,18 +53,6 @@ export class WatchListService {
     };
     if (include) {
       let t_f: boolean = false;
-        // for (let i = 0; i < this.selected_user_watched_list.length; i++) {
-        //   /**
-        //    * @description to check repeated element
-        //    */
-        //   if (
-        //     this.selected_user_watched_list[i].item_id == x.item_id &&
-        //     this.selected_user_watched_list[i].user_id == x.user_id &&
-        //     this.selected_user_watched_list[i].loaction == loaction
-        //   ) {
-        //     t_f = true;
-        //   }
-        // }
         t_f = this.selected_user_watched_list.some((value)=>{
             return value.item_id == x.item_id && value.user_id == x.user_id && value.loaction == loaction
         })
