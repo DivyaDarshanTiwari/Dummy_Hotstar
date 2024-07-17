@@ -14,7 +14,10 @@ export class MoviesService {
   constructor(private http: HttpClient) {
     const selected = sessionStorage.getItem('content-banner')
     if(selected){
-      this.selected_item = JSON.parse(selected);
+      let x= JSON.parse(selected);
+      if('mal_id' in x){
+        this.selected_item = x;
+      }
     }
   }
  
