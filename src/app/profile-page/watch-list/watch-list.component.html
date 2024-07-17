@@ -25,7 +25,6 @@
   </div>
   } @if(watchList_accord){ @for(item of watchList_accord; track item){
   @if(item.loaction == 'api'){
-  <!-- <div id="mat_card"> -->
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
       <mat-card-title>Episodes{{ item.item.episode }}</mat-card-title>
@@ -44,10 +43,7 @@
       <button mat-button>Watch</button>
     </mat-card-actions>
   </mat-card>
-  <!-- </div> -->
-  } @else {
-  <!-- <div id="mat_card"> -->
-  @for (item of second_watchList.item; track item) {
+  } @else { @for (item of second_watchList.item; track item) {
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
       <mat-card-title>Season{{ item.seasons }}</mat-card-title>
@@ -66,7 +62,5 @@
       <button mat-button>Watch</button>
     </mat-card-actions>
   </mat-card>
-  }
-  <!-- </div> -->
-  } } }
+  } } } }
 </div>
