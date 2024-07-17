@@ -27,9 +27,7 @@ export class WatchListService {
       let activeUser = JSON.parse(users);
       activeUser = activeUser.find((value: any) => value.Active == true);
       if (activeUser) {
-        console.log('Active User:', activeUser);
         this.selected_user_id = activeUser.userId;
-        console.log(this.selected_user_id);
       } else {
         console.log('No active user found');
       }
