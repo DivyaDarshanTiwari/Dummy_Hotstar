@@ -20,6 +20,9 @@ export class WatchListService {
     if (second_watch_list) {
       this.selected_user_watched_list = JSON.parse(second_watch_list);
     }
+    else{
+      console.log("watch list not present")
+    }
     if (users) {
       let activeUser = JSON.parse(users);
       activeUser = activeUser.find((value: any) => value.Active == true);
