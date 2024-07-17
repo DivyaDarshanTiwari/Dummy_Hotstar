@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { type WatchListInterface } from './watch-list-interface';
-import { SelectedhCardInterface } from '../search/selectedh-card-interface';
-import { Data1Interface } from '../../data1-interface';
 
 @Injectable({
   providedIn: 'root',
