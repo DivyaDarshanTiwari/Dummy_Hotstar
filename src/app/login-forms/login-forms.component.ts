@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../shared/Login/login.service';
 import { Router } from '@angular/router';
-import { flush } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login-forms',
@@ -28,9 +27,7 @@ export class LoginFormsComponent implements OnInit {
   });
 
   getdata() {
-    this.login_service.getData()?.subscribe((next) => {
-      this.data = next;
-    });
+    this.data = this.login_service.getData();
   }
 
   submitApplication() {
@@ -38,13 +35,13 @@ export class LoginFormsComponent implements OnInit {
     this.password = this.applyform.value.password ?? '';
     this.user_name = this.applyform.value.user_name ?? '';
     let filter = this.data.find(
-      (value: any) => value.user === this.user_name
+      (value: any) => value.user == this.user_name
     );
     if (filter) {
       this.wrong_user = false
-      if (filter.password === this.password) {
+      if (filter.password == this.password) {
         this.wrong_user= false
-        this.login_service.loggingIn(true);
+        this.login_service.logingIn(true);
         this.login_service.save_local(this.user_name,this.password);
         this.route.navigateByUrl('profile');
       } else {
