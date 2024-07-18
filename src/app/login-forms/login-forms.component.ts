@@ -44,7 +44,7 @@ export class LoginFormsComponent implements OnInit {
       this.wrong_user = false
       if (filter.password === this.password) {
         this.wrong_user= false
-        this.login_service.isLoggedIn = true;
+        this.login_service.loggingIn(true);
         this.login_service.save_local(this.user_name,this.password);
         this.route.navigateByUrl('profile');
       } else {
