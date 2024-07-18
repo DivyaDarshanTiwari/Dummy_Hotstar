@@ -14,7 +14,7 @@ type details = {
 })
 export class LoginService {
   private url = 'http://localhost:3000/user_data';
-  isLoggedIn = false;
+  private isLoggedIn = false;
   private user_detail: details={
     user: '',
     password: ''
@@ -25,10 +25,21 @@ export class LoginService {
     let details = localStorage.getItem('Details');
     if(local){
       this.isLoggedIn = JSON.parse(local);
+    }else{
+      console.warn("not logged before")
     }
     if(details){
       this.user_detail = JSON.parse(details);
+    }{
+      console.warn("No user details found");
     }
+  }
+
+  public isLogged():boolean{
+    return this.isLoggedIn;
+  }
+  public loggingIn(value:boolean){
+    this.isLoggedIn = value;
   }
 
   public getData(): Observable<any> | null {
