@@ -11,7 +11,7 @@ export const loginGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:Ro
   if(!(protected_url.includes(state.url))){
     return true;
   }
-  else if(protected_url.includes(state.url) && isLogged.isLoggedIn){
+  else if(protected_url.includes(state.url) && isLogged.isLogged()){
     return true
   }
   else{
