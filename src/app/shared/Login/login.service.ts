@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
+import loginData from '../../JSON/login.json'
 
 type details = {
   user: string
@@ -23,6 +24,7 @@ export class LoginService {
   constructor(private http: HttpClient, private route: Router) {
     let local = sessionStorage.getItem('Previous_Logged')
     let details = localStorage.getItem('Details');
+    console.log(details);
     if(local){
       this.isLoggedIn = JSON.parse(local);
     }else{
@@ -38,21 +40,12 @@ export class LoginService {
   public isLogged():boolean{
     return this.isLoggedIn;
   }
-  public loggingIn(value:boolean){
+  public logingIn(value:boolean){
     this.isLoggedIn = value;
   }
 
-  public getData(): Observable<any> | null {
-    if (this.url) {
-      return this.http.get(this.url).pipe(
-        catchError((error) => {
-          return throwError(error);
-        })
-      );
-    } else {
-      console.error('Url not found');
-      return null;
-    }
+  public getData() {
+    return loginData.user_data
   }
 
   public save_local(name:string, password:string){
