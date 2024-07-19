@@ -1,0 +1,1 @@
+import{oa as n}from"./chunk-SLJVHXXZ.js";var a=(()=>{let t=class t{transform(r,...i){return r=="Finished Airing"?"Status: Complete":"Status OnGoing"}};t.\u0275fac=function(i){return new(i||t)},t.\u0275pipe=n({name:"finisedAirirng",type:t,pure:!0,standalone:!0});let e=t;return e})();export{a as FinisedAirirngPipe};

@@ -1,0 +1,1 @@
+import{oa as n}from"./chunk-SLJVHXXZ.js";var l=(()=>{let t=class t{transform(e,...i){return e.length>=14?e.slice(0,15)+"...":e.length<14?e:"Title not Found"}};t.\u0275fac=function(i){return new(i||t)},t.\u0275pipe=n({name:"convertTitleLength",type:t,pure:!0,standalone:!0});let r=t;return r})();export{l as a};
