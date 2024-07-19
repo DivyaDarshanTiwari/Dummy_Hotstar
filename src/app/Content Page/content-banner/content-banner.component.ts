@@ -32,31 +32,29 @@ export class ContentBannerComponent implements OnInit {
   protected add_to_watchList: boolean = false;
 
   ngOnInit(): void {
+
     if (this.loginService.isLogged()) {
       this.selected_user_id = this.watchList_Service.get_Selected_id();
       let x = this.watchList_Service.getSecond_WatchList();
       let z = this.watchList_Service.getSecond_WatchList();
+      let y: any;
       /**
        * @description seeing the initial loading if dat is in wishlist
        */
-      z = z.filter((value) => {
+      y = z.find((value) => {
         return (
           value.loaction == 'api' &&
           value.item_id == this.selected_card_data?.mal_id &&
           this.selected_user_id == value.user_id
         );
       });
-      if (!z.length) {
-        let x = this.watchList_Service.getSecond_WatchList();
-        x = x.filter((value) => {
-          return (
-            value.loaction == 'local' &&
-            value.item_id == this.item?.id &&
-            this.selected_user_id == value.user_id
-          );
+      if (!(y)) {
+        y = z.find((value) => {
+          return value.loaction === 'local' && value.item_id === this.item?.id && this.selected_user_id === value.user_id
         });
       }
-      if (z.length || x.length) {
+      console.error(y);
+      if (y) {
         this.add_to_watchList = true;
         console.log(this.add_to_watchList);
       }
