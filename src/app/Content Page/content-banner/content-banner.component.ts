@@ -32,6 +32,7 @@ export class ContentBannerComponent implements OnInit {
   protected add_to_watchList: boolean = false;
 
   ngOnInit(): void {
+
     if (this.loginService.isLogged()) {
       this.selected_user_id = this.watchList_Service.get_Selected_id();
       let x = this.watchList_Service.getSecond_WatchList();
