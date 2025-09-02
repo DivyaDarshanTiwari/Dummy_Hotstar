@@ -1,15 +1,11 @@
 .example-container {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0;
-  right: 0;
+  position: relative;
+  height: 100vh; /* or 100dvh on mobile below */
   background-color: rgba(0, 0, 0);
 }
 
 .example-sidenav {
   color: aliceblue;
-  width: 100px;
   background: rgba(0, 0, 0, 0.066);
   background-image: linear-gradient(
     to right,
@@ -18,36 +14,85 @@
     rgba(0, 0, 0, 0.651),
     rgba(0, 0, 0, 0.066)
   );
-  transition: width 0.5s;
+  transition: width 0.3s ease;
   z-index: 4;
-  border-radius: 0px;
-  position: fixed;
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .example-header {
   z-index: 5;
-  position: relative;
-  top: 20px;
-  left: 20px;
-  right: 0;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 12px;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 0%,
     rgba(12, 9, 121, 0.3103459676106771) 81%
   );
+  color: aliceblue;
 }
 
 .MAIN {
   width: 100%;
-  margin: 1px;
 }
 
+.page-content {
+  padding: 16px;
+}
+
+/* Navigation positioning */
 .sidenav-header {
-  position: fixed;
+  position: absolute;
   top: 20%;
-  left: 15px;
+  left: 12px;
 }
 
-span {
-  transition: all 1s;
+.nav-icon,
+.nav-label {
+  color: aliceblue;
+}
+
+.nav-label {
+  transition: opacity 0.2s ease;
+}
+
+.menu-button {
+  display: none;
+  color: aliceblue;
+}
+
+.toolbar-title {
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .example-container {
+    height: 100dvh;
+  }
+  .menu-button {
+    display: inline-flex;
+  }
+  .sidenav-header {
+    position: static;
+    padding: 12px 8px;
+  }
+  .example-sidenav {
+    padding-top: 8px;
+  }
+  .page-content {
+    padding: 12px;
+  }
+}
+
+/* Desktop+ */
+@media (min-width: 1024px) {
+  .page-content {
+    padding: 20px;
+  }
 }

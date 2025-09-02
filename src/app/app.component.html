@@ -1,25 +1,31 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav
-    mode="side"
-    [opened]="true"
+    #snav
     class="example-sidenav"
-    [style.width]="width()"
+    [mode]="mode"
+    [opened]="opened"
+    fixedInViewport="true"
+    [style.width]="isHandset ? null : width()"
   >
     <div class="nav-content">
       <mat-list class="list">
         <div class="sidenav-header">
-          <a mat-list-item *ngFor="let icon of icons" >
+          <a
+            mat-list-item
+            *ngFor="let icon of icons"
+            [routerLink]="icon.path"
+            (click)="isHandset && snav.close()"
+          >
             <mat-icon
               matListItemIcon
               style="color: aliceblue"
-              (mouseenter)="toggleCollapsed()"
-              (mouseleave)="toggleCollapsed()"
-              [routerLink]="icon.path"
+              (mouseenter)="!isHandset && toggleCollapsed()"
+              (mouseleave)="!isHandset && toggleCollapsed()"
               >{{ icon.icons }}</mat-icon
             >
             <span
               matListItemTitle
-              *ngIf="!collapsed()"
+              *ngIf="!collapsed() && !isHandset"
               style="color: aliceblue"
               >{{ icon.description }}</span
             >
@@ -28,7 +34,16 @@
       </mat-list>
     </div>
   </mat-sidenav>
+
   <mat-sidenav-content class="MAIN">
-    <router-outlet></router-outlet>
+    <mat-toolbar class="example-header">
+      <button mat-icon-button class="menu-button" (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="toolbar-title">{{ title }}</span>
+    </mat-toolbar>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,43 +1,71 @@
+/* Section frame */
 .slider-section {
   position: relative;
-  width: 93%;
+  width: 100%;
   overflow: hidden;
-  margin: 40px;
+  margin: 24px 0 12px;
+  padding-inline: 16px;
+  box-sizing: border-box;
 }
 
+.slider-section > h2 {
+  color: #eaeaea;
+  font-size: clamp(16px, 2.2vw, 22px);
+  margin: 0 0 10px 6px;
+}
+
+/* Track */
 .card-container {
-  width: 95%;
+  width: 100%;
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  margin-right: 40px;
-  overflow: hidden;
+  gap: 12px;
+  flex-wrap: nowrap; /* prevent wrap to keep a row */
+  padding: 12px 44px; /* space for overlay arrows */
+  margin: 0; /* avoid right overflow */
+  overflow: hidden; /* desktop default; mobile enables scroll */
+  box-sizing: border-box;
 }
 
+/* Card */
 .images {
-  margin: 0px 5px;
-  transition: all 0.5s ease-out;
+  flex: 0 0 auto;
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .images img {
-  width: 300px;
-  height: 200px;
-}
-.images:hover {
-  transform: scale(1.25);
+  display: block;
+  width: clamp(160px, 22vw, 300px);
+  height: clamp(100px, 14.5vw, 200px);
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+/* Hover scale only where hover exists */
+@media (hover: hover) and (pointer: fine) {
+  .images:hover {
+    transform: scale(1.06);
+  }
+}
+
+/* Overlay arrows */
 .prev,
 .next {
   color: aliceblue;
   position: absolute;
-  top: 32%;
-  background-color: rgba(94, 134, 157, 0);
-  height: 60%;
-  border: 0px;
-  transition: all 0.5s;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  height: 64%;
+  width: 40px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.2s ease;
+  z-index: 2;
 }
 
 .prev:hover,
@@ -46,17 +74,89 @@
 }
 
 .prev {
-  border-top-right-radius: 20%;
-  border-bottom-right-radius: 10%;
-  left: 0px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 10px;
+  left: 0;
 }
-
 .next {
-  border-top-left-radius: 20%;
-  border-bottom-left-radius: 10%;
-  right: 0%;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 10px;
+  right: 0;
 }
 
+/* Keep your optional slide classes concise */
 .slide-animation {
-  animation: slide-in 1s ease-in-out forwards;
+  animation: slide-in 260ms ease-out both;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-10px);
+    opacity: 0.95;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.slide-animation2 {
+  animation: slide-in2 260ms ease-out both;
+}
+@keyframes slide-in2 {
+  from {
+    transform: translateX(10px);
+    opacity: 0.95;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Tablet and below: horizontal scroll + scroll-snap */
+@media (max-width: 1024px) {
+  .card-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 32px;
+    gap: 10px;
+  }
+  .images {
+    scroll-snap-align: start;
+  }
+  .prev,
+  .next {
+    height: 56%;
+  }
+}
+
+/* Phones: larger cards by vw and tighter spacing */
+@media (max-width: 768px) {
+  .slider-section {
+    padding-inline: 8px;
+  }
+  .images img {
+    width: clamp(140px, 64vw, 220px);
+    height: clamp(90px, 40vw, 150px);
+  }
+}
+
+/* Very small devices */
+@media (max-width: 420px) {
+  .prev,
+  .next {
+    width: 32px;
+    height: 50%;
+  }
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .images,
+  .slide-animation,
+  .slide-animation2 {
+    transition: none !important;
+    animation: none !important;
+  }
 }

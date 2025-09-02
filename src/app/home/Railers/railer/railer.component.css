@@ -1,43 +1,68 @@
 .slider-section {
   position: relative;
-  width: 93%;
+  width: 100%;
   overflow: hidden;
-  margin: 40px;
+  margin: 24px 0 16px;
+  padding-inline: 16px;
+  box-sizing: border-box;
 }
 
+.slider-section > h2 {
+  color: #eaeaea;
+  font-size: clamp(16px, 2.2vw, 22px);
+  margin: 0 0 10px 6px;
+}
+
+/* Track of cards */
 .card-container {
-  width: 95%;
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  margin-right: 40px;
-  overflow: hidden;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 40px; /* room for overlay arrows */
+  box-sizing: border-box;
+  overflow: hidden; /* desktop default; overridden on mobile */
 }
 
+/* Individual card wrapper */
 .images {
-  margin: 0px 5px;
-  transition: all 0.5s ease-out;
+  flex: 0 0 auto;
+  transition: transform 0.35s ease;
+  will-change: transform;
 }
 
+/* Responsive image sizes */
 .images img {
-  width: 300px;
-  height: 200px;
-}
-.images:hover {
-  transform: scale(1.25);
+  display: block;
+  width: clamp(160px, 22vw, 300px);
+  height: clamp(110px, 14.7vw, 200px);
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+/* Hover scale only on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  .images:hover {
+    transform: scale(1.06);
+  }
+}
+
+/* Overlay arrow buttons */
 .prev,
 .next {
   color: aliceblue;
   position: absolute;
-  top: 32%;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: rgba(94, 134, 157, 0);
-  height: 60%;
-  border: 0px;
-  transition: all 0.5s;
+  border: 0;
+  height: 64%;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.25s ease;
+  z-index: 2;
 }
 
 .prev:hover,
@@ -46,17 +71,93 @@
 }
 
 .prev {
-  border-top-right-radius: 20%;
-  border-bottom-right-radius: 10%;
-  left: 0px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 10px;
+  left: 0;
 }
 
 .next {
-  border-top-left-radius: 20%;
-  border-bottom-left-radius: 10%;
-  right: 0%;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 10px;
+  right: 0;
 }
 
+/* Slide-in keyframes for optional visual polish */
 .slide-animation {
-  animation: slide-in 1s ease-in-out forwards;
+  animation: slide-in 300ms ease-out both;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-12px);
+    opacity: 0.9;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.slide-animation2 {
+  animation: slide-in2 300ms ease-out both;
+}
+@keyframes slide-in2 {
+  from {
+    transform: translateX(12px);
+    opacity: 0.9;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Tablet and below: enable horizontal scroll with snap */
+@media (max-width: 1024px) {
+  .card-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding: 12px 28px; /* slightly narrower paddings */
+  }
+
+  .images {
+    scroll-snap-align: start;
+  }
+
+  /* Reduce arrow height so they don't cover too much on short screens */
+  .prev,
+  .next {
+    height: 56%;
+  }
+}
+
+/* Mobile: tighten sizes and center track within padding */
+@media (max-width: 768px) {
+  .slider-section {
+    padding-inline: 8px;
+  }
+  .card-container {
+    padding: 10px 24px;
+    gap: 8px;
+  }
+  .images img {
+    width: clamp(140px, 62vw, 220px);
+    height: clamp(94px, 40vw, 150px);
+  }
+  /* De-emphasize hover scaling on narrow screens */
+  @media (hover: none) {
+    .images {
+      transform: none !important;
+    }
+  }
+}
+
+/* Very small devices */
+@media (max-width: 420px) {
+  .prev,
+  .next {
+    width: 32px;
+    height: 50%;
+  }
 }

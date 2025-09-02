@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeroBannerComponent } from '../hero-banner/hero-banner.component';
 import { MainRailerComponent } from '../Railers/main-railer/main-railer.component';
 import { Data1Service } from '../../shared/data1.service';
@@ -14,13 +14,15 @@ import { CharactersService } from '../../shared/Characters/characters.service';
   imports: [HeroBannerComponent, MainRailerComponent],
 })
 export class HomePageComponent {
-
-  constructor(private data:Data1Service,private movie_service:MoviesService,private character_service:CharactersService){
-  }
-  data1:Data1Interface[] = this.data.getData1();
+  constructor(
+    private data: Data1Service,
+    private movie_service: MoviesService,
+    private character_service: CharactersService
+  ) {}
+  data1: Data1Interface[] = this.data.getData1();
   catchData(item: Data1Interface) {
     this.movie_service.set_selected_Item(null);
     this.character_service.get_selected(null);
-    this.data.getId(item)
+    this.data.getId(item);
   }
 }
