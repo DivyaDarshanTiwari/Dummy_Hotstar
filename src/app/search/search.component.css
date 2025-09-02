@@ -1,53 +1,109 @@
-.searchbody{
-  margin: 30px;
+.searchbody {
+  margin: clamp(12px, 3vw, 32px);
 }
-.search_bar{
-  width: 80%;
+
+/* Search row */
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.search_bar {
+  flex: 1 1 auto;
+  width: min(100%, 760px);
+}
+
+/* Filters row */
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.filter {
+  min-width: 180px;
+}
+
+/* Loading / status */
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.status-error {
+  color: #ffb4a9;
+  border-color: #ffb4a9;
+}
+.status-empty {
+  color: #b4c7ff;
+  border-color: #b4c7ff;
+}
+
+/* Results grid */
+.container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(clamp(140px, 22vw, 220px), 1fr)
+  );
+  gap: clamp(8px, 2vw, 16px);
+  align-items: start;
+  background-color: black;
+  padding: clamp(8px, 2vw, 16px);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .example-card {
-    width: 200px;
-    border-radius: 7px;
-    background-color: black;
-    color: aliceblue;
-    border: 0px;
-    margin: 10px;
-  }
+  width: 100%;
+  border-radius: 10px;
+  background-color: #0b0b0b;
+  color: aliceblue;
+  border: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-  .poster{
-    max-width: 250px;
-    height: 250px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  
-  .container{
-    display: flex;
-    justify-content: left;
-    align-content: center;
-    flex-wrap: wrap;
-    background-color: black
-  }
+.poster {
+  width: 100%;
+  height: clamp(180px, 30vw, 320px);
+  object-fit: cover;
+  display: block;
+}
 
-  .episodes{
-    background-color: rgba(0, 0, 0, 0.401);
-    display: flex;
-    align-content: center;
-    width: 150px;
-    flex-wrap: wrap;
-  }
+.title {
+  margin: 0;
+}
 
-  .border{
-    border: 2px solid black;
-  }
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  background-color: rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.status {
+  opacity: 0.85;
+}
 
-  .inline_block{
-    display: inline-block;
-  }
-
-.paginator{
-  width: 96%;
+.paginator {
+  width: 100%;
+  margin-top: 12px;
 }
