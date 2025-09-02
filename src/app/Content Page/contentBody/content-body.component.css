@@ -1,4 +1,17 @@
-.season{
-    margin: 2% 3%;
-    display: inline-block;
+.season {
+  margin: 2% 3%;
+  display: inline-block;
+}
+
+/* content-body.component.css */
+:host ::ng-deep .mat-mdc-tab-header {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+:host ::ng-deep .mat-mdc-tab-labels {
+  gap: clamp(4px, 1.2vw, 12px);
+}
+.season {
+  display: block;
+  margin: clamp(8px, 2.5vw, 20px) clamp(6px, 2.5vw, 20px);
 }

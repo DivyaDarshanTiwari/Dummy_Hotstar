@@ -1,18 +1,36 @@
-@if(item){
+@if (item) {
 <section class="wholebody">
-    <mat-tab-group mat-stretch-tabs="false" dynamicHeight>
-        <mat-tab label="Episodes" class="mat-tab">
-            <mat-tab-group  mat-stretch-tabs="false" dynamicHeight class="season">
-                <mat-tab *ngFor="let i of item.seasons_name" [label]="i">
-                  <app-season-body (senddata)="catch_season_data($event)" [itemId]="item.id"></app-season-body>
-                </mat-tab>
-            </mat-tab-group>
-        </mat-tab>
-        <mat-tab label="More Like This">
-          <div class="example-large-box mat-elevation-z4">
-            <app-more-like-this (data)="catch_more_like_this_data($event)" [dataId]="item.id"></app-more-like-this>
-          </div>
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    dynamicHeight
+    (selectedTabChange)="onTopTabChange($event.index)"
+  >
+    <mat-tab label="Episodes" class="mat-tab">
+      <mat-tab-group
+        class="season"
+        mat-stretch-tabs="false"
+        dynamicHeight
+        [selectedIndex]="activeSeasonIndex"
+        (selectedTabChange)="onSeasonChange($event.index)"
+      >
+        <mat-tab *ngFor="let name of item.seasons_name; let idx = index">
+          <ng-template mat-tab-label>{{ name }}</ng-template>
+          <app-season-body
+            (senddata)="catch_season_data($event)"
+            [itemId]="item.id"
+          ></app-season-body>
         </mat-tab>
       </mat-tab-group>
+    </mat-tab>
+
+    <mat-tab label="More Like This">
+      <div class="example-large-box mat-elevation-z4">
+        <app-more-like-this
+          (data)="catch_more_like_this_data($event)"
+          [dataId]="item.id"
+        ></app-more-like-this>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </section>
 }

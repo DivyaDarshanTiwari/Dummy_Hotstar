@@ -1,96 +1,146 @@
+/* Desktop / default */
 .hero-image {
-      height: 743px;
-      width: 96%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-      border-radius: 2px solid green;
-      background-position:left;
-      background-attachment: fixed;
-  
-    }
-  
-  
-    .logo{
-      width: 15%;
-      height: 28%;
-      position: absolute;
-      left: 75%;
-      top: 3%;
-    }
-  
-    .logo img{
-      width: 100%;
-      height: 100%;
-      border-radius: 30px;
-      mix-blend-mode:multiply
-    }
-    
-    .hero-text {
-      position: relative;
-      top: 60%;
-      left: 30%;
-      transform: translate(-50%, -50%);
-      color: white;
-      width: 40%;
-    }
-  
-    .hero-text>div>img{
-      width: 150px;
-      height: 200px;
-    }
-  
-    .dot::before {
-      display: inline-block;
-      content: '';
-      -webkit-border-radius: 0.375rem;
-      border-radius: 0.375rem;
-      height: 0.50rem;
-      width: 0.50rem;
-      margin-left: 0.5rem;
-      margin-right: 0.15rem;
-      background-color: #bdbdbd;
-    }
-    
-    .line::before{
-      display: inline-block;
-      content: '';
-      height: 0.75rem;
-      width: 2px;
-      background-color: #bdbdbd;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-  
-    }
-  
-    button{
-      background-color: #bdbdbd38;
-      margin: 20px;
-      border-radius: 1rem;
-      transition: all .5s ease-in-out;
-      
-    }
-  
-    button:hover{
-      background-color: #bdbdbd64;
-      transform: scale(1.025);
-    }
-  
-    #sub_button{
-      margin-left: -8px;
-    font-size: 20px;
-    }
-  
-    .example-button-container{
-      width: 100%;
-    }
-  
-  
-    .truncate{
-      display: -webkit-box;
-      -webkit-line-clamp: 1; /* Number of lines to show */
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  /* Overlay + desktop asset (dynamic via CSS var) */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    var(--banner-bg, url("/assets/OnePiece.jpeg"));
+  background-repeat: no-repeat;
+  background-size: cover; /* impactful fill on large screens */
+  background-position: 40% 50%; /* bias focal point toward subject */
+  background-attachment: fixed; /* desktop only */
+
+  /* Container */
+  min-height: 56vh;
+  height: clamp(360px, 70vh, 760px);
+  width: 100%;
+  position: relative;
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+
+  /* Layout for inner content */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4vw;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.hero-text {
+  max-width: min(840px, 92vw);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-text .brand img {
+  max-width: min(420px, 60vw);
+  height: auto;
+}
+
+.meta,
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.meta .dot::before {
+  content: "• ";
+  opacity: 0.8;
+}
+
+.tags .line::before {
+  content: "| ";
+  opacity: 0.6;
+}
+
+.synopsis {
+  margin: 6px 0 4px;
+  line-height: 1.5;
+  max-width: 65ch;
+  opacity: 0.95;
+}
+
+/* Tablet tweaks */
+@media (max-width: 992px) {
+  .hero-image {
+    padding: 5vw;
+    background-position: 45% 50%;
+    background-attachment: scroll; /* reduce paint cost */
+    height: clamp(340px, 62vh, 680px);
+  }
+}
+
+/* Mobile: swap to art-directed crop and smaller height */
+@media (max-width: 768px) {
+  .hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      var(
+        --banner-bg-mobile,
+        var(--banner-bg, url("/assets/OnePiece-mobile.jpg"))
+      );
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+    min-height: 52vh;
+    height: auto; /* let content define height if needed */
+    justify-content: center;
+    text-align: center;
+    padding: 6vw 4vw 8vw;
+  }
+
+  .hero-text {
+    align-items: center;
+  }
+
+  .hero-text .brand img {
+    max-width: min(70vw, 360px);
+  }
+
+  .meta,
+  .tags {
+    justify-content: center;
+    gap: 8px 12px;
+  }
+
+  .synopsis {
+    max-width: 80ch;
+    padding: 0 4px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .hero-image {
+    padding: 24px 16px 28px;
+    min-height: 46vh;
+  }
+}
+
+/* Optional contain fallback mode if you lack a mobile crop image */
+@media (max-width: 768px) {
+  .hero-image.hero--contain-fallback {
+    background-size: contain;
+    background-position: center center;
+    background-color: #000;
+  }
+}
+
+/* Small utility: hide watermark on tiny screens if needed */
+@media (max-width: 420px) {
+  .logo {
+    display: none;
+  }
+}
+
+/* Buttons container (kept from your snippet) */
+.example-button-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}

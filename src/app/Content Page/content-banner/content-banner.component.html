@@ -1,142 +1,74 @@
-@if(item){
-<div class="hero-image" [style.background-image]="'url(' + item.img + ')'">
-  <div class="logo">
-    <img src="/ANIME-W (1).gif" alt="none" />
+<section
+  class="hero-image"
+  [style.--banner-bg]="bgStyle()"
+  [style.--banner-bg-mobile]="bgMobileStyle()"
+>
+  <div class="logo" aria-hidden="true">
+    <img src="/assets/ANIME-W (1).gif" alt="" />
   </div>
-  <div class="hero-text">
-    <div>
-      <img [src]="item ? item.headImg : 'none'" [alt]="item.alt" />
-    </div>
-    <div>
-      <span>
-        <span>{{ item.year_of_release }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ item.seasons }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ item.languages }}</span>
-      </span>
-      <span>
-        <span class="dot">U/A{{ item.U_A }}</span>
-      </span>
-    </div>
-    <p>{{ item.description }}</p>
 
-    <div>
-      <span *ngFor="let i of item.genera">
-        <span class="line">{{ i }}</span>
-      </span>
+  <div class="hero-text">
+    <div
+      class="brand"
+      *ngIf="
+        bannerModel?.titleImgUrl || bannerModel?.titleAlt;
+        else fallbackTitle
+      "
+    >
+      <img
+        [src]="bannerModel?.titleImgUrl || '/assets/One-Piece-Logo.png'"
+        [alt]="bannerModel?.titleAlt || 'Title logo'"
+      />
     </div>
+    <ng-template #fallbackTitle>
+      <h1 class="fallback-title">{{ bannerModel?.titleAlt || "Featured" }}</h1>
+    </ng-template>
+
+    <div class="meta" *ngIf="(bannerModel?.meta?.length || 0) > 0">
+      <ng-container *ngFor="let m of bannerModel!.meta; let i = index">
+        <span>
+          <span [class.dot]="i > 0">{{ m }}</span>
+        </span>
+      </ng-container>
+    </div>
+
+    <p class="synopsis" *ngIf="bannerModel?.synopsis">
+      {{ bannerModel!.synopsis }}
+    </p>
+
+    <div class="tags" *ngIf="(bannerModel?.genres?.length || 0) > 0">
+      <ng-container *ngFor="let g of bannerModel!.genres; let i = index">
+        <span
+          ><span [class.line]="i > 0">{{ g }}</span></span
+        >
+      </ng-container>
+    </div>
+
     <div class="example-button-container">
-      <button mat-fab extended id="sub_button">
+      <button
+        mat-fab
+        extended
+        id="sub_button"
+        type="button"
+        aria-label="Subscribe to watch"
+        (click)="logIn()"
+      >
         <mat-icon>subscriptions</mat-icon>
         Subscribe To Watch
       </button>
+
       <button
         mat-fab
-        aria-label="Example icon button with a add icon"
+        type="button"
+        [attr.aria-pressed]="add_to_watchList"
+        [title]="
+          add_to_watchList ? 'Remove from Watch List' : 'Add to Watch List'
+        "
+        (click)="toggleWatchList()"
         style="border-radius: 1rem"
-        title="Watch List"
-        (click)="watchList('local',item); logIn()"
       >
-
-        @if(!add_to_watchList){
-          <mat-icon>add</mat-icon>
-        } @else {
-          <mat-icon>check</mat-icon>
-        }
+        <mat-icon>{{ add_to_watchList ? "check" : "add" }}</mat-icon>
       </button>
     </div>
   </div>
-</div>
-} @if(selected_card_data ){
-<div
-  class="hero-image"
-  [style.background-image]="
-    'url(' + selected_card_data.trailer.images.maximum_image_url + ')'
-  "
->
-  <div class="logo">
-    <img src="/ANIME-W (1).gif" alt="none" />
-  </div>
-  <div class="hero-text">
-    <div>
-      <img
-        [src]="selected_card_data.images.jpg.image_url"
-        [alt]="selected_card_data.title"
-        class="header_image"
-      />
-    </div>
-    <div>
-      <span>
-        <span>{{ selected_card_data.year }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ selected_card_data.season }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ selected_card_data.type }}</span>
-      </span>
-      <span>
-        <span class="dot">U/A{{ selected_card_data.rating }}</span>
-      </span>
-    </div>
-    <p class="truncate">{{ selected_card_data.synopsis }}</p>
-
-    <div>
-      <span *ngFor="let i of selected_card_data.titles">
-        <span class="line">{{ i.title }}</span>
-      </span>
-    </div>
-    <div class="example-button-container">
-      <button mat-fab extended id="sub_button">
-        <mat-icon>subscriptions</mat-icon>
-        Subscribe To Watch
-      </button>
-      <button
-        mat-fab
-        aria-label="Example icon button with a add icon"
-        style="border-radius: 1rem"
-        title="Watch List"
-        (click)="watchList('api', selected_card_data); logIn()"
-      >
-      @if(!add_to_watchList){
-        <mat-icon>add</mat-icon>
-      } @else {
-        <mat-icon>check</mat-icon>
-      }
-      </button>
-    </div>
-  </div>
-</div>
-} @if(selected_character){
-<div
-  class="hero-image"
-  [style.background-image]="'url(' + selected_character.imageUrl + ')'"
->
-  <div class="logo">
-    <img src="/ANIME-W (1).gif" alt="none" />
-  </div>
-  <div class="hero-text">
-    <div>
-      <img
-        [src]="selected_character.imageUrl"
-        [alt]="selected_character.name"
-        class="header_image"
-      />
-    </div>
-    <div>
-      <span>
-        <span>{{ selected_character.films }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ selected_character.videoGames }}</span>
-      </span>
-      <span>
-        <span class="dot">{{ selected_character.tvShows }}</span>
-      </span>
-    </div>
-  </div>
-</div>
-}
+</section>

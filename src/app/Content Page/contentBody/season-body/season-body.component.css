@@ -1,23 +1,75 @@
+/* Card row: poster + details side by side on desktop, stack on mobile */
+.card {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(10px, 2vw, 16px);
+  padding: clamp(8px, 1.5vw, 12px) clamp(8px, 2vw, 16px);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Poster image: fluid, consistent aspect */
+.image {
+  display: block;
+  width: clamp(140px, 22vw, 240px); /* fluid width */
+  aspect-ratio: 16 / 9; /* consistent thumbnail frame */
+  height: auto; /* let aspect-ratio control height */
+  object-fit: cover; /* fill frame without distortion */
+  border-radius: 12px;
+}
+
+/* Material card: fill remaining space */
 .example-card {
-    max-width: 600px;
-    margin: 20px 0px;
-    margin-left: 20px;
+  flex: 1 1 auto;
+  max-width: none; /* remove fixed max that can cramp layout */
+  margin: 0; /* margins handled by .card padding/gap */
+  min-width: 0; /* prevents content overflow in flex rows */
+}
 
-  }
-  
-  .example-card-footer {
-    padding: 16px;
+/* Footer spacing within card */
+.example-card-footer {
+  padding: clamp(8px, 1.5vw, 16px);
+}
 
-  }
-  
-  .image{
-    height: 180px;
-    border-radius: 20px;
-  }
+/* Typography: ensure long descriptions wrap gracefully */
+.example-card .mat-mdc-card-content p {
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
 
-  .card{
-    display: flex;
-    justify-content: space-between;
+/* Grid/list breathing space */
+.card + .card {
+  margin-top: clamp(8px, 1.6vw, 14px);
+}
+
+/* Tablet: slightly smaller poster, more room for text */
+@media (max-width: 992px) {
+  .image {
+    width: clamp(140px, 28vw, 220px);
+  }
+}
+
+/* Phones: stack vertically with the poster on top */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
     align-items: center;
-    
+    text-align: left;
+    padding: clamp(8px, 3vw, 14px);
   }
+  .image {
+    width: min(100%, 520px);
+    aspect-ratio: 16 / 9;
+  }
+  .example-card {
+    width: 100%;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .image {
+    width: 100%;
+  }
+}

@@ -1,13 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  type OnInit,
+  type OnChanges,
+  type SimpleChanges,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { Data1Interface } from '../../data1-interface';
-import { SelectedhCardInterface } from '../../shared/search/selectedh-card-interface';
-import { CharaterInterface } from '../../shared/Characters/charater-interface';
+import { Router, RouterLink } from '@angular/router';
+import type { Data1Interface } from '../../data1-interface';
+import type { SelectedhCardInterface } from '../../shared/search/selectedh-card-interface';
+import type { CharaterInterface } from '../../shared/Characters/charater-interface';
 import { WatchListService } from '../../shared/WatchList/watch-list.service';
 import { LoginService } from '../../shared/Login/login.service';
-import { Router, RouterLink } from '@angular/router';
+type BannerModel = {
+  source: 'local' | 'api' | 'character';
+  bgUrl: string;
+  mobileBgUrl?: string; // optional art-directed mobile image
+  titleImgUrl?: string;
+  titleAlt?: string;
+  meta?: string[]; // e.g., ["2024", "4 Seasons", "7 Languages", "U/A 7+"]
+  synopsis?: string;
+  genres?: string[];
+  watchListPayload?: { location: 'local' | 'api'; id: number };
+};
 
 @Component({
   selector: 'app-content-banner',
@@ -16,95 +33,162 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './content-banner.component.html',
   styleUrls: ['./content-banner.component.css'],
 })
-export class ContentBannerComponent implements OnInit {
+export class ContentBannerComponent implements OnInit, OnChanges {
   constructor(
     private watchList_Service: WatchListService,
     private loginService: LoginService,
     private router: Router
   ) {}
 
-  // data comming from the new component
-  @Input({ required: true }) item?: Data1Interface | null;
-  @Input({ required: true }) selected_card_data?: SelectedhCardInterface | null;
-  @Input({ required: true }) selected_character?: CharaterInterface | null;
+  @Input({ required: false }) item?: Data1Interface | null;
+  @Input({ required: false })
+  selected_card_data?: SelectedhCardInterface | null;
+  @Input({ required: false }) selected_character?: CharaterInterface | null;
+
+  protected add_to_watchList = false;
   private selected_user_id?: number;
 
-  protected add_to_watchList: boolean = false;
+  bannerModel: BannerModel | null = null;
 
   ngOnInit(): void {
+    this.computeModel();
+    this.initWatchlistState();
+  }
 
-    if (this.loginService.isLogged()) {
-      this.selected_user_id = this.watchList_Service.get_Selected_id();
-      let x = this.watchList_Service.getSecond_WatchList();
-      let z = this.watchList_Service.getSecond_WatchList();
-      let y: any;
-      /**
-       * @description seeing the initial loading if dat is in wishlist
-       */
-      y = z.find((value) => {
-        return (
-          value.loaction == 'api' &&
-          value.item_id == this.selected_card_data?.mal_id &&
-          this.selected_user_id == value.user_id
-        );
-      });
-      if (!(y)) {
-        y = z.find((value) => {
-          return value.loaction === 'local' && value.item_id === this.item?.id && this.selected_user_id === value.user_id
-        });
-      }
-      console.error(y);
-      if (y) {
-        this.add_to_watchList = true;
-        console.log(this.add_to_watchList);
-      }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['item'] ||
+      changes['selected_card_data'] ||
+      changes['selected_character']
+    ) {
+      this.computeModel();
+      this.initWatchlistState();
     }
+  }
+
+  private computeModel() {
+    // Priority: API card > local item > character (adjust as needed)
+    if (this.selected_card_data) {
+      const m = this.selected_card_data;
+      this.bannerModel = {
+        source: 'api',
+        bgUrl:
+          m.trailer?.images?.maximum_image_url ||
+          m.images?.jpg?.large_image_url ||
+          m.images?.jpg?.image_url,
+        titleImgUrl: m.images?.jpg?.image_url,
+        titleAlt: m.title,
+        meta: [
+          `${m.year ?? ''}`.trim(),
+          `${m.season ?? ''}`.trim(),
+          `${m.type ?? ''}`.trim(),
+          m.rating ? `U/A ${m.rating}` : '',
+        ].filter(Boolean),
+        synopsis: m.synopsis,
+        genres: (m.titles || []).map((t) => t.title).filter(Boolean),
+        watchListPayload: { location: 'api', id: m.mal_id },
+      };
+      return;
+    }
+
+    if (this.item) {
+      const it = this.item;
+      this.bannerModel = {
+        source: 'local',
+        bgUrl: it.img,
+        titleImgUrl: it.headImg,
+        titleAlt: it.alt,
+        meta: [
+          `${it.year_of_release ?? ''}`.trim(),
+          `${it.seasons ?? ''}`.trim(),
+          `${it.languages ?? ''}`.trim(),
+          it.U_A ? `U/A ${it.U_A}` : '',
+        ].filter(Boolean),
+        synopsis: it.description,
+        genres: (it.genera || []).filter(Boolean),
+        watchListPayload: { location: 'local', id: it.id },
+      };
+      return;
+    }
+
+    if (this.selected_character) {
+      const c = this.selected_character;
+      this.bannerModel = {
+        source: 'character',
+        bgUrl: c.imageUrl,
+        titleImgUrl: c.imageUrl,
+        titleAlt: c.name,
+        meta: [
+          `${c.films ?? ''}`.trim(),
+          `${c.videoGames ?? ''}`.trim(),
+          `${c.tvShows ?? ''}`.trim(),
+        ].filter(Boolean),
+        synopsis: undefined,
+        genres: undefined,
+        watchListPayload: undefined,
+      };
+      return;
+    }
+
+    this.bannerModel = null;
+  }
+
+  private initWatchlistState() {
+    if (!this.loginService.isLogged()) {
+      this.add_to_watchList = false;
+      return;
+    }
+    this.selected_user_id = this.watchList_Service.get_Selected_id();
+    const list = this.watchList_Service.getSecond_WatchList();
+    let found: any;
+
+    // match API
+    if (this.selected_card_data) {
+      found = list.find(
+        (v) =>
+          v.loaction === 'api' &&
+          v.item_id === this.selected_card_data?.mal_id &&
+          v.user_id === this.selected_user_id
+      );
+    }
+    // match local
+    if (!found && this.item) {
+      found = list.find(
+        (v) =>
+          v.loaction === 'local' &&
+          v.item_id === this.item?.id &&
+          v.user_id === this.selected_user_id
+      );
+    }
+
+    this.add_to_watchList = !!found;
   }
 
   logIn() {
     if (!this.loginService.isLogged()) {
       this.router.navigateByUrl('login');
-    } else {
-      console.log('logged in previously');
     }
   }
 
-  watchList(location: string, item: any) {
-    if (this.loginService.isLogged()) {
-      if (this.add_to_watchList === true) {
-        this.add_to_watchList = false;
-        /**
-         * @description condition used to identify the way item id will be accessed sent
-         */
-        if (location == 'api') {
-          this.watchList_Service.set_watch_list(
-            location,
-            item.mal_id,
-            this.add_to_watchList
-          );
-        } else {
-          this.watchList_Service.set_watch_list(
-            location,
-            item.id,
-            this.add_to_watchList
-          );
-        }
-      } else {
-        this.add_to_watchList = true;
-        if (location == 'api') {
-          this.watchList_Service.set_watch_list(
-            location,
-            item.mal_id,
-            this.add_to_watchList
-          );
-        } else {
-          this.watchList_Service.set_watch_list(
-            location,
-            item.id,
-            this.add_to_watchList
-          );
-        }
-      }
-    }
+  toggleWatchList() {
+    if (!this.loginService.isLogged() || !this.bannerModel?.watchListPayload)
+      return;
+    this.add_to_watchList = !this.add_to_watchList;
+    const { location, id } = this.bannerModel.watchListPayload;
+    this.watchList_Service.set_watch_list(location, id, this.add_to_watchList);
+  }
+
+  bgStyle(): string {
+    const url = this.bannerModel?.bgUrl?.trim();
+    return url ? `url('${url}')` : `url('/assets/OnePiece.jpeg')`;
+  }
+
+  bgMobileStyle(): string {
+    const url = (
+      this.bannerModel?.mobileBgUrl ||
+      this.bannerModel?.bgUrl ||
+      ''
+    ).trim();
+    return url ? `url('${url}')` : `url('/assets/OnePiece-mobile.jpg')`;
   }
 }
