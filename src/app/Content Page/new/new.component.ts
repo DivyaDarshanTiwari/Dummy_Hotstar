@@ -12,7 +12,7 @@ import { CharaterInterface } from '../../shared/Characters/charater-interface';
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [ContentBodyComponent, ContentBannerComponent, NgFor],
+  imports: [ContentBodyComponent, ContentBannerComponent],
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.css'],
 })
