@@ -18,11 +18,11 @@ import { CharaterInterface } from '../../shared/Characters/charater-interface';
 })
 export class NewComponent implements OnInit {
   constructor(
-    private data1Service: Data1Service,//instance of the data1 service
-    private _movieService: MoviesService,//instance of the search.ervice.ts which contiain the MovieService
-    private _charactedService:CharactersService
+    private data1Service: Data1Service, //instance of the data1 service
+    private _movieService: MoviesService, //instance of the search.ervice.ts which contiain the MovieService
+    private _charactedService: CharactersService
   ) {}
-  data1: Data1Interface |null = this.data1Service.get_item();
+  data1: Data1Interface | null = this.data1Service.get_item();
   selected_card_data?: SelectedhCardInterface | null;
   selected_character?: CharaterInterface | null;
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class NewComponent implements OnInit {
     this.selected_card_data = this._movieService.get_selected_item_data();
   }
 
-  _selected_character_fun(){
+  _selected_character_fun() {
     this.selected_character = this._charactedService.get_selected_item();
   }
 }

@@ -22,7 +22,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatProgressBarModule,
     MatCardModule,
     MatChipsModule,
-    SeasonBodyComponent,
     CommonModule,
   ],
   templateUrl: './season-body.component.html',

@@ -18,7 +18,6 @@ import { MoreLikeThisInterface } from './more-like-this/more-like-this-interface
     NgFor,
     SeasonBodyComponent,
     MoreLikeThisComponent,
-    JsonPipe,
   ],
 })
 export class ContentBodyComponent {

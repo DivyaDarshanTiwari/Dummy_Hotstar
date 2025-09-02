@@ -20,7 +20,6 @@ export interface Buttons {
   imports: [
     RouterOutlet,
     MatToolbarModule,
-    HomePageComponent,
     CommonModule,
     MatIconModule,
     MatSidenavModule,

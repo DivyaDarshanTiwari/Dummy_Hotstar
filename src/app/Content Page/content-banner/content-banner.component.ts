@@ -29,7 +29,7 @@ type BannerModel = {
 @Component({
   selector: 'app-content-banner',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, CommonModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, CommonModule],
   templateUrl: './content-banner.component.html',
   styleUrls: ['./content-banner.component.css'],
 })
