@@ -1,40 +1,38 @@
 import {
   Component,
+  ViewChild,
   ElementRef,
+  Output,
   EventEmitter,
   Input,
-  Output,
-  ViewChild,
   AfterViewInit,
 } from '@angular/core';
-import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { Data1Interface } from '../../../data1-interface';
+import { RouterModule } from '@angular/router';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-railer4',
   standalone: true,
-  imports: [MatIcon, CommonModule, RouterLink, MatTooltip],
+  imports: [MatIcon, CommonModule, RouterModule, MatTooltip],
   templateUrl: './railer4.component.html',
-  styleUrl: './railer4.component.css',
+  styleUrls: ['./railer4.component.css'],
 })
 export class Railer4Component implements AfterViewInit {
   @Input() item!: Data1Interface[];
 
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+  @ViewChild('track', { static: false }) trackRef!: ElementRef<HTMLElement>;
 
   @Output() railerData1 = new EventEmitter<Data1Interface>();
 
-  private trackEl!: HTMLElement | null;
+  private trackEl: HTMLElement | null = null;
 
   ngAfterViewInit(): void {
-    // section -> .card-container
-    const section = this.nextButtonRef?.nativeElement
-      ?.parentElement as HTMLElement | null;
-    this.trackEl = section ? section.querySelector('.card-container') : null;
+    this.trackEl = this.trackRef?.nativeElement ?? null;
   }
 
   emitImage(image: Data1Interface) {

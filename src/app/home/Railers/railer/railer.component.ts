@@ -2,52 +2,68 @@ import {
   Component,
   ViewChild,
   ElementRef,
-  AfterViewInit,
   Output,
   EventEmitter,
   Input,
+  AfterViewInit,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Data1Interface } from '../../../data1-interface';
 import { RouterModule } from '@angular/router';
 import { MatTooltip } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-railer',
   standalone: true,
-  imports: [MatIcon, CommonModule, RouterModule,MatTooltip],
+  imports: [MatIcon, CommonModule, RouterModule, MatTooltip],
   templateUrl: './railer.component.html',
   styleUrls: ['./railer.component.css'],
 })
-export class RailerComponent {
+export class RailerComponent implements AfterViewInit {
   @Input() item!: Data1Interface[];
+
   @ViewChild('prevButton') prevButtonRef!: ElementRef<HTMLElement>;
   @ViewChild('nextButton') nextButtonRef!: ElementRef<HTMLElement>;
+  @ViewChild('track', { static: false }) trackRef!: ElementRef<HTMLElement>;
+
   @Output() railerData1 = new EventEmitter<Data1Interface>();
+
+  private trackEl: HTMLElement | null = null;
+
+  ngAfterViewInit(): void {
+    this.trackEl = this.trackRef?.nativeElement ?? null;
+  }
 
   emitImage(image: Data1Interface) {
     this.railerData1.emit(image);
   }
 
+  private step(): number {
+    if (!this.trackEl) return 0;
+    const first = this.trackEl.querySelector('.images') as HTMLElement | null;
+    if (!first) return 0;
+    const styles = getComputedStyle(this.trackEl);
+    const gap = parseFloat(styles.columnGap || styles.gap || '0');
+    return first.getBoundingClientRect().width + gap;
+  }
+
   prevfun() {
-    if (this.prevButtonRef) {
-      const elm = this.prevButtonRef.nativeElement.parentElement?.children[1];
-      const item = elm?.getElementsByClassName('images')[0];
-      if (item) {
-        item.classList.add('slide-animation');
-        elm?.append(item);
-      }
-    }
+    if (!this.trackEl) return;
+    const s = this.step();
+    this.trackEl.scrollTo({
+      left: Math.max(0, this.trackEl.scrollLeft - s),
+      behavior: 'smooth',
+    });
   }
 
   nextfun() {
-    if (this.nextButtonRef) {
-      const elm2 = this.nextButtonRef.nativeElement.parentElement?.children[1];
-      const item = elm2?.getElementsByClassName('images');
-      if (item) {
-        elm2?.prepend(item[item.length - 1]);
-        item[item.length - 1].classList.add('slide-animation2');
-      }
-    }
+    if (!this.trackEl) return;
+    const s = this.step();
+    const max = this.trackEl.scrollWidth - this.trackEl.clientWidth;
+    this.trackEl.scrollTo({
+      left: Math.min(max, this.trackEl.scrollLeft + s),
+      behavior: 'smooth',
+    });
   }
 }

@@ -1,9 +1,8 @@
-/* Section frame */
 .slider-section {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin: 24px 0 12px;
+  margin: 24px 0 16px;
   padding-inline: 16px;
   box-sizing: border-box;
 }
@@ -16,42 +15,38 @@
 
 /* Track */
 .card-container {
-  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: nowrap; /* prevent wrap to keep a row */
-  padding: 12px 44px; /* space for overlay arrows */
-  margin: 0; /* avoid right overflow */
-  overflow: hidden; /* desktop default; mobile enables scroll */
+  width: 100%;
+  padding: 12px 40px;
   box-sizing: border-box;
+  overflow: hidden; /* desktop default */
+  scroll-behavior: smooth; /* JS and keyboard scrolling are smooth */
 }
 
-/* Card */
+/* Cards */
 .images {
   flex: 0 0 auto;
-  margin: 0 5px;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   will-change: transform;
 }
-
 .images img {
   display: block;
   width: clamp(160px, 22vw, 300px);
-  height: clamp(100px, 14.5vw, 200px);
+  height: clamp(110px, 14.7vw, 200px);
   object-fit: cover;
   border-radius: 8px;
 }
 
-/* Hover scale only where hover exists */
 @media (hover: hover) and (pointer: fine) {
   .images:hover {
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 }
 
-/* Overlay arrows */
+/* Arrows */
 .prev,
 .next {
   color: aliceblue;
@@ -59,20 +54,18 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: transparent;
+  border: 0;
   height: 64%;
   width: 40px;
-  border: 0;
   display: grid;
   place-items: center;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.25s ease;
   z-index: 2;
 }
-
 .prev:hover,
 .next:hover {
   background-color: rgba(234, 234, 234, 0.105);
 }
-
 .prev {
   border-top-right-radius: 14px;
   border-bottom-right-radius: 10px;
@@ -84,14 +77,14 @@
   right: 0;
 }
 
-/* Keep your optional slide classes concise */
+/* Optional slide polish */
 .slide-animation {
-  animation: slide-in 260ms ease-out both;
+  animation: slide-in 300ms ease-out both;
 }
 @keyframes slide-in {
   from {
-    transform: translateX(-10px);
-    opacity: 0.95;
+    transform: translateX(-12px);
+    opacity: 0.9;
   }
   to {
     transform: none;
@@ -99,12 +92,12 @@
   }
 }
 .slide-animation2 {
-  animation: slide-in2 260ms ease-out both;
+  animation: slide-in2 300ms ease-out both;
 }
 @keyframes slide-in2 {
   from {
-    transform: translateX(10px);
-    opacity: 0.95;
+    transform: translateX(12px);
+    opacity: 0.9;
   }
   to {
     transform: none;
@@ -112,15 +105,15 @@
   }
 }
 
-/* Tablet and below: horizontal scroll + scroll-snap */
+/* Tablet and below: enable scroll + snap */
 @media (max-width: 1024px) {
   .card-container {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 10px 32px;
     gap: 10px;
+    padding: 12px 28px;
   }
   .images {
     scroll-snap-align: start;
@@ -131,32 +124,26 @@
   }
 }
 
-/* Phones: larger cards by vw and tighter spacing */
+/* Phone */
 @media (max-width: 768px) {
   .slider-section {
     padding-inline: 8px;
   }
+  .card-container {
+    padding: 10px 24px;
+    gap: 8px;
+  }
   .images img {
-    width: clamp(140px, 64vw, 220px);
-    height: clamp(90px, 40vw, 150px);
+    width: clamp(140px, 62vw, 220px);
+    height: clamp(94px, 40vw, 150px);
   }
 }
 
-/* Very small devices */
+/* Very small */
 @media (max-width: 420px) {
   .prev,
   .next {
     width: 32px;
     height: 50%;
-  }
-}
-
-/* Accessibility: respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .images,
-  .slide-animation,
-  .slide-animation2 {
-    transition: none !important;
-    animation: none !important;
   }
 }
