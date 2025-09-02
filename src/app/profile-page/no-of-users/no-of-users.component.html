@@ -1,21 +1,31 @@
 <div>
-  <h2>Profile</h2>
-  <ul class="users">
+  <h2 id="profilesHeading">Profile</h2>
+
+  <ul class="users" role="listbox" aria-labelledby="profilesHeading">
     @for (item of user_Personal_Data; track item.userId) {
-    <li [class.selected]="item.Active" >
-      <img [src]="item.profile_img" alt="" (click)="sending_Selected_p(item)" />
-      <p>{{item.name}}</p>
+    <li
+      class="user"
+      role="option"
+      [attr.aria-selected]="(selectedId ?? -1) === item.userId"
+      [class.selected]="(selectedId ?? -1) === item.userId"
+      tabindex="0"
+      (click)="select(item)"
+      (keyup)="onKey($event, item)"
+    >
+      <img
+        [src]="item.profile_img"
+        [alt]="item.name + ' avatar'"
+        class="avatar"
+      />
+      <p class="name">{{ item.name }}</p>
     </li>
-  }
-    <li>
-      <button
-        mat-mini-fab
-        aria-label="Example icon button with a menu icon"
-        id="add_icon"
-      >
+    }
+
+    <li class="user add">
+      <button mat-mini-fab aria-label="Add profile" id="add_icon">
         <mat-icon>add</mat-icon>
       </button>
-      <p>add</p>
+      <p class="name">Add</p>
     </li>
   </ul>
 </div>

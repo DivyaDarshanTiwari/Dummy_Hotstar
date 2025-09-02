@@ -1,71 +1,193 @@
-html {
-    height: 100%;
+/* Polished, responsive styles with better contrast and focus-visible */
+
+html,
+body {
+  height: 100%;
+}
+
+:host {
+  display: block;
+  color-scheme: dark;
+}
+
+.login-wrap {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(3, 233, 244, 0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 600px at 110% 110%,
+      rgba(3, 233, 244, 0.08),
+      transparent 60%
+    ),
+    #0b1220; /* dark neutral background */
+}
+
+.login-box {
+  width: min(92vw, 440px);
+  padding: clamp(20px, 4vw, 40px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 14px;
+  color: #fff;
+}
+
+.login-title {
+  margin: 0 0 12px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.user-box {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.user-box input {
+  width: 100%;
+  padding: 14px 40px 10px 0; /* room for toggle on password */
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-box input::placeholder {
+  color: transparent; /* use floating label */
+}
+
+.user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 0;
+  font-size: 16px;
+  color: #ddd;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+/* Float label on focus or when has value */
+.user-box input:focus ~ label,
+.user-box input:not(:placeholder-shown) ~ label,
+.user-box input.ng-dirty ~ label {
+  top: -16px;
+  color: #03e9f4; /* primary */
+  font-size: 12px;
+}
+
+/* Accessible focus-visible styling */
+.user-box input:focus-visible {
+  box-shadow: 0 2px 0 0 #03e9f4;
+  border-bottom-color: #03e9f4;
+}
+
+/* Password visibility toggle */
+.toggle-pass {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #a9e9ee;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.toggle-pass:hover {
+  color: #03e9f4;
+}
+
+.toggle-pass:focus-visible {
+  outline: none;
+  border-color: #03e9f4;
+  background: rgba(3, 233, 244, 0.08);
+}
+
+.error {
+  margin-top: 6px;
+  color: #ffb4a9; /* error accent */
+  font-size: 13px;
+}
+
+.submit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  padding: 12px 16px;
+  color: #03e9f4;
+  background: transparent;
+  border: 1px solid #03e9f4;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #03e9f4;
+  color: #001018; /* dark text on cyan */
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #001018;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
+}
+
+/* Screen-reader only helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .user-box input,
+  .toggle-pass,
+  .submit-btn {
+    transition: none;
   }
-  
-  .login-box h2 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
+  .btn-spinner {
+    animation: none;
   }
-  
-  .login-box .user-box {
-    position: relative;
-  }
-  
-  .login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  .login-box .user-box label {
-    position: absolute;
-    top:0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-  }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #03e9f4;
-    font-size: 12px;
-  }
-  
-  .login-box form a {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #03e9f4;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-  }
+}

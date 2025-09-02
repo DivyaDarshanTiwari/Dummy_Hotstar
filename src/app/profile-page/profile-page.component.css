@@ -1,40 +1,134 @@
 .intro {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  width: 96%;
+  display: grid;
+  grid-template-columns: minmax(280px, 560px) 1fr;
+  gap: clamp(12px, 3vw, 24px);
+  align-items: start;
+  width: 100%;
+  padding: clamp(12px, 3vw, 24px);
   background-image: linear-gradient(180deg, rgba(66, 87, 245, 0), rgb(0, 0, 0)),
     url("https://i.pinimg.com/736x/bd/da/fc/bddafc029d86df72bef91bba70973c71.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 100%;
-  height: 70%;
+  max-width: 1200px;
+  margin-inline: auto;
+  border-radius: 12px;
+  background-position: center;
 }
+
 .example-card {
-  background-color: rgba(0, 4, 65, 0.304);
-  margin: 0px 10%;
+  background-color: rgba(0, 4, 65, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 200ms ease, transform 200ms ease;
 }
+.example-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
 #image {
-  margin: 0% 25%;
+  display: block;
+  margin: 0 auto;
   border-radius: 50%;
-  width: 50%;
-  height: 100px;
+  width: clamp(120px, 40%, 220px);
+  height: clamp(120px, 40%, 220px);
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
 .user_details {
-  padding: 0% 25%;
-  display: block;
-  width: 200px;
+  padding: 0 clamp(12px, 3vw, 24px);
+  line-height: 1.6;
+}
+
+.read .row {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) 2fr;
+  gap: 8px;
+  padding: 6px 0;
+  align-items: center;
+}
+.read .row label {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+.read .row span {
+  word-break: break-word;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.form input {
+  background-color: rgba(240, 248, 255, 0.22);
+  border: 1px solid rgba(192, 192, 192, 0.7);
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  color: #fff;
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+.form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.form input:focus-visible {
+  outline: none;
+  border-color: #4257f5;
+  box-shadow: 0 0 0 3px rgba(66, 87, 245, 0.35);
+  background-color: rgba(240, 248, 255, 0.28);
+}
+
+.error {
+  color: #ffb4a9;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 #button {
-  display: block;
-  padding: 0% 20%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 16px;
+  flex-wrap: wrap;
 }
 
-form input {
-  background-color: rgba(240, 248, 255, 0.295);
-  border: 1px solid silver;
-  border-radius: 5px;
-  width: 70%;
+.side {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .intro {
+    grid-template-columns: 1fr;
+    padding: clamp(12px, 4vw, 24px);
+  }
+  #button {
+    gap: 8px;
+  }
+  #button > button {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  #button {
+    justify-content: stretch;
+  }
+  #button > button {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .example-card,
+  .form input {
+    transition: none;
+  }
 }

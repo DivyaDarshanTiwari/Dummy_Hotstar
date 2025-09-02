@@ -1,8 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { type UserPData } from '../../shared/Personal Service/user-p-data.interface';
+import { UserPData } from '../../shared/Personal Service/user-p-data.interface';
 import { UserPDataService } from '../../shared/Personal Service/user-p-data.service';
-import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-no-of-users',
@@ -12,13 +11,31 @@ import { EventEmitter } from '@angular/core';
   styleUrl: './no-of-users.component.css',
 })
 export class NoOfUsersComponent {
-  constructor(private userData: UserPDataService) {}//dependency injection
-  @Output() emitter = new EventEmitter<UserPData>(); // sendind data to the profilepage
-  @Output() sendingId = new EventEmitter<number>();
-  sending_Selected_p(userData1: UserPData) {//userData1 is comming form the templet which is selected on click
-    this.emitter.emit(userData1); //sending user data
-    this.userData.set_Actived_data(userData1.userId); // the selected data is being set as active
-  }
+  constructor(private userData: UserPDataService) {}
 
   @Input({ required: true }) user_Personal_Data!: UserPData[];
+  @Output() emitter = new EventEmitter<UserPData>();
+  @Output() sendingId = new EventEmitter<number>();
+
+  selectedId?: number;
+
+  ngOnChanges() {
+    // sync local selectedId with data from parent/service
+    const active = this.user_Personal_Data?.find((u) => u.Active);
+    this.selectedId = active?.userId;
+  }
+
+  select(user: UserPData) {
+    this.selectedId = user.userId;
+    this.userData.set_Actived_data(user.userId);
+    this.emitter.emit(user);
+    this.sendingId.emit(user.userId);
+  }
+
+  onKey(ev: KeyboardEvent, user: UserPData) {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      ev.preventDefault();
+      this.select(user);
+    }
+  }
 }

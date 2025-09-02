@@ -1,38 +1,75 @@
-<form class="form">
-  <input type="text" placeholder="enter the name" name="character" [(ngModel)]="searched_name" (change)="search()">
-  <input type="button" class="button" value="Submit" (click)="search()">
+<form class="form" role="search" (ngSubmit)="search()">
+  <!-- accessible label for screen readers -->
+  <label class="sr-only" for="character-input">Character name</label>
+  <input
+    id="character-input"
+    type="text"
+    placeholder="Enter character name"
+    name="character"
+    [(ngModel)]="searched_name"
+    (keyup.enter)="search()"
+    aria-label="Character name"
+    autocomplete="off"
+  />
+  <!-- keep existing click handler; add Material styling -->
+  <button
+    type="button"
+    class="button"
+    (click)="search()"
+    mat-flat-button
+    color="primary"
+    aria-label="Search characters"
+  >
+    Search
+  </button>
 </form>
-<div class="container">
-  <div *ngFor="let item of character_Data" class="card">
-    <mat-card class="example-card" appearance="outlined">
+
+<p
+  class="results"
+  aria-live="polite"
+  *ngIf="character_Data?.length !== undefined"
+>
+  {{ character_Data?.length || 0 }} result{{
+    (character_Data?.length || 0) === 1 ? "" : "s"
+  }}
+</p>
+
+<div class="container" role="list" aria-label="Characters">
+  <div *ngFor="let item of character_Data" class="card" role="listitem">
+    <mat-card
+      class="example-card mat-elevation-z2"
+      appearance="outlined"
+      tabindex="0"
+      (click)="selectedCharater(item)"
+      (keyup.enter)="selectedCharater(item)"
+      [matTooltip]="item.name"
+    >
       <mat-card-header>
-        <mat-card-title class="films" [matTooltip]="item.name">{{
-          item.name
-        }}</mat-card-title>
-        @if(item.films[0] == null){
-        <mat-card-subtitle class="films" matTooltip="none"
-          >Films:None</mat-card-subtitle
+        <mat-card-title class="films" [matTooltip]="item.name">
+          {{ item.name }}
+        </mat-card-title>
+        <mat-card-subtitle
+          class="films"
+          [matTooltip]="getFilmsTooltip(item.films)"
         >
-        } @else{
-        <mat-card-subtitle class="films" [matTooltip]="getToolTip(item.films)"
-          >Films: {{ item.films }}</mat-card-subtitle
-        >
-        }
+          Films: {{ formatFilmsInline(item.films) }}
+        </mat-card-subtitle>
       </mat-card-header>
-      <!-- (error)="Image_Not_load($event)" -->
 
       <img
         mat-card-image
-        [lazyLoad]="item.imageUrl"
-        [alt]="item.name"
+        [lazyLoad]="item.imageUrl || placeholderImage"
         [defaultImage]="placeholderImage"
+        [alt]="item.name"
         class="image"
       />
+      <mat-card-content>
+        <p>
+          <a [routerLink]="['/s']" (click)="selectedCharater(item)"
+            >Learn more</a
+          >
+        </p>
+      </mat-card-content>
     </mat-card>
-    <mat-card-content>
-      <p>
-        <a [routerLink]="['/s']" (click)="selectedCharater(item)">Learn More</a>
-      </p>
-    </mat-card-content>
   </div>
 </div>

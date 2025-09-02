@@ -2,38 +2,60 @@ div {
   border-radius: 10px;
 }
 h2 {
-  margin: 0px 15px;
+  margin: 0 15px 8px;
 }
+
 .users {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-evenly;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(120px, 22vw, 180px), 1fr)
+  );
+  gap: clamp(10px, 2vw, 16px);
+  padding: 8px 12px;
+  margin: 0;
 }
-.users li {
-  margin: 15px;
-  display: inline-block;
+
+.user {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
   text-align: center;
-  font-size: 20px;
-  width: 20%;
-  border-radius:30px;
+  font-size: 16px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-img {
-  width: 100px;
-  height: 100px;
+.user:focus-visible {
+  box-shadow: 0 0 0 2px rgba(3, 233, 244, 0.8);
+}
+
+.user.selected {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+  width: clamp(64px, 20vw, 100px);
+  height: clamp(64px, 20vw, 100px);
   border-radius: 50%;
+  object-fit: cover;
 }
 
-#add_icon {
-  background-color: rgba(240, 248, 255, 0.201);
-  border-radius: 50%;
-  border: 0px;
-  padding: 30px;
+.name {
+  margin: 0;
+  color: #e8e8e8;
 }
 
-.selected{
-  background-color: rgba(0, 0, 0, 0.651);
+.user.add #add_icon {
+  background-color: rgba(240, 248, 255, 0.2);
+  border: 0;
+}
+
+.user.add {
+  cursor: default;
 }

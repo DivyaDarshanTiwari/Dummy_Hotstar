@@ -1,38 +1,151 @@
 <div class="intro">
   <mat-card class="example-card" appearance="outlined" id="card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Divya Darshan Tiwari</mat-card-title>
+      <div
+        mat-card-avatar
+        class="example-header-image"
+        [style.backgroundImage]="'url(' + img + ')'"
+      ></div>
+      <mat-card-title>{{ name }}</mat-card-title>
       <mat-card-subtitle>Primary User</mat-card-subtitle>
     </mat-card-header>
-    <img
-      mat-card-image
-      [src]="img"
-      alt="Photo of a Shiba Inu"
-      id="image"
-    />
+
+    <img mat-card-image [src]="img" alt="Profile photo" id="image" />
+
     <mat-card-content class="user_details">
-      <form action="">
-        <label for="number">Phone No</label>
-        <input type="number" name="Phone_number" id="number" [(ngModel)]="phone" autocomplete="on" />
-        <br>
+      <!-- Read mode -->
+      <div *ngIf="!editing" class="read">
+        <div class="row">
+          <label>Phone</label><span>{{ phone }}</span>
+        </div>
+        <div class="row">
+          <label>Name</label><span>{{ name }}</span>
+        </div>
+        <div class="row">
+          <label>Email</label><span>{{ email }}</span>
+        </div>
+        <div class="row">
+          <label>Date of Birth</label><span>{{ DOB }}</span>
+        </div>
+      </div>
+
+      <!-- Edit mode -->
+      <form *ngIf="editing" [formGroup]="form" class="form" novalidate>
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          type="tel"
+          formControlName="phone"
+          autocomplete="tel"
+          [attr.aria-invalid]="
+            f['phone'].invalid && f['phone'].touched ? 'true' : 'false'
+          "
+          [attr.aria-describedby]="
+            f['phone'].invalid && f['phone'].touched ? 'phone-error' : null
+          "
+        />
+        <div
+          class="error"
+          id="phone-error"
+          role="alert"
+          *ngIf="f['phone'].touched && f['phone'].invalid"
+        >
+          Phone is required
+        </div>
+
         <label for="name">User Name</label>
-        <input type="text" name="User_Name" id="name" [(ngModel)]="name" autocomplete="on"/>
-        <br>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          autocomplete="name"
+          [attr.aria-invalid]="
+            f['name'].invalid && f['name'].touched ? 'true' : 'false'
+          "
+          [attr.aria-describedby]="
+            f['name'].invalid && f['name'].touched ? 'name-error' : null
+          "
+        />
+        <div
+          class="error"
+          id="name-error"
+          role="alert"
+          *ngIf="f['name'].touched && f['name'].invalid"
+        >
+          <span *ngIf="f['name'].errors?.['required']">Name is required.</span>
+          <span *ngIf="f['name'].errors?.['minlength']">Min 2 characters.</span>
+        </div>
+
         <label for="email">Email Address</label>
-        <input type="email" name="User_email" id="email" [(ngModel)]="email" autocomplete="on"/>
-        <br>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          [attr.aria-invalid]="
+            f['email'].invalid && f['email'].touched ? 'true' : 'false'
+          "
+          [attr.aria-describedby]="
+            f['email'].invalid && f['email'].touched ? 'email-error' : null
+          "
+        />
+        <div
+          class="error"
+          id="email-error"
+          role="alert"
+          *ngIf="f['email'].touched && f['email'].invalid"
+        >
+          <span *ngIf="f['email'].errors?.['required']"
+            >Email is required.</span
+          >
+          <span *ngIf="f['email'].errors?.['email']">Enter a valid email.</span>
+        </div>
+
         <label for="DOB">Date of Birth</label>
-        <input type="date" name="DOB" id="DOB"[(ngModel)]="DOB" autocomplete="on"/>
+        <input id="DOB" type="date" formControlName="DOB" autocomplete="bday" />
+
+        <label for="profile_img">Profile Image URL</label>
+        <input
+          id="profile_img"
+          type="url"
+          formControlName="profile_img"
+          autocomplete="url"
+        />
       </form>
     </mat-card-content>
+
     <mat-card-actions id="button">
-      <button mat-button>Save</button>
-      <button mat-button>Cancle</button>
+      <ng-container *ngIf="!editing; else editButtons">
+        <button
+          mat-flat-button
+          color="primary"
+          type="button"
+          (click)="startEdit()"
+        >
+          Edit
+        </button>
+      </ng-container>
+      <ng-template #editButtons>
+        <button mat-flat-button color="primary" type="button" (click)="save()">
+          Save
+        </button>
+        <button mat-stroked-button type="button" (click)="cancelEdit()">
+          Cancel
+        </button>
+      </ng-template>
     </mat-card-actions>
   </mat-card>
-  <div>
-  <app-no-of-users [user_Personal_Data]="user_Personal_Data" (emitter)="returned_Data($event)" />
+
+  <div class="side">
+    <app-no-of-users
+      [user_Personal_Data]="user_Personal_Data"
+      (emitter)="returned_Data($event)"
+    >
+    </app-no-of-users>
+  </div>
 </div>
-</div>
-<app-watch-list [id]="id" [second_watchList]="second_watchList"/>
+
+<app-watch-list
+  [id]="id"
+  [second_watchList]="second_watchList"
+></app-watch-list>
